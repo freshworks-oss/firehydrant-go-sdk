@@ -20941,6 +20941,12 @@ actions:
         Timeout:
           description: Timeouts occurred with the request
           content:
+            text/plain:
+              schema:
+                type: string
+            text/html:
+              schema:
+                type: string
             application/json:
               schema:
                 $ref: '#/components/schemas/Timeout'
