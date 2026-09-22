@@ -23,30 +23,13 @@ jobs:
     steps:
       - name: Clone SDK repo
         uses: actions/checkout@v3
-        
-      - name: Set up SSH
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          echo "${{ secrets.FH_OPS_SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 400 ~/.ssh/id_ed25519
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          ssh-add ~/.ssh/id_ed25519
-          
-      - name: Clone developers repo
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          git clone git@github.com:firehydrant/developers.git /tmp/dev-repo
-          cd /tmp/dev-repo
-          git checkout main
           
       - name: Copy OpenAPI spec
         run: |
           mkdir -p .speakeasy
-          cp /tmp/dev-repo/docs/public/openapi3_doc.json ${GITHUB_WORKSPACE}/openapi.json
+          curl -fS https://api.local.firehydrant.io/v1/swagger_doc | jq . > /tmp/local_swagger_doc.json
+          bin/convert-to-openapi3.main.kts /tmp/local_swagger_doc.json > /tmp/local_openapi3_doc.json
+          cp /tmp/local_openapi3_doc.json ${GITHUB_WORKSPACE}/openapi.json
           
       - name: Generate SDK
         uses: speakeasy-api/sdk-generation-action@v15
