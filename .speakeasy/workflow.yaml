@@ -4,6 +4,8 @@ sources:
     firehydrant-oas:
         inputs:
             - location: ${GITHUB_WORKSPACE}/openapi.json
+        overlays:
+            - location: ${GITHUB_WORKSPACE}/errors-overlay.yaml
         registry:
             location: registry.speakeasyapi.dev/firehydrant/firehydrant/firehydrant-oas
 targets:
