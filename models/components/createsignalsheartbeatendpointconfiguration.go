@@ -124,6 +124,10 @@ type CreateSignalsHeartbeatEndpointConfiguration struct {
 	AllowedUserAgentSubstring *string `json:"allowed_user_agent_substring,omitzero"`
 	// Email addresses allowed to send heartbeats
 	AllowedEmailSenders []string `json:"allowed_email_senders,omitzero"`
+	// ID of the team the heartbeat belongs to
+	TeamID *string `json:"team_id,omitzero"`
+	// ID of an existing alert rule to link to this heartbeat
+	RuleID *string `json:"rule_id,omitzero"`
 }
 
 func (c CreateSignalsHeartbeatEndpointConfiguration) MarshalJSON() ([]byte, error) {
@@ -198,4 +202,18 @@ func (c *CreateSignalsHeartbeatEndpointConfiguration) GetAllowedEmailSenders() [
 		return nil
 	}
 	return c.AllowedEmailSenders
+}
+
+func (c *CreateSignalsHeartbeatEndpointConfiguration) GetTeamID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.TeamID
+}
+
+func (c *CreateSignalsHeartbeatEndpointConfiguration) GetRuleID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.RuleID
 }

@@ -30,6 +30,7 @@ const (
 	UpdateRolePermissionClaimOnCallShifts                      UpdateRolePermission = "claim_on_call_shifts"
 	UpdateRolePermissionReadSignalsPii                         UpdateRolePermission = "read_signals_pii"
 	UpdateRolePermissionManageOrganizationNotificationPolicies UpdateRolePermission = "manage_organization_notification_policies"
+	UpdateRolePermissionReadOrganizationNotificationPolicies   UpdateRolePermission = "read_organization_notification_policies"
 	UpdateRolePermissionReadNotificationPolicyCompliance       UpdateRolePermission = "read_notification_policy_compliance"
 	UpdateRolePermissionManageWebhookTargets                   UpdateRolePermission = "manage_webhook_targets"
 	UpdateRolePermissionReadWebhookTargets                     UpdateRolePermission = "read_webhook_targets"
@@ -119,6 +120,8 @@ func (e *UpdateRolePermission) UnmarshalJSON(data []byte) error {
 	case "read_signals_pii":
 		fallthrough
 	case "manage_organization_notification_policies":
+		fallthrough
+	case "read_organization_notification_policies":
 		fallthrough
 	case "read_notification_policy_compliance":
 		fallthrough

@@ -52,6 +52,8 @@ const (
 	GetSignalsGroupedMetricsSortByTotalOpenedAlerts   GetSignalsGroupedMetricsSortBy = "total_opened_alerts"
 	GetSignalsGroupedMetricsSortByTotalAckedAlerts    GetSignalsGroupedMetricsSortBy = "total_acked_alerts"
 	GetSignalsGroupedMetricsSortByTotalIncidents      GetSignalsGroupedMetricsSortBy = "total_incidents"
+	GetSignalsGroupedMetricsSortByTotalBillableAlerts GetSignalsGroupedMetricsSortBy = "total_billable_alerts"
+	GetSignalsGroupedMetricsSortByTotalResolvedAlerts GetSignalsGroupedMetricsSortBy = "total_resolved_alerts"
 	GetSignalsGroupedMetricsSortByAckedPercentage     GetSignalsGroupedMetricsSortBy = "acked_percentage"
 	GetSignalsGroupedMetricsSortByIncidentsPercentage GetSignalsGroupedMetricsSortBy = "incidents_percentage"
 )
@@ -70,6 +72,10 @@ func (e *GetSignalsGroupedMetricsSortBy) UnmarshalJSON(data []byte) error {
 	case "total_acked_alerts":
 		fallthrough
 	case "total_incidents":
+		fallthrough
+	case "total_billable_alerts":
+		fallthrough
+	case "total_resolved_alerts":
 		fallthrough
 	case "acked_percentage":
 		fallthrough

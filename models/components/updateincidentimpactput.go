@@ -56,6 +56,8 @@ type UpdateIncidentImpactPut struct {
 	Milestone   *string                             `json:"milestone,omitzero"`
 	Impact      []UpdateIncidentImpactPutImpact     `json:"impact,omitzero"`
 	StatusPages []UpdateIncidentImpactPutStatusPage `json:"status_pages,omitzero"`
+	// When posting to a public status page, whether to also email its subscribers. Defaults to true.
+	NotifyEmailSubscribers *bool `json:"notify_email_subscribers,omitzero"`
 }
 
 func (u UpdateIncidentImpactPut) MarshalJSON() ([]byte, error) {
@@ -95,4 +97,11 @@ func (u *UpdateIncidentImpactPut) GetStatusPages() []UpdateIncidentImpactPutStat
 		return nil
 	}
 	return u.StatusPages
+}
+
+func (u *UpdateIncidentImpactPut) GetNotifyEmailSubscribers() *bool {
+	if u == nil {
+		return nil
+	}
+	return u.NotifyEmailSubscribers
 }

@@ -1,6 +1,8 @@
 # UpdateOnCallShift
 
-Update a Signals on-call shift by ID
+NOTE: This endpoint is deprecated and overrides are now the only way to modify a schedule's shifts.
+For compatibility, this endpoint will simply create an override for the specified time window.
+
 
 
 ## Fields

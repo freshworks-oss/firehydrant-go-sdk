@@ -11,6 +11,8 @@ type NullableSignalsAPIAnalyticsTimeseriesPointEntityMetricEntity struct {
 	TotalAckedAlerts *int `json:"total_acked_alerts,omitzero"`
 	// The total number of incidents
 	TotalIncidents *int `json:"total_incidents,omitzero"`
+	// The total number of billable alerts (SMS/voice notifications sent)
+	TotalBillableAlerts *int `json:"total_billable_alerts,omitzero"`
 }
 
 func (n *NullableSignalsAPIAnalyticsTimeseriesPointEntityMetricEntity) GetBucket() *string {
@@ -39,4 +41,11 @@ func (n *NullableSignalsAPIAnalyticsTimeseriesPointEntityMetricEntity) GetTotalI
 		return nil
 	}
 	return n.TotalIncidents
+}
+
+func (n *NullableSignalsAPIAnalyticsTimeseriesPointEntityMetricEntity) GetTotalBillableAlerts() *int {
+	if n == nil {
+		return nil
+	}
+	return n.TotalBillableAlerts
 }

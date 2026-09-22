@@ -14,7 +14,7 @@ Operations related to Integrations
 * [UpdateAuthedProvider](#updateauthedprovider) - Get an authed provider
 * [ListConnections](#listconnections) - List integration connections
 * [CreateConnection](#createconnection) - Create a new integration connection
-* [RefreshConnection](#refreshconnection) - Refresh an integration connection
+* [RefreshConnection](#refreshconnection) - Refresh an integration connection's incident role schedules
 * [UpdateConnection](#updateconnection) - Update an integration connection
 * [ListConnectionStatuses](#listconnectionstatuses) - Get integration connection status
 * [ListConnectionStatusesBySlug](#listconnectionstatusesbyslug) - Get an integration connection status
@@ -28,6 +28,8 @@ Operations related to Integrations
 * [ListAwsCloudtrailBatchEvents](#listawscloudtrailbatchevents) - List events for an AWS CloudTrail batch
 * [SearchConfluenceSpaces](#searchconfluencespaces) - List Confluence spaces
 * [ListSlackWorkspaces](#listslackworkspaces) - List Slack workspaces
+* [SearchSlackChannels](#searchslackchannels) - List Slack channels
+* [TestSlackChannel](#testslackchannel) - Test a Slack channel
 * [ListSlackUsergroups](#listslackusergroups) - List Slack user groups
 * [ListSlackEmojiActions](#listslackemojiactions) - List Slack emoji actions
 * [CreateSlackEmojiAction](#createslackemojiaction) - Create a new Slack emoji action
@@ -480,7 +482,7 @@ func main() {
 
 ## RefreshConnection
 
-Refresh the integration connection with the provided data
+Refresh the integration connection's incident role schedules
 
 ### Example Usage
 
@@ -1237,6 +1239,109 @@ func main() {
 ### Response
 
 **[*components.IntegrationsSlackWorkspaceEntity](../../models/components/integrationsslackworkspaceentity.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## SearchSlackChannels
+
+List or search for known Slack channels that the FireHydrant bot can access
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="search_slack_channels" method="get" path="/v1/integrations/slack/channels" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/firehydrant/firehydrant-go-sdk/models/components"
+	firehydrantgosdk "github.com/firehydrant/firehydrant-go-sdk"
+	"github.com/firehydrant/firehydrant-go-sdk/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := firehydrantgosdk.New(
+        firehydrantgosdk.WithSecurity(components.Security{
+            APIKey: "<YOUR_API_KEY_HERE>",
+        }),
+    )
+
+    err := s.Integrations.SearchSlackChannels(ctx, operations.SearchSlackChannelsRequest{})
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `request`                                                                                      | [operations.SearchSlackChannelsRequest](../../models/operations/searchslackchannelsrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
+
+### Response
+
+**error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## TestSlackChannel
+
+Test the ability of the FireHydrant bot to operate in a Slack channel
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="test_slack_channel" method="put" path="/v1/integrations/slack/channels/{id}/test" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/firehydrant/firehydrant-go-sdk/models/components"
+	firehydrantgosdk "github.com/firehydrant/firehydrant-go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := firehydrantgosdk.New(
+        firehydrantgosdk.WithSecurity(components.Security{
+            APIKey: "<YOUR_API_KEY_HERE>",
+        }),
+    )
+
+    err := s.Integrations.TestSlackChannel(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**error**
 
 ### Errors
 

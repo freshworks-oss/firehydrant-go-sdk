@@ -10,6 +10,47 @@ import (
 type UpdateIncidentLabels struct {
 }
 
+type UpdateIncidentCustomField struct {
+	// The ID of the custom field you wish to set.
+	FieldID string `json:"field_id"`
+	// The value you wish to set on the custom field if the type of the field accepts string values
+	ValueString *string `json:"value_string,omitzero"`
+	// The value you wish to set on the custom field if the type of the field accepts array values
+	ValueArray []string `json:"value_array,omitzero"`
+}
+
+func (u UpdateIncidentCustomField) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateIncidentCustomField) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (u *UpdateIncidentCustomField) GetFieldID() string {
+	if u == nil {
+		return ""
+	}
+	return u.FieldID
+}
+
+func (u *UpdateIncidentCustomField) GetValueString() *string {
+	if u == nil {
+		return nil
+	}
+	return u.ValueString
+}
+
+func (u *UpdateIncidentCustomField) GetValueArray() []string {
+	if u == nil {
+		return nil
+	}
+	return u.ValueArray
+}
+
 // UpdateIncident - Updates an incident with provided parameters
 type UpdateIncident struct {
 	Name                  *string `json:"name,omitzero"`
@@ -26,6 +67,8 @@ type UpdateIncident struct {
 	TagList []string `json:"tag_list,omitzero"`
 	// The ID of the incident type. This will copy values from the incident type (if any) unless they are being overridden via parameters in this request.
 	IncidentTypeID *string `json:"incident_type_id,omitzero"`
+	// An array of custom fields to set on the incident.
+	CustomFields []UpdateIncidentCustomField `json:"custom_fields,omitzero"`
 }
 
 func (u UpdateIncident) MarshalJSON() ([]byte, error) {
@@ -114,4 +157,11 @@ func (u *UpdateIncident) GetIncidentTypeID() *string {
 		return nil
 	}
 	return u.IncidentTypeID
+}
+
+func (u *UpdateIncident) GetCustomFields() []UpdateIncidentCustomField {
+	if u == nil {
+		return nil
+	}
+	return u.CustomFields
 }

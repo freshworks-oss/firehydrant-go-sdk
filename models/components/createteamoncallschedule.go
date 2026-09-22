@@ -9,11 +9,17 @@ import (
 )
 
 type CreateTeamOnCallScheduleRotationMember struct {
-	// The ID of a user who should be added to the rotation. You can add a user to the rotation
-	// multiple times to construct more complex rotations, and you can specify a `null` user ID to create
-	// unassigned slots in the rotation.
+	// The ID of a user who should be added to the schedule's initial rotation. You can add a user to the
+	// schedule multiple times to construct more complex rotations, and you can specify a `null` user ID
+	// to either leave a gap in the rotation or create an unassigned shift in the rotation depending on
+	// the value of `create_unassigned_shifts`.
 	//
 	UserID *string `json:"user_id,omitzero"`
+	// When `user_id` is `null`, allows populating the rotation with unassigned shifts for this slot when
+	// set to `true`. When `false`, the default value, the rotation will instead have a gap for this slot.
+	// Note: this value will be ignored when a valid `user_id` is provided.
+	//
+	CreateUnassignedShifts *bool `json:"create_unassigned_shifts,omitzero"`
 }
 
 func (c *CreateTeamOnCallScheduleRotationMember) GetUserID() *string {
@@ -21,6 +27,13 @@ func (c *CreateTeamOnCallScheduleRotationMember) GetUserID() *string {
 		return nil
 	}
 	return c.UserID
+}
+
+func (c *CreateTeamOnCallScheduleRotationMember) GetCreateUnassignedShifts() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.CreateUnassignedShifts
 }
 
 // CreateTeamOnCallScheduleRotationType - The type of strategy. Must be one of "daily", "weekly", or "custom".
@@ -383,9 +396,15 @@ func (c *CreateTeamOnCallScheduleRotation) GetStartTime() *string {
 type CreateTeamOnCallScheduleMember struct {
 	// The ID of a user who should be added to the schedule's initial rotation. You can add a user to the
 	// schedule multiple times to construct more complex rotations, and you can specify a `null` user ID
-	// to create unassigned slots in the rotation.
+	// to either leave a gap in the rotation or create an unassigned shift in the rotation depending on
+	// the value of `create_unassigned_shifts`.
 	//
 	UserID *string `json:"user_id,omitzero"`
+	// When `user_id` is `null`, allows populating the rotation with unassigned shifts for this slot when
+	// set to `true`. When `false`, the default value, the rotation will instead have a gap for this slot.
+	// Note: this value will be ignored when a valid `user_id` is provided.
+	//
+	CreateUnassignedShifts *bool `json:"create_unassigned_shifts,omitzero"`
 }
 
 func (c *CreateTeamOnCallScheduleMember) GetUserID() *string {
@@ -393,6 +412,13 @@ func (c *CreateTeamOnCallScheduleMember) GetUserID() *string {
 		return nil
 	}
 	return c.UserID
+}
+
+func (c *CreateTeamOnCallScheduleMember) GetCreateUnassignedShifts() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.CreateUnassignedShifts
 }
 
 // CreateTeamOnCallScheduleType - The type of strategy. Must be one of "daily", "weekly", or "custom".

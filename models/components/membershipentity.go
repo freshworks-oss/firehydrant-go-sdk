@@ -11,6 +11,8 @@ type MembershipEntity struct {
 	Schedule              *NullableScheduleEntity     `json:"schedule,omitzero"`
 	SignalsOnCallSchedule *NullableSuccinctEntity     `json:"signals_on_call_schedule,omitzero"`
 	DefaultIncidentRole   *NullableIncidentRoleEntity `json:"default_incident_role,omitzero"`
+	// Whether the user has read-only permissions
+	ReadOnlyPermissions *bool `json:"read_only_permissions,omitzero"`
 }
 
 func (m MembershipEntity) MarshalJSON() ([]byte, error) {
@@ -50,4 +52,11 @@ func (m *MembershipEntity) GetDefaultIncidentRole() *NullableIncidentRoleEntity 
 		return nil
 	}
 	return m.DefaultIncidentRole
+}
+
+func (m *MembershipEntity) GetReadOnlyPermissions() *bool {
+	if m == nil {
+		return nil
+	}
+	return m.ReadOnlyPermissions
 }

@@ -7,7 +7,8 @@ import (
 	"time"
 )
 
-// UpdateOnCallShift - Update a Signals on-call shift by ID
+// UpdateOnCallShift - NOTE: This endpoint is deprecated and overrides are now the only way to modify a schedule's shifts.
+// For compatibility, this endpoint will simply create an override for the specified time window.
 type UpdateOnCallShift struct {
 	// The start time of the shift in ISO8601 format.
 	StartTime *time.Time `json:"start_time,omitzero"`
