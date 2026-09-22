@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/firehydrant/firehydrant-go-sdk/internal/utils"
+	"time"
 )
 
 // RetrospectivesTemplateEntity - Retrospectives_TemplateEntity model
@@ -12,6 +13,8 @@ type RetrospectivesTemplateEntity struct {
 	Name        *string                                             `json:"name,omitzero"`
 	Description *string                                             `json:"description,omitzero"`
 	IsDefault   *bool                                               `json:"is_default,omitzero"`
+	CreatedAt   *time.Time                                          `json:"created_at,omitzero"`
+	UpdatedAt   *time.Time                                          `json:"updated_at,omitzero"`
 	Sections    []RetrospectivesTemplateEntityIncidentSectionEntity `json:"sections,omitzero"`
 	Fields      []RetrospectivesFieldEntity                         `json:"fields,omitzero"`
 }
@@ -53,6 +56,20 @@ func (r *RetrospectivesTemplateEntity) GetIsDefault() *bool {
 		return nil
 	}
 	return r.IsDefault
+}
+
+func (r *RetrospectivesTemplateEntity) GetCreatedAt() *time.Time {
+	if r == nil {
+		return nil
+	}
+	return r.CreatedAt
+}
+
+func (r *RetrospectivesTemplateEntity) GetUpdatedAt() *time.Time {
+	if r == nil {
+		return nil
+	}
+	return r.UpdatedAt
 }
 
 func (r *RetrospectivesTemplateEntity) GetSections() []RetrospectivesTemplateEntityIncidentSectionEntity {

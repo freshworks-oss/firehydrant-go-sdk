@@ -3,110 +3,13 @@
 package operations
 
 import (
-	"github.com/firehydrant/firehydrant-go-sdk/internal/utils"
+	"github.com/firehydrant/firehydrant-go-sdk/models/components"
 )
-
-type UpdateAudienceRequestBody struct {
-	// Name of the audience (max 255 characters)
-	Name *string `json:"name,omitzero"`
-	// Description of the audience (max 4000 characters)
-	Description *string `json:"description,omitzero"`
-	// Whether this is the default audience
-	Default *bool `json:"default,omitzero"`
-	// Whether the audience is active or discarded
-	Active *bool `json:"active,omitzero"`
-	// The incident detail question (max 255 characters)
-	DetailsQuestion []string `json:"details[question],omitzero"`
-	// The prompt to display when collecting this detail
-	DetailsPrompt []string `json:"details[prompt],omitzero"`
-	// Optional unique identifier for this detail
-	DetailsSlug []string `json:"details[slug],omitzero"`
-	// Position of the question in the list (1-based indexing)
-	DetailsPosition []int `json:"details[position],omitzero"`
-}
-
-func (u UpdateAudienceRequestBody) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateAudienceRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (u *UpdateAudienceRequestBody) GetName() *string {
-	if u == nil {
-		return nil
-	}
-	return u.Name
-}
-
-func (u *UpdateAudienceRequestBody) GetDescription() *string {
-	if u == nil {
-		return nil
-	}
-	return u.Description
-}
-
-func (u *UpdateAudienceRequestBody) GetDefault() *bool {
-	if u == nil {
-		return nil
-	}
-	return u.Default
-}
-
-func (u *UpdateAudienceRequestBody) GetActive() *bool {
-	if u == nil {
-		return nil
-	}
-	return u.Active
-}
-
-func (u *UpdateAudienceRequestBody) GetDetailsQuestion() []string {
-	if u == nil {
-		return nil
-	}
-	return u.DetailsQuestion
-}
-
-func (u *UpdateAudienceRequestBody) GetDetailsPrompt() []string {
-	if u == nil {
-		return nil
-	}
-	return u.DetailsPrompt
-}
-
-func (u *UpdateAudienceRequestBody) GetDetailsSlug() []string {
-	if u == nil {
-		return nil
-	}
-	return u.DetailsSlug
-}
-
-func (u *UpdateAudienceRequestBody) GetDetailsPosition() []int {
-	if u == nil {
-		return nil
-	}
-	return u.DetailsPosition
-}
 
 type UpdateAudienceRequest struct {
 	// Unique identifier of the audience
-	AudienceID  string                     `pathParam:"style=simple,explode=false,name=audience_id"`
-	RequestBody *UpdateAudienceRequestBody `request:"mediaType=application/json"`
-}
-
-func (u UpdateAudienceRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateAudienceRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	AudienceID     string                    `pathParam:"style=simple,explode=false,name=audience_id"`
+	UpdateAudience components.UpdateAudience `request:"mediaType=application/json"`
 }
 
 func (u *UpdateAudienceRequest) GetAudienceID() string {
@@ -116,9 +19,9 @@ func (u *UpdateAudienceRequest) GetAudienceID() string {
 	return u.AudienceID
 }
 
-func (u *UpdateAudienceRequest) GetRequestBody() *UpdateAudienceRequestBody {
+func (u *UpdateAudienceRequest) GetUpdateAudience() components.UpdateAudience {
 	if u == nil {
-		return nil
+		return components.UpdateAudience{}
 	}
-	return u.RequestBody
+	return u.UpdateAudience
 }

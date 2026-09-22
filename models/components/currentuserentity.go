@@ -18,6 +18,7 @@ type CurrentUserEntity struct {
 	OrganizationName *string                     `json:"organization_name,omitzero"`
 	AccountID        *int                        `json:"account_id,omitzero"`
 	Region           *string                     `json:"region,omitzero"`
+	Instance         *string                     `json:"instance,omitzero"`
 	Organization     *NullableOrganizationEntity `json:"organization,omitzero"`
 }
 
@@ -100,6 +101,13 @@ func (c *CurrentUserEntity) GetRegion() *string {
 		return nil
 	}
 	return c.Region
+}
+
+func (c *CurrentUserEntity) GetInstance() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Instance
 }
 
 func (c *CurrentUserEntity) GetOrganization() *NullableOrganizationEntity {

@@ -20,5 +20,7 @@ value := operations.GetSignalsNoiseAnalyticsSortByTotalOpenedAlerts
 | `GetSignalsNoiseAnalyticsSortByTotalOpenedAlerts`   | total_opened_alerts                                 |
 | `GetSignalsNoiseAnalyticsSortByTotalAckedAlerts`    | total_acked_alerts                                  |
 | `GetSignalsNoiseAnalyticsSortByTotalIncidents`      | total_incidents                                     |
+| `GetSignalsNoiseAnalyticsSortByTotalBillableAlerts` | total_billable_alerts                               |
+| `GetSignalsNoiseAnalyticsSortByTotalResolvedAlerts` | total_resolved_alerts                               |
 | `GetSignalsNoiseAnalyticsSortByAckedPercentage`     | acked_percentage                                    |
 | `GetSignalsNoiseAnalyticsSortByIncidentsPercentage` | incidents_percentage                                |

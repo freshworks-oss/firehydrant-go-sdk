@@ -75,14 +75,18 @@ type TicketingTicketEntityAttachment struct {
 
 // TicketingTicketEntity - Ticketing_TicketEntity model
 type TicketingTicketEntity struct {
-	ID          *string                          `json:"id,omitzero"`
-	Summary     *string                          `json:"summary,omitzero"`
-	Description *string                          `json:"description,omitzero"`
-	State       *TicketingTicketEntityState      `json:"state,omitzero"`
-	Type        *TicketingTicketEntityType       `json:"type,omitzero"`
-	Assignees   []AuthorEntity                   `json:"assignees,omitzero"`
-	Priority    *NullableTicketingPriorityEntity `json:"priority,omitzero"`
-	CreatedBy   *NullableAuthorEntity            `json:"created_by,omitzero"`
+	ID          *string                     `json:"id,omitzero"`
+	Summary     *string                     `json:"summary,omitzero"`
+	Description *string                     `json:"description,omitzero"`
+	State       *TicketingTicketEntityState `json:"state,omitzero"`
+	// The status label as named by the ticketing provider
+	ExternalStatusLabel *string                    `json:"external_status_label,omitzero"`
+	Type                *TicketingTicketEntityType `json:"type,omitzero"`
+	// Integration slug for the ticket's connection (e.g. freshservice, jira_cloud)
+	ConnectionType *string                          `json:"connection_type,omitzero"`
+	Assignees      []AuthorEntity                   `json:"assignees,omitzero"`
+	Priority       *NullableTicketingPriorityEntity `json:"priority,omitzero"`
+	CreatedBy      *NullableAuthorEntity            `json:"created_by,omitzero"`
 	// A list of objects attached to this item. Can be one of: LinkEntity, CustomerSupportIssueEntity, or GenericAttachmentEntity
 	Attachments []TicketingTicketEntityAttachment `json:"attachments,omitzero"`
 	CreatedAt   *time.Time                        `json:"created_at,omitzero"`
@@ -101,6 +105,8 @@ type TicketingTicketEntity struct {
 	SyncErrorMessage      *string                           `json:"sync_error_message,omitzero"`
 	TicketingCustomFields []TicketingCustomFieldsFieldValue `json:"ticketing_custom_fields,omitzero"`
 	Link                  *NullableAttachmentsLinkEntity    `json:"link,omitzero"`
+	// Integration-specific status label (e.g. Freshservice status name)
+	ProviderStatusLabel *string `json:"provider_status_label,omitzero"`
 }
 
 func (t TicketingTicketEntity) MarshalJSON() ([]byte, error) {
@@ -142,11 +148,25 @@ func (t *TicketingTicketEntity) GetState() *TicketingTicketEntityState {
 	return t.State
 }
 
+func (t *TicketingTicketEntity) GetExternalStatusLabel() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ExternalStatusLabel
+}
+
 func (t *TicketingTicketEntity) GetType() *TicketingTicketEntityType {
 	if t == nil {
 		return nil
 	}
 	return t.Type
+}
+
+func (t *TicketingTicketEntity) GetConnectionType() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ConnectionType
 }
 
 func (t *TicketingTicketEntity) GetAssignees() []AuthorEntity {
@@ -252,4 +272,11 @@ func (t *TicketingTicketEntity) GetLink() *NullableAttachmentsLinkEntity {
 		return nil
 	}
 	return t.Link
+}
+
+func (t *TicketingTicketEntity) GetProviderStatusLabel() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ProviderStatusLabel
 }

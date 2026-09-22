@@ -7,7 +7,8 @@ import (
 	"time"
 )
 
-// CreateOnCallShift - Create a Signals on-call shift in a schedule.
+// CreateOnCallShift - NOTE: This endpoint is deprecated and overrides are now the only way to modify a schedule's shifts.
+// For compatibility, this endpoint will simply create an override for the specified time window.
 type CreateOnCallShift struct {
 	// The start time of the shift in ISO8601 format.
 	StartTime time.Time `json:"start_time"`

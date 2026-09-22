@@ -2,8 +2,53 @@
 
 package operations
 
+type CloseIncidentRequestBody struct {
+	StatusPagesID              []string `json:"status_pages[id]"`
+	StatusPagesIntegrationSlug []string `json:"status_pages[integration_slug]"`
+	// When posting to a public status page, whether to also email its subscribers. Defaults to true.
+	NotifyEmailSubscribers *bool    `json:"notify_email_subscribers,omitzero"`
+	ImpactID               []string `json:"impact[id]"`
+	ImpactConditionID      []string `json:"impact[condition_id]"`
+}
+
+func (c *CloseIncidentRequestBody) GetStatusPagesID() []string {
+	if c == nil {
+		return []string{}
+	}
+	return c.StatusPagesID
+}
+
+func (c *CloseIncidentRequestBody) GetStatusPagesIntegrationSlug() []string {
+	if c == nil {
+		return []string{}
+	}
+	return c.StatusPagesIntegrationSlug
+}
+
+func (c *CloseIncidentRequestBody) GetNotifyEmailSubscribers() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.NotifyEmailSubscribers
+}
+
+func (c *CloseIncidentRequestBody) GetImpactID() []string {
+	if c == nil {
+		return []string{}
+	}
+	return c.ImpactID
+}
+
+func (c *CloseIncidentRequestBody) GetImpactConditionID() []string {
+	if c == nil {
+		return []string{}
+	}
+	return c.ImpactConditionID
+}
+
 type CloseIncidentRequest struct {
-	IncidentID string `pathParam:"style=simple,explode=false,name=incident_id"`
+	IncidentID  string                   `pathParam:"style=simple,explode=false,name=incident_id"`
+	RequestBody CloseIncidentRequestBody `request:"mediaType=application/json"`
 }
 
 func (c *CloseIncidentRequest) GetIncidentID() string {
@@ -11,4 +56,11 @@ func (c *CloseIncidentRequest) GetIncidentID() string {
 		return ""
 	}
 	return c.IncidentID
+}
+
+func (c *CloseIncidentRequest) GetRequestBody() CloseIncidentRequestBody {
+	if c == nil {
+		return CloseIncidentRequestBody{}
+	}
+	return c.RequestBody
 }

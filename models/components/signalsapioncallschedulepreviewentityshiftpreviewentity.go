@@ -8,9 +8,11 @@ import (
 )
 
 type SignalsAPIOnCallSchedulePreviewEntityShiftPreviewEntity struct {
-	StartTime *time.Time              `json:"start_time,omitzero"`
-	EndTime   *time.Time              `json:"end_time,omitzero"`
-	User      *NullableSuccinctEntity `json:"user,omitzero"`
+	StartTime       *time.Time              `json:"start_time,omitzero"`
+	EndTime         *time.Time              `json:"end_time,omitzero"`
+	User            *NullableSuccinctEntity `json:"user,omitzero"`
+	IsOverride      *bool                   `json:"is_override,omitzero"`
+	CoverageRequest *string                 `json:"coverage_request,omitzero"`
 }
 
 func (s SignalsAPIOnCallSchedulePreviewEntityShiftPreviewEntity) MarshalJSON() ([]byte, error) {
@@ -43,4 +45,18 @@ func (s *SignalsAPIOnCallSchedulePreviewEntityShiftPreviewEntity) GetUser() *Nul
 		return nil
 	}
 	return s.User
+}
+
+func (s *SignalsAPIOnCallSchedulePreviewEntityShiftPreviewEntity) GetIsOverride() *bool {
+	if s == nil {
+		return nil
+	}
+	return s.IsOverride
+}
+
+func (s *SignalsAPIOnCallSchedulePreviewEntityShiftPreviewEntity) GetCoverageRequest() *string {
+	if s == nil {
+		return nil
+	}
+	return s.CoverageRequest
 }

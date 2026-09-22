@@ -30,6 +30,7 @@ type UpdateNuncConnectionRequestBody struct {
 	OidcAuthenticationConfigClientID     *string  `json:"oidc_authentication_config[client_id],omitzero"`
 	OidcAuthenticationConfigClientSecret *string  `json:"oidc_authentication_config[client_secret],omitzero"`
 	AutoPublish                          *bool    `json:"auto_publish,omitzero"`
+	OnlyDisplayActiveIncidents           *bool    `json:"only_display_active_incidents,omitzero"`
 }
 
 func (u UpdateNuncConnectionRequestBody) MarshalJSON() ([]byte, error) {
@@ -188,6 +189,13 @@ func (u *UpdateNuncConnectionRequestBody) GetAutoPublish() *bool {
 		return nil
 	}
 	return u.AutoPublish
+}
+
+func (u *UpdateNuncConnectionRequestBody) GetOnlyDisplayActiveIncidents() *bool {
+	if u == nil {
+		return nil
+	}
+	return u.OnlyDisplayActiveIncidents
 }
 
 type UpdateNuncConnectionRequest struct {

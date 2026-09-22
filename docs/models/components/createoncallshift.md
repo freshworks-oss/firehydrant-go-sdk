@@ -1,6 +1,8 @@
 # CreateOnCallShift
 
-Create a Signals on-call shift in a schedule.
+NOTE: This endpoint is deprecated and overrides are now the only way to modify a schedule's shifts.
+For compatibility, this endpoint will simply create an override for the specified time window.
+
 
 
 ## Fields

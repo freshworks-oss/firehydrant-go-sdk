@@ -26,6 +26,8 @@ type FunctionalityEntityLite struct {
 	AlertOnAdd            *bool                 `json:"alert_on_add,omitzero"`
 	AutoAddRespondingTeam *bool                 `json:"auto_add_responding_team,omitzero"`
 	UpdatedBy             *NullableAuthorEntity `json:"updated_by,omitzero"`
+	// List of teams attached to the functionality
+	Teams []TeamEntityLite `json:"teams,omitzero"`
 }
 
 func (f FunctionalityEntityLite) MarshalJSON() ([]byte, error) {
@@ -135,4 +137,11 @@ func (f *FunctionalityEntityLite) GetUpdatedBy() *NullableAuthorEntity {
 		return nil
 	}
 	return f.UpdatedBy
+}
+
+func (f *FunctionalityEntityLite) GetTeams() []TeamEntityLite {
+	if f == nil {
+		return nil
+	}
+	return f.Teams
 }

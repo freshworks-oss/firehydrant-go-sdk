@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/firehydrant/firehydrant-go-sdk/internal/utils"
 )
 
 type CreateSignalsPageTargetType string
@@ -39,6 +40,36 @@ func (e *CreateSignalsPageTargetType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreateSignalsPagePriority - The notification priority to page at.
+type CreateSignalsPagePriority string
+
+const (
+	CreateSignalsPagePriorityHigh   CreateSignalsPagePriority = "HIGH"
+	CreateSignalsPagePriorityMedium CreateSignalsPagePriority = "MEDIUM"
+	CreateSignalsPagePriorityLow    CreateSignalsPagePriority = "LOW"
+)
+
+func (e CreateSignalsPagePriority) ToPointer() *CreateSignalsPagePriority {
+	return &e
+}
+func (e *CreateSignalsPagePriority) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "HIGH":
+		fallthrough
+	case "MEDIUM":
+		fallthrough
+	case "LOW":
+		*e = CreateSignalsPagePriority(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateSignalsPagePriority: %v", v)
+	}
+}
+
 // CreateSignalsPage - Used for paging an on-call target within FireHydrant's signals product. This can be used for paging users, teams, on-call schedules, and escalation policies.
 type CreateSignalsPage struct {
 	Summary    string                      `json:"summary"`
@@ -46,6 +77,19 @@ type CreateSignalsPage struct {
 	// The ID of the target. Should be a UUID for the target type.
 	TargetID string  `json:"target_id"`
 	Body     *string `json:"body,omitzero"`
+	// The notification priority to page at.
+	Priority *CreateSignalsPagePriority `default:"HIGH" json:"priority"`
+}
+
+func (c CreateSignalsPage) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateSignalsPage) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CreateSignalsPage) GetSummary() string {
@@ -74,4 +118,11 @@ func (c *CreateSignalsPage) GetBody() *string {
 		return nil
 	}
 	return c.Body
+}
+
+func (c *CreateSignalsPage) GetPriority() *CreateSignalsPagePriority {
+	if c == nil {
+		return nil
+	}
+	return c.Priority
 }

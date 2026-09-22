@@ -1,0 +1,13 @@
+# UpdateAudienceHighValueEvents
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `IncidentStatus`                                                              | `bool`                                                                        | :heavy_check_mark:                                                            | Include incident status change events in the timeline                         |
+| `BulkMilestoneUpdate`                                                         | `bool`                                                                        | :heavy_check_mark:                                                            | Include bulk updates (including runbook or automation events) in the timeline |
+| `ImpactUpdate`                                                                | `bool`                                                                        | :heavy_check_mark:                                                            | Include any catalog item impact events in the timeline                        |
+| `Handoff`                                                                     | `bool`                                                                        | :heavy_check_mark:                                                            | Include any handoff events in the timeline                                    |
+| `AddTaskList`                                                                 | `bool`                                                                        | :heavy_check_mark:                                                            | Include any additions to the task list in the timeline                        |
+| `ExternalLink`                                                                | `bool`                                                                        | :heavy_check_mark:                                                            | Include any external link events in the timeline                              |

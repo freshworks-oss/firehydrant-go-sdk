@@ -2,13 +2,15 @@
 
 package operations
 
-import (
-	"github.com/firehydrant/firehydrant-go-sdk/internal/utils"
-)
-
 type ResolveIncidentRequestBody struct {
 	// The slug of any milestone in the post-incident or closed phase to set on the incident (and its children, if `resolve_children` os set). Must be one of the configured milestones available on this incident.
-	Milestone *string `json:"milestone,omitzero"`
+	Milestone                  *string  `json:"milestone,omitzero"`
+	StatusPagesID              []string `json:"status_pages[id]"`
+	StatusPagesIntegrationSlug []string `json:"status_pages[integration_slug]"`
+	// When posting to a public status page, whether to also email its subscribers. Defaults to true.
+	NotifyEmailSubscribers *bool    `json:"notify_email_subscribers,omitzero"`
+	ImpactID               []string `json:"impact[id]"`
+	ImpactConditionID      []string `json:"impact[condition_id]"`
 }
 
 func (r *ResolveIncidentRequestBody) GetMilestone() *string {
@@ -18,20 +20,44 @@ func (r *ResolveIncidentRequestBody) GetMilestone() *string {
 	return r.Milestone
 }
 
-type ResolveIncidentRequest struct {
-	IncidentID  string                      `pathParam:"style=simple,explode=false,name=incident_id"`
-	RequestBody *ResolveIncidentRequestBody `request:"mediaType=application/json"`
-}
-
-func (r ResolveIncidentRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(r, "", false)
-}
-
-func (r *ResolveIncidentRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
-		return err
+func (r *ResolveIncidentRequestBody) GetStatusPagesID() []string {
+	if r == nil {
+		return []string{}
 	}
-	return nil
+	return r.StatusPagesID
+}
+
+func (r *ResolveIncidentRequestBody) GetStatusPagesIntegrationSlug() []string {
+	if r == nil {
+		return []string{}
+	}
+	return r.StatusPagesIntegrationSlug
+}
+
+func (r *ResolveIncidentRequestBody) GetNotifyEmailSubscribers() *bool {
+	if r == nil {
+		return nil
+	}
+	return r.NotifyEmailSubscribers
+}
+
+func (r *ResolveIncidentRequestBody) GetImpactID() []string {
+	if r == nil {
+		return []string{}
+	}
+	return r.ImpactID
+}
+
+func (r *ResolveIncidentRequestBody) GetImpactConditionID() []string {
+	if r == nil {
+		return []string{}
+	}
+	return r.ImpactConditionID
+}
+
+type ResolveIncidentRequest struct {
+	IncidentID  string                     `pathParam:"style=simple,explode=false,name=incident_id"`
+	RequestBody ResolveIncidentRequestBody `request:"mediaType=application/json"`
 }
 
 func (r *ResolveIncidentRequest) GetIncidentID() string {
@@ -41,9 +67,9 @@ func (r *ResolveIncidentRequest) GetIncidentID() string {
 	return r.IncidentID
 }
 
-func (r *ResolveIncidentRequest) GetRequestBody() *ResolveIncidentRequestBody {
+func (r *ResolveIncidentRequest) GetRequestBody() ResolveIncidentRequestBody {
 	if r == nil {
-		return nil
+		return ResolveIncidentRequestBody{}
 	}
 	return r.RequestBody
 }
