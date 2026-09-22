@@ -242,6 +242,7 @@ import(
 	"context"
 	"github.com/firehydrant/firehydrant-go-sdk/models/components"
 	firehydrantgosdk "github.com/firehydrant/firehydrant-go-sdk"
+	"github.com/firehydrant/firehydrant-go-sdk/models/operations"
 	"log"
 )
 
@@ -254,7 +255,17 @@ func main() {
         }),
     )
 
-    res, err := s.Incidents.CloseIncident(ctx, "<id>")
+    res, err := s.Incidents.CloseIncident(ctx, "<id>", operations.CloseIncidentRequestBody{
+        StatusPagesID: []string{},
+        StatusPagesIntegrationSlug: []string{},
+        ImpactID: []string{
+            "<value 1>",
+        },
+        ImpactConditionID: []string{
+            "<value 1>",
+            "<value 2>",
+        },
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -266,11 +277,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `incidentID`                                             | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `incidentID`                                                                               | `string`                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `requestBody`                                                                              | [operations.CloseIncidentRequestBody](../../models/operations/closeincidentrequestbody.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
 
 ### Response
 
@@ -296,6 +308,7 @@ import(
 	"context"
 	"github.com/firehydrant/firehydrant-go-sdk/models/components"
 	firehydrantgosdk "github.com/firehydrant/firehydrant-go-sdk"
+	"github.com/firehydrant/firehydrant-go-sdk/models/operations"
 	"log"
 )
 
@@ -308,7 +321,18 @@ func main() {
         }),
     )
 
-    res, err := s.Incidents.ResolveIncident(ctx, "<id>", nil)
+    res, err := s.Incidents.ResolveIncident(ctx, "<id>", operations.ResolveIncidentRequestBody{
+        StatusPagesID: []string{},
+        StatusPagesIntegrationSlug: []string{
+            "<value 1>",
+            "<value 2>",
+            "<value 3>",
+        },
+        ImpactID: []string{},
+        ImpactConditionID: []string{
+            "<value 1>",
+        },
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -320,12 +344,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                           | [context.Context](https://pkg.go.dev/context#Context)                                           | :heavy_check_mark:                                                                              | The context to use for the request.                                                             |
-| `incidentID`                                                                                    | `string`                                                                                        | :heavy_check_mark:                                                                              | N/A                                                                                             |
-| `requestBody`                                                                                   | [*operations.ResolveIncidentRequestBody](../../models/operations/resolveincidentrequestbody.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |
-| `opts`                                                                                          | [][operations.Option](../../models/operations/option.md)                                        | :heavy_minus_sign:                                                                              | The options for this request.                                                                   |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `incidentID`                                                                                   | `string`                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `requestBody`                                                                                  | [operations.ResolveIncidentRequestBody](../../models/operations/resolveincidentrequestbody.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
 
 ### Response
 

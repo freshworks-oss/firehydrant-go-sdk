@@ -4,14 +4,17 @@ package components
 
 // AIEntitiesPreferencesEntity - AI_Entities_PreferencesEntity model
 type AIEntitiesPreferencesEntity struct {
-	Ai               *bool `json:"ai,omitzero"`
-	Description      *bool `json:"description,omitzero"`
-	Followups        *bool `json:"followups,omitzero"`
-	Impact           *bool `json:"impact,omitzero"`
-	Retros           *bool `json:"retros,omitzero"`
-	SimilarIncidents *bool `json:"similar_incidents,omitzero"`
-	Summaries        *bool `json:"summaries,omitzero"`
-	Updates          *bool `json:"updates,omitzero"`
+	Ai                                        *bool `json:"ai,omitzero"`
+	Description                               *bool `json:"description,omitzero"`
+	Followups                                 *bool `json:"followups,omitzero"`
+	Impact                                    *bool `json:"impact,omitzero"`
+	Retros                                    *bool `json:"retros,omitzero"`
+	SimilarIncidents                          *bool `json:"similar_incidents,omitzero"`
+	SimilarIncidentsCooldownMinutes           *int  `json:"similar_incidents_cooldown_minutes,omitzero"`
+	SimilarIncidentsMaxPerIncident            *int  `json:"similar_incidents_max_per_incident,omitzero"`
+	Summaries                                 *bool `json:"summaries,omitzero"`
+	ConferenceBridgeSummaryMinIntervalMinutes *int  `json:"conference_bridge_summary_min_interval_minutes,omitzero"`
+	Updates                                   *bool `json:"updates,omitzero"`
 }
 
 func (a *AIEntitiesPreferencesEntity) GetAi() *bool {
@@ -56,11 +59,32 @@ func (a *AIEntitiesPreferencesEntity) GetSimilarIncidents() *bool {
 	return a.SimilarIncidents
 }
 
+func (a *AIEntitiesPreferencesEntity) GetSimilarIncidentsCooldownMinutes() *int {
+	if a == nil {
+		return nil
+	}
+	return a.SimilarIncidentsCooldownMinutes
+}
+
+func (a *AIEntitiesPreferencesEntity) GetSimilarIncidentsMaxPerIncident() *int {
+	if a == nil {
+		return nil
+	}
+	return a.SimilarIncidentsMaxPerIncident
+}
+
 func (a *AIEntitiesPreferencesEntity) GetSummaries() *bool {
 	if a == nil {
 		return nil
 	}
 	return a.Summaries
+}
+
+func (a *AIEntitiesPreferencesEntity) GetConferenceBridgeSummaryMinIntervalMinutes() *int {
+	if a == nil {
+		return nil
+	}
+	return a.ConferenceBridgeSummaryMinIntervalMinutes
 }
 
 func (a *AIEntitiesPreferencesEntity) GetUpdates() *bool {

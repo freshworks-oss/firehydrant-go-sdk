@@ -177,7 +177,7 @@ func main() {
 
 ### Response
 
-**[*components.AudiencesEntitiesAudienceEntity](../../models/components/audiencesentitiesaudienceentity.md), error**
+**[*components.AudiencesEntitiesAudienceShowEntity](../../models/components/audiencesentitiesaudienceshowentity.md), error**
 
 ### Errors
 
@@ -262,7 +262,7 @@ func main() {
         }),
     )
 
-    res, err := s.Audiences.UpdateAudience(ctx, "<id>", nil)
+    res, err := s.Audiences.UpdateAudience(ctx, "<id>", components.UpdateAudience{})
     if err != nil {
         log.Fatal(err)
     }
@@ -274,12 +274,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |
-| `audienceID`                                                                                  | `string`                                                                                      | :heavy_check_mark:                                                                            | Unique identifier of the audience                                                             |
-| `requestBody`                                                                                 | [*operations.UpdateAudienceRequestBody](../../models/operations/updateaudiencerequestbody.md) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `opts`                                                                                        | [][operations.Option](../../models/operations/option.md)                                      | :heavy_minus_sign:                                                                            | The options for this request.                                                                 |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `ctx`                                                                  | [context.Context](https://pkg.go.dev/context#Context)                  | :heavy_check_mark:                                                     | The context to use for the request.                                    |
+| `audienceID`                                                           | `string`                                                               | :heavy_check_mark:                                                     | Unique identifier of the audience                                      |
+| `updateAudience`                                                       | [components.UpdateAudience](../../models/components/updateaudience.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `opts`                                                                 | [][operations.Option](../../models/operations/option.md)               | :heavy_minus_sign:                                                     | The options for this request.                                          |
 
 ### Response
 

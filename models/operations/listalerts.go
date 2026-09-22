@@ -62,6 +62,8 @@ type ListAlertsRequest struct {
 	TagMatchStrategy *ListAlertsTagMatchStrategy `queryParam:"style=form,explode=true,name=tag_match_strategy"`
 	// A comma separated list of statuses to filter by. Valid statuses are: opened, acknowledged, resolved, ignored, expired, linked, or snoozed
 	Statuses *string `queryParam:"style=form,explode=true,name=statuses"`
+	// When true, only returns alerts that have at least one associated incident. This currently only works for Signals alerts.
+	HasAnyIncident *bool `queryParam:"style=form,explode=true,name=has_any_incident"`
 	// Filters for alerts that started on or after the beginning of this date
 	StartDate *time.Time `queryParam:"style=form,explode=true,name=start_date"`
 	// Filters for alerts that started on or before the end of this date
@@ -165,6 +167,13 @@ func (l *ListAlertsRequest) GetStatuses() *string {
 		return nil
 	}
 	return l.Statuses
+}
+
+func (l *ListAlertsRequest) GetHasAnyIncident() *bool {
+	if l == nil {
+		return nil
+	}
+	return l.HasAnyIncident
 }
 
 func (l *ListAlertsRequest) GetStartDate() *time.Time {

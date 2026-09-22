@@ -6,6 +6,9 @@ Operations related to Signals
 
 ### Available Operations
 
+* [GetSupportHoursSchedule](#getsupporthoursschedule) - Get support hours schedule
+* [DeleteSupportHoursSchedule](#deletesupporthoursschedule) - Delete a specific support hours schedule
+* [UpdateSupportHoursSchedule](#updatesupporthoursschedule) - Update support hours schedule
 * [ListTeamEscalationPolicies](#listteamescalationpolicies) - List escalation policies for a team
 * [CreateTeamEscalationPolicy](#createteamescalationpolicy) - Create an escalation policy for a team
 * [GetTeamEscalationPolicy](#getteamescalationpolicy) - Get an escalation policy for a team
@@ -23,11 +26,11 @@ Operations related to Signals
 * [GetOnCallScheduleRotation](#getoncallschedulerotation) - Get an on-call rotation
 * [DeleteOnCallScheduleRotation](#deleteoncallschedulerotation) - Delete an on-call schedule's rotation
 * [UpdateOnCallScheduleRotation](#updateoncallschedulerotation) - Update an on-call schedule's rotation
-* [OverrideOnCallScheduleRotationShifts](#overrideoncallschedulerotationshifts) - Override one or more shifts in an on-call rotation
-* [CreateOnCallShift](#createoncallshift) - Create a shift for an on-call schedule
-* [GetOnCallShift](#getoncallshift) - Get an on-call shift for a team schedule
-* [DeleteOnCallShift](#deleteoncallshift) - Delete an on-call shift from a team schedule
-* [UpdateOnCallShift](#updateoncallshift) - Update an on-call shift for a team schedule
+* [CreateOnCallScheduleRotationOverride](#createoncallschedulerotationoverride) - Override one or more shifts in an on-call rotation
+* [CreateOnCallShift](#createoncallshift) - [DEPRECATED] Create a shift for an on-call schedule
+* [GetOnCallShift](#getoncallshift) - [DEPRECATED] Get an on-call shift for a team schedule
+* [DeleteOnCallShift](#deleteoncallshift) - [DEPRECATED] Delete an on-call shift from a team schedule
+* [UpdateOnCallShift](#updateoncallshift) - [DEPRECATED] Update an on-call shift for a team schedule
 * [ListTeamSignalRules](#listteamsignalrules) - List Signals rules
 * [CreateTeamSignalRule](#createteamsignalrule) - Create a Signals rule
 * [GetTeamSignalRule](#getteamsignalrule) - Get a Signals rule
@@ -70,6 +73,166 @@ Operations related to Signals
 * [GetSignalsIngestURL](#getsignalsingesturl) - Get the signals ingestion URL
 * [DebugSignalsExpression](#debugsignalsexpression) - Debug Signals expressions
 * [ListOrganizationOnCallSchedules](#listorganizationoncallschedules) - List who's on call for the organization
+
+## GetSupportHoursSchedule
+
+Get support hours schedule for the team
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get_support_hours_schedule" method="get" path="/v1/teams/{team_id}/support_hours_schedule" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/firehydrant/firehydrant-go-sdk/models/components"
+	firehydrantgosdk "github.com/firehydrant/firehydrant-go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := firehydrantgosdk.New(
+        firehydrantgosdk.WithSecurity(components.Security{
+            APIKey: "<YOUR_API_KEY_HERE>",
+        }),
+    )
+
+    res, err := s.Signals.GetSupportHoursSchedule(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `teamID`                                                 | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*components.SupportHoursScheduleEntity](../../models/components/supporthoursscheduleentity.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## DeleteSupportHoursSchedule
+
+Delete a specific support hours schedule
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete_support_hours_schedule" method="delete" path="/v1/teams/{team_id}/support_hours_schedule" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/firehydrant/firehydrant-go-sdk/models/components"
+	firehydrantgosdk "github.com/firehydrant/firehydrant-go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := firehydrantgosdk.New(
+        firehydrantgosdk.WithSecurity(components.Security{
+            APIKey: "<YOUR_API_KEY_HERE>",
+        }),
+    )
+
+    err := s.Signals.DeleteSupportHoursSchedule(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `teamID`                                                 | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## UpdateSupportHoursSchedule
+
+Update the team's support hours schedule
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update_support_hours_schedule" method="patch" path="/v1/teams/{team_id}/support_hours_schedule" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/firehydrant/firehydrant-go-sdk/models/components"
+	firehydrantgosdk "github.com/firehydrant/firehydrant-go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := firehydrantgosdk.New(
+        firehydrantgosdk.WithSecurity(components.Security{
+            APIKey: "<YOUR_API_KEY_HERE>",
+        }),
+    )
+
+    res, err := s.Signals.UpdateSupportHoursSchedule(ctx, "<id>", components.UpdateSupportHoursSchedule{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `teamID`                                                                                       | `string`                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `updateSupportHoursSchedule`                                                                   | [components.UpdateSupportHoursSchedule](../../models/components/updatesupporthoursschedule.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
+
+### Response
+
+**[*components.SupportHoursScheduleEntity](../../models/components/supporthoursscheduleentity.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ListTeamEscalationPolicies
 
@@ -1040,13 +1203,16 @@ func main() {
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
-## OverrideOnCallScheduleRotationShifts
+## CreateOnCallScheduleRotationOverride
 
-Create an override covering a specific time period in an on-call rotation, re-assigning that period to a specific user.
+Create an override covering a specific  time period in an on-call rotation, re-assigning that
+period to a specific user, or leaving it unassigned and claimable by any user, or even creating
+a purposeful gap in coverage if desired.
+
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="override_on_call_schedule_rotation_shifts" method="post" path="/v1/teams/{team_id}/on_call_schedules/{schedule_id}/rotations/{rotation_id}/overrides" -->
+<!-- UsageSnippet language="go" operationID="create_on_call_schedule_rotation_override" method="post" path="/v1/teams/{team_id}/on_call_schedules/{schedule_id}/rotations/{rotation_id}/overrides" -->
 ```go
 package main
 
@@ -1066,7 +1232,7 @@ func main() {
         }),
     )
 
-    res, err := s.Signals.OverrideOnCallScheduleRotationShifts(ctx, "<id>", "<id>", "<id>", components.OverrideOnCallScheduleRotationShifts{
+    res, err := s.Signals.CreateOnCallScheduleRotationOverride(ctx, "<id>", "<id>", "<id>", components.CreateOnCallScheduleRotationOverride{
         StartTime: "<value>",
         EndTime: "<value>",
     })
@@ -1087,12 +1253,12 @@ func main() {
 | `rotationID`                                                                                                       | `string`                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `teamID`                                                                                                           | `string`                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `scheduleID`                                                                                                       | `string`                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `overrideOnCallScheduleRotationShifts`                                                                             | [components.OverrideOnCallScheduleRotationShifts](../../models/components/overrideoncallschedulerotationshifts.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `createOnCallScheduleRotationOverride`                                                                             | [components.CreateOnCallScheduleRotationOverride](../../models/components/createoncallschedulerotationoverride.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
 | `opts`                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                           | :heavy_minus_sign:                                                                                                 | The options for this request.                                                                                      |
 
 ### Response
 
-**[*components.SignalsAPIOnCallShiftEntity](../../models/components/signalsapioncallshiftentity.md), error**
+**[*components.SignalsAPIOnCallOverrideEntity](../../models/components/signalsapioncalloverrideentity.md), error**
 
 ### Errors
 
@@ -1102,7 +1268,9 @@ func main() {
 
 ## CreateOnCallShift
 
-Create a Signals on-call shift in a schedule.
+NOTE: This endpoint is deprecated and overrides are now the only way to modify a schedule's shifts.
+For compatibility, this endpoint will simply create an override for the specified time window.
+
 
 ### Example Usage
 
@@ -1152,7 +1320,7 @@ func main() {
 
 ### Response
 
-**[*components.SignalsAPIOnCallShiftEntity](../../models/components/signalsapioncallshiftentity.md), error**
+**[*components.SignalsAPIOnCallOverrideEntity](../../models/components/signalsapioncalloverrideentity.md), error**
 
 ### Errors
 
@@ -1162,7 +1330,12 @@ func main() {
 
 ## GetOnCallShift
 
-Get a Signals on-call shift by ID
+NOTE: This endpoint is deprecated and should not be used due to the fact that overrides may result in
+shifts being split into multiple, separated shifts that still share the same ID. For compatibility, this
+endpoint will still return the specified shift, but it may not reflect later fragments of the same shift
+that were split off by overrides. You should instead request the rotation itself and inspect the shifts
+that are returned for the time window you care about.
+
 
 ### Example Usage
 
@@ -1218,7 +1391,10 @@ func main() {
 
 ## DeleteOnCallShift
 
-Delete a Signals on-call shift by ID
+NOTE: This endpoint is deprecated and overrides are now the only way to modify a schedule's shifts.
+For compatibility, this endpoint will simply create a "gap" override for the specified time window,
+which will still result in no shifts being present for that time window in the final schedule.
+
 
 ### Example Usage
 
@@ -1271,7 +1447,9 @@ func main() {
 
 ## UpdateOnCallShift
 
-Update a Signals on-call shift by ID
+NOTE: This endpoint is deprecated and overrides are now the only way to modify a schedule's shifts.
+For compatibility, this endpoint will simply create an override for the specified time window.
+
 
 ### Example Usage
 
@@ -2721,7 +2899,7 @@ func main() {
         }),
     )
 
-    err := s.Signals.ListSignalsHeartbeatEndpointConfigurations(ctx)
+    err := s.Signals.ListSignalsHeartbeatEndpointConfigurations(ctx, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -2733,6 +2911,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `teamID`                                                 | `*string`                                                | :heavy_minus_sign:                                       | ID of the team the heartbeat belongs to                  |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response

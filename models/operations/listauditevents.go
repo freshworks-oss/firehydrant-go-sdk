@@ -13,10 +13,13 @@ type ListAuditEventsRequest struct {
 	// Available filters with example:
 	//   - event.occurred_at < 2023-01-01T00:00:00Z
 	//   - event.key = signals.on_call_rotation.generate
+	//   - event.key = ticketing.sync
 	//   - event.actor.kind = user
 	//   - event.actor.id = 00000000-0000-0000-0000-000000000000
 	//   - resource.kind = incident
+	//   - resource.kind = ticketing.ticket
 	//   - resource.id = 00000000-0000-0000-0000-000000000000
+	//   - resource.response = FAILURE
 	//   - parent_id = 00000000-0000-0000-0000-000000000000
 	// Valid query looks like (without quotes):
 	//   event.occurred_at < 2023-01-01T00:00:00Z AND event.key = signals.on_call_rotation.generate

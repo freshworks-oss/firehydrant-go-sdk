@@ -1,0 +1,10 @@
+# SignalsAPIOnCallSchedulePreviewEntityOriginalShiftPreviewEntity
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `StartTime`                                                                             | [*time.Time](https://pkg.go.dev/time#Time)                                              | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `EndTime`                                                                               | [*time.Time](https://pkg.go.dev/time#Time)                                              | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `User`                                                                                  | [*components.NullableSuccinctEntity](../../models/components/nullablesuccinctentity.md) | :heavy_minus_sign:                                                                      | N/A                                                                                     |

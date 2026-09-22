@@ -13,10 +13,12 @@ type PublicAPIV1IntegrationsAuthedProviderEntity struct {
 	User               *NullableSuccinctEntity `json:"user,omitzero"`
 	IntegrationDefault *bool                   `json:"integration_default,omitzero"`
 	// The email of the user who authorized the integration
-	AuthorizedEmail *string    `json:"authorized_email,omitzero"`
-	IsExpired       *bool      `json:"is_expired,omitzero"`
-	CreatedAt       *time.Time `json:"created_at,omitzero"`
-	UpdatedAt       *time.Time `json:"updated_at,omitzero"`
+	AuthorizedEmail *string `json:"authorized_email,omitzero"`
+	IsExpired       *bool   `json:"is_expired,omitzero"`
+	// When the user last authorized or reauthorized the integration
+	AuthorizedAt *time.Time `json:"authorized_at,omitzero"`
+	CreatedAt    *time.Time `json:"created_at,omitzero"`
+	UpdatedAt    *time.Time `json:"updated_at,omitzero"`
 }
 
 func (p PublicAPIV1IntegrationsAuthedProviderEntity) MarshalJSON() ([]byte, error) {
@@ -63,6 +65,13 @@ func (p *PublicAPIV1IntegrationsAuthedProviderEntity) GetIsExpired() *bool {
 		return nil
 	}
 	return p.IsExpired
+}
+
+func (p *PublicAPIV1IntegrationsAuthedProviderEntity) GetAuthorizedAt() *time.Time {
+	if p == nil {
+		return nil
+	}
+	return p.AuthorizedAt
 }
 
 func (p *PublicAPIV1IntegrationsAuthedProviderEntity) GetCreatedAt() *time.Time {
