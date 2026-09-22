@@ -28,6 +28,7 @@ jobs:
         run: |
           mkdir -p .speakeasy
           curl -fS https://api.firehydrant.io/v1/swagger_doc | jq . > /tmp/local_swagger_doc.json
+          chmod +x bin/convert-to-openapi3.main.kts
           bin/convert-to-openapi3.main.kts /tmp/local_swagger_doc.json > /tmp/local_openapi3_doc.json
           cp /tmp/local_openapi3_doc.json ${GITHUB_WORKSPACE}/openapi.json
           
