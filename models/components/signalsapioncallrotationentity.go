@@ -18,11 +18,13 @@ type SignalsAPIOnCallRotationEntity struct {
 	EnableSlackChannelNotifications *bool                                   `json:"enable_slack_channel_notifications,omitzero"`
 	PreventShiftDeletion            *bool                                   `json:"prevent_shift_deletion,omitzero"`
 	CoverageGapNotificationInterval *string                                 `json:"coverage_gap_notification_interval,omitzero"`
-	Members                         []SuccinctEntity                        `json:"members,omitzero"`
-	Shifts                          []SignalsAPIOnCallShiftEntity           `json:"shifts,omitzero"`
 	Team                            *NullableSuccinctEntity                 `json:"team,omitzero"`
 	Strategy                        *NullableSignalsAPIOnCallStrategyEntity `json:"strategy,omitzero"`
+	Members                         []SuccinctEntity                        `json:"members,omitzero"`
 	Restrictions                    []SignalsAPIOnCallRestrictionEntity     `json:"restrictions,omitzero"`
+	OriginalShifts                  []SignalsAPIOriginalOnCallShiftEntity   `json:"original_shifts,omitzero"`
+	Overrides                       []SignalsAPIOnCallOverrideEntity        `json:"overrides,omitzero"`
+	Shifts                          []SignalsAPIOnCallShiftEntity           `json:"shifts,omitzero"`
 	CreatedBy                       *NullableAuthorEntity                   `json:"created_by,omitzero"`
 	CreatedAt                       *time.Time                              `json:"created_at,omitzero"`
 	UpdatedAt                       *time.Time                              `json:"updated_at,omitzero"`
@@ -102,20 +104,6 @@ func (s *SignalsAPIOnCallRotationEntity) GetCoverageGapNotificationInterval() *s
 	return s.CoverageGapNotificationInterval
 }
 
-func (s *SignalsAPIOnCallRotationEntity) GetMembers() []SuccinctEntity {
-	if s == nil {
-		return nil
-	}
-	return s.Members
-}
-
-func (s *SignalsAPIOnCallRotationEntity) GetShifts() []SignalsAPIOnCallShiftEntity {
-	if s == nil {
-		return nil
-	}
-	return s.Shifts
-}
-
 func (s *SignalsAPIOnCallRotationEntity) GetTeam() *NullableSuccinctEntity {
 	if s == nil {
 		return nil
@@ -130,11 +118,39 @@ func (s *SignalsAPIOnCallRotationEntity) GetStrategy() *NullableSignalsAPIOnCall
 	return s.Strategy
 }
 
+func (s *SignalsAPIOnCallRotationEntity) GetMembers() []SuccinctEntity {
+	if s == nil {
+		return nil
+	}
+	return s.Members
+}
+
 func (s *SignalsAPIOnCallRotationEntity) GetRestrictions() []SignalsAPIOnCallRestrictionEntity {
 	if s == nil {
 		return nil
 	}
 	return s.Restrictions
+}
+
+func (s *SignalsAPIOnCallRotationEntity) GetOriginalShifts() []SignalsAPIOriginalOnCallShiftEntity {
+	if s == nil {
+		return nil
+	}
+	return s.OriginalShifts
+}
+
+func (s *SignalsAPIOnCallRotationEntity) GetOverrides() []SignalsAPIOnCallOverrideEntity {
+	if s == nil {
+		return nil
+	}
+	return s.Overrides
+}
+
+func (s *SignalsAPIOnCallRotationEntity) GetShifts() []SignalsAPIOnCallShiftEntity {
+	if s == nil {
+		return nil
+	}
+	return s.Shifts
 }
 
 func (s *SignalsAPIOnCallRotationEntity) GetCreatedBy() *NullableAuthorEntity {

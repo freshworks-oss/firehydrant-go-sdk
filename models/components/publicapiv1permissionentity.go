@@ -13,6 +13,7 @@ type PublicAPIV1PermissionEntity struct {
 	CategoryDisplayName *string  `json:"category_display_name,omitzero"`
 	CategorySlug        *string  `json:"category_slug,omitzero"`
 	ParentSlug          *string  `json:"parent_slug,omitzero"`
+	Required            *bool    `json:"required,omitzero"`
 	Available           *bool    `json:"available,omitzero"`
 	DependencySlugs     []string `json:"dependency_slugs,omitzero"`
 }
@@ -68,6 +69,13 @@ func (p *PublicAPIV1PermissionEntity) GetParentSlug() *string {
 		return nil
 	}
 	return p.ParentSlug
+}
+
+func (p *PublicAPIV1PermissionEntity) GetRequired() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.Required
 }
 
 func (p *PublicAPIV1PermissionEntity) GetAvailable() *bool {

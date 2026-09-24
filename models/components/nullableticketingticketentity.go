@@ -79,10 +79,14 @@ type NullableTicketingTicketEntity struct {
 	Summary     *string                             `json:"summary,omitzero"`
 	Description *string                             `json:"description,omitzero"`
 	State       *NullableTicketingTicketEntityState `json:"state,omitzero"`
-	Type        *NullableTicketingTicketEntityType  `json:"type,omitzero"`
-	Assignees   []AuthorEntity                      `json:"assignees,omitzero"`
-	Priority    *NullableTicketingPriorityEntity    `json:"priority,omitzero"`
-	CreatedBy   *NullableAuthorEntity               `json:"created_by,omitzero"`
+	// The status label as named by the ticketing provider
+	ExternalStatusLabel *string                            `json:"external_status_label,omitzero"`
+	Type                *NullableTicketingTicketEntityType `json:"type,omitzero"`
+	// Integration slug for the ticket's connection (e.g. freshservice, jira_cloud)
+	ConnectionType *string                          `json:"connection_type,omitzero"`
+	Assignees      []AuthorEntity                   `json:"assignees,omitzero"`
+	Priority       *NullableTicketingPriorityEntity `json:"priority,omitzero"`
+	CreatedBy      *NullableAuthorEntity            `json:"created_by,omitzero"`
 	// A list of objects attached to this item. Can be one of: LinkEntity, CustomerSupportIssueEntity, or GenericAttachmentEntity
 	Attachments []NullableTicketingTicketEntityAttachment `json:"attachments,omitzero"`
 	CreatedAt   *time.Time                                `json:"created_at,omitzero"`
@@ -101,6 +105,8 @@ type NullableTicketingTicketEntity struct {
 	SyncErrorMessage      *string                           `json:"sync_error_message,omitzero"`
 	TicketingCustomFields []TicketingCustomFieldsFieldValue `json:"ticketing_custom_fields,omitzero"`
 	Link                  *NullableAttachmentsLinkEntity    `json:"link,omitzero"`
+	// Integration-specific status label (e.g. Freshservice status name)
+	ProviderStatusLabel *string `json:"provider_status_label,omitzero"`
 }
 
 func (n NullableTicketingTicketEntity) MarshalJSON() ([]byte, error) {
@@ -142,11 +148,25 @@ func (n *NullableTicketingTicketEntity) GetState() *NullableTicketingTicketEntit
 	return n.State
 }
 
+func (n *NullableTicketingTicketEntity) GetExternalStatusLabel() *string {
+	if n == nil {
+		return nil
+	}
+	return n.ExternalStatusLabel
+}
+
 func (n *NullableTicketingTicketEntity) GetType() *NullableTicketingTicketEntityType {
 	if n == nil {
 		return nil
 	}
 	return n.Type
+}
+
+func (n *NullableTicketingTicketEntity) GetConnectionType() *string {
+	if n == nil {
+		return nil
+	}
+	return n.ConnectionType
 }
 
 func (n *NullableTicketingTicketEntity) GetAssignees() []AuthorEntity {
@@ -252,4 +272,11 @@ func (n *NullableTicketingTicketEntity) GetLink() *NullableAttachmentsLinkEntity
 		return nil
 	}
 	return n.Link
+}
+
+func (n *NullableTicketingTicketEntity) GetProviderStatusLabel() *string {
+	if n == nil {
+		return nil
+	}
+	return n.ProviderStatusLabel
 }

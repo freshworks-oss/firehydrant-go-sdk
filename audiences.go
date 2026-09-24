@@ -449,7 +449,7 @@ func (s *Audiences) CreateAudience(ctx context.Context, request components.Creat
 
 // GetAudience - Get audience
 // Get audience details
-func (s *Audiences) GetAudience(ctx context.Context, audienceID string, opts ...operations.Option) (*components.AudiencesEntitiesAudienceEntity, error) {
+func (s *Audiences) GetAudience(ctx context.Context, audienceID string, opts ...operations.Option) (*components.AudiencesEntitiesAudienceShowEntity, error) {
 	request := operations.GetAudienceRequest{
 		AudienceID: audienceID,
 	}
@@ -613,7 +613,7 @@ func (s *Audiences) GetAudience(ctx context.Context, audienceID string, opts ...
 				return nil, err
 			}
 
-			var out components.AudiencesEntitiesAudienceEntity
+			var out components.AudiencesEntitiesAudienceShowEntity
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -835,10 +835,10 @@ func (s *Audiences) ArchiveAudience(ctx context.Context, audienceID string, opts
 
 // UpdateAudience - Update audience
 // Update an existing audience
-func (s *Audiences) UpdateAudience(ctx context.Context, audienceID string, requestBody *operations.UpdateAudienceRequestBody, opts ...operations.Option) (*components.AudiencesEntitiesAudienceEntity, error) {
+func (s *Audiences) UpdateAudience(ctx context.Context, audienceID string, updateAudience components.UpdateAudience, opts ...operations.Option) (*components.AudiencesEntitiesAudienceEntity, error) {
 	request := operations.UpdateAudienceRequest{
-		AudienceID:  audienceID,
-		RequestBody: requestBody,
+		AudienceID:     audienceID,
+		UpdateAudience: updateAudience,
 	}
 
 	o := operations.Options{}
@@ -873,7 +873,7 @@ func (s *Audiences) UpdateAudience(ctx context.Context, audienceID string, reque
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAudience", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -2016,7 +2016,7 @@ func (s *Audiences) GenerateAudienceSummary(ctx context.Context, audienceID stri
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return err
-		} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return err

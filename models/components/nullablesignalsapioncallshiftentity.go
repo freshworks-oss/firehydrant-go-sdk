@@ -11,7 +11,6 @@ import (
 type NullableSignalsAPIOnCallShiftEntity struct {
 	ID              *string                 `json:"id,omitzero"`
 	User            *NullableSuccinctEntity `json:"user,omitzero"`
-	CoverageRequest *string                 `json:"coverage_request,omitzero"`
 	Color           *string                 `json:"color,omitzero"`
 	TimeZone        *string                 `json:"time_zone,omitzero"`
 	OnCallSchedule  *NullableSuccinctEntity `json:"on_call_schedule,omitzero"`
@@ -19,6 +18,9 @@ type NullableSignalsAPIOnCallShiftEntity struct {
 	Team            *NullableSuccinctEntity `json:"team,omitzero"`
 	StartTime       *time.Time              `json:"start_time,omitzero"`
 	EndTime         *time.Time              `json:"end_time,omitzero"`
+	CreatedAt       *time.Time              `json:"created_at,omitzero"`
+	IsOverride      *bool                   `json:"is_override,omitzero"`
+	CoverageRequest *string                 `json:"coverage_request,omitzero"`
 }
 
 func (n NullableSignalsAPIOnCallShiftEntity) MarshalJSON() ([]byte, error) {
@@ -44,13 +46,6 @@ func (n *NullableSignalsAPIOnCallShiftEntity) GetUser() *NullableSuccinctEntity 
 		return nil
 	}
 	return n.User
-}
-
-func (n *NullableSignalsAPIOnCallShiftEntity) GetCoverageRequest() *string {
-	if n == nil {
-		return nil
-	}
-	return n.CoverageRequest
 }
 
 func (n *NullableSignalsAPIOnCallShiftEntity) GetColor() *string {
@@ -100,4 +95,25 @@ func (n *NullableSignalsAPIOnCallShiftEntity) GetEndTime() *time.Time {
 		return nil
 	}
 	return n.EndTime
+}
+
+func (n *NullableSignalsAPIOnCallShiftEntity) GetCreatedAt() *time.Time {
+	if n == nil {
+		return nil
+	}
+	return n.CreatedAt
+}
+
+func (n *NullableSignalsAPIOnCallShiftEntity) GetIsOverride() *bool {
+	if n == nil {
+		return nil
+	}
+	return n.IsOverride
+}
+
+func (n *NullableSignalsAPIOnCallShiftEntity) GetCoverageRequest() *string {
+	if n == nil {
+		return nil
+	}
+	return n.CoverageRequest
 }

@@ -8,9 +8,11 @@ import (
 
 // SignalsAPIOnCallSchedulePreviewEntityRotationPreviewEntity - Signals_API_OnCallSchedulePreviewEntity_RotationPreviewEntity model
 type SignalsAPIOnCallSchedulePreviewEntityRotationPreviewEntity struct {
-	Name   *string                                                   `json:"name,omitzero"`
-	Color  *string                                                   `json:"color,omitzero"`
-	Shifts []SignalsAPIOnCallSchedulePreviewEntityShiftPreviewEntity `json:"shifts,omitzero"`
+	Name           *string                                                           `json:"name,omitzero"`
+	Color          *string                                                           `json:"color,omitzero"`
+	OriginalShifts []SignalsAPIOnCallSchedulePreviewEntityOriginalShiftPreviewEntity `json:"original_shifts,omitzero"`
+	Overrides      []SignalsAPIOnCallSchedulePreviewEntityOverridePreviewEntity      `json:"overrides,omitzero"`
+	Shifts         []SignalsAPIOnCallSchedulePreviewEntityShiftPreviewEntity         `json:"shifts,omitzero"`
 }
 
 func (s SignalsAPIOnCallSchedulePreviewEntityRotationPreviewEntity) MarshalJSON() ([]byte, error) {
@@ -36,6 +38,20 @@ func (s *SignalsAPIOnCallSchedulePreviewEntityRotationPreviewEntity) GetColor() 
 		return nil
 	}
 	return s.Color
+}
+
+func (s *SignalsAPIOnCallSchedulePreviewEntityRotationPreviewEntity) GetOriginalShifts() []SignalsAPIOnCallSchedulePreviewEntityOriginalShiftPreviewEntity {
+	if s == nil {
+		return nil
+	}
+	return s.OriginalShifts
+}
+
+func (s *SignalsAPIOnCallSchedulePreviewEntityRotationPreviewEntity) GetOverrides() []SignalsAPIOnCallSchedulePreviewEntityOverridePreviewEntity {
+	if s == nil {
+		return nil
+	}
+	return s.Overrides
 }
 
 func (s *SignalsAPIOnCallSchedulePreviewEntityRotationPreviewEntity) GetShifts() []SignalsAPIOnCallSchedulePreviewEntityShiftPreviewEntity {

@@ -1,0 +1,13 @@
+# NullableAudiencesEntitiesSettingEntityHighValueEventsSettingEntity
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `IncidentStatus`                                                              | `*bool`                                                                       | :heavy_minus_sign:                                                            | Include incident status change events in the timeline                         |
+| `BulkMilestoneUpdate`                                                         | `*bool`                                                                       | :heavy_minus_sign:                                                            | Include bulk updates (including runbook or automation events) in the timeline |
+| `ImpactUpdate`                                                                | `*bool`                                                                       | :heavy_minus_sign:                                                            | Include any catalog item impact events in the timeline                        |
+| `Handoff`                                                                     | `*bool`                                                                       | :heavy_minus_sign:                                                            | Include any handoff events in the timeline                                    |
+| `AddTaskList`                                                                 | `*bool`                                                                       | :heavy_minus_sign:                                                            | Include any additions to the task list in the timeline                        |
+| `ExternalLink`                                                                | `*bool`                                                                       | :heavy_minus_sign:                                                            | Include any external link events in the timeline                              |

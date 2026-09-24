@@ -14,7 +14,7 @@ Operations related to Integrations
 * [UpdateAuthedProvider](#updateauthedprovider) - Get an authed provider
 * [ListConnections](#listconnections) - List integration connections
 * [CreateConnection](#createconnection) - Create a new integration connection
-* [RefreshConnection](#refreshconnection) - Refresh an integration connection
+* [RefreshConnection](#refreshconnection) - Refresh an integration connection's incident role schedules
 * [UpdateConnection](#updateconnection) - Update an integration connection
 * [ListConnectionStatuses](#listconnectionstatuses) - Get integration connection status
 * [ListConnectionStatusesBySlug](#listconnectionstatusesbyslug) - Get an integration connection status
@@ -28,6 +28,8 @@ Operations related to Integrations
 * [ListAwsCloudtrailBatchEvents](#listawscloudtrailbatchevents) - List events for an AWS CloudTrail batch
 * [SearchConfluenceSpaces](#searchconfluencespaces) - List Confluence spaces
 * [ListSlackWorkspaces](#listslackworkspaces) - List Slack workspaces
+* [SearchSlackChannels](#searchslackchannels) - List Slack channels
+* [TestSlackChannel](#testslackchannel) - Test a Slack channel
 * [ListSlackUsergroups](#listslackusergroups) - List Slack user groups
 * [ListSlackEmojiActions](#listslackemojiactions) - List Slack emoji actions
 * [CreateSlackEmojiAction](#createslackemojiaction) - Create a new Slack emoji action
@@ -91,9 +93,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## GetIntegration
 
@@ -145,9 +157,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## UpdateFieldMap
 
@@ -199,9 +221,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ListFieldMapAvailableFields
 
@@ -253,9 +285,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ListAuthedProviders
 
@@ -420,9 +462,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## CreateConnection
 
@@ -474,13 +526,23 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## RefreshConnection
 
-Refresh the integration connection with the provided data
+Refresh the integration connection's incident role schedules
 
 ### Example Usage
 
@@ -529,9 +591,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## UpdateConnection
 
@@ -584,9 +656,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ListConnectionStatuses
 
@@ -691,9 +773,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ListConnectionStatusesBySlugAndID
 
@@ -801,9 +893,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## GetAwsConnection
 
@@ -855,9 +957,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## UpdateAwsConnection
 
@@ -910,9 +1022,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ListAwsCloudtrailBatches
 
@@ -966,9 +1088,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## GetAwsCloudtrailBatch
 
@@ -1020,9 +1152,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## UpdateAwsCloudtrailBatch
 
@@ -1075,9 +1217,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ListAwsCloudtrailBatchEvents
 
@@ -1129,9 +1281,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## SearchConfluenceSpaces
 
@@ -1186,9 +1348,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ListSlackWorkspaces
 
@@ -1237,6 +1409,119 @@ func main() {
 ### Response
 
 **[*components.IntegrationsSlackWorkspaceEntity](../../models/components/integrationsslackworkspaceentity.md), error**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
+
+## SearchSlackChannels
+
+List or search for known Slack channels that the FireHydrant bot can access
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="search_slack_channels" method="get" path="/v1/integrations/slack/channels" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/firehydrant/firehydrant-go-sdk/models/components"
+	firehydrantgosdk "github.com/firehydrant/firehydrant-go-sdk"
+	"github.com/firehydrant/firehydrant-go-sdk/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := firehydrantgosdk.New(
+        firehydrantgosdk.WithSecurity(components.Security{
+            APIKey: "<YOUR_API_KEY_HERE>",
+        }),
+    )
+
+    err := s.Integrations.SearchSlackChannels(ctx, operations.SearchSlackChannelsRequest{})
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `request`                                                                                      | [operations.SearchSlackChannelsRequest](../../models/operations/searchslackchannelsrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
+
+### Response
+
+**error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## TestSlackChannel
+
+Test the ability of the FireHydrant bot to operate in a Slack channel
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="test_slack_channel" method="put" path="/v1/integrations/slack/channels/{id}/test" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/firehydrant/firehydrant-go-sdk/models/components"
+	firehydrantgosdk "github.com/firehydrant/firehydrant-go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := firehydrantgosdk.New(
+        firehydrantgosdk.WithSecurity(components.Security{
+            APIKey: "<YOUR_API_KEY_HERE>",
+        }),
+    )
+
+    err := s.Integrations.TestSlackChannel(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**error**
 
 ### Errors
 
@@ -1293,9 +1578,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ListSlackEmojiActions
 
@@ -1346,9 +1641,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## CreateSlackEmojiAction
 
@@ -1401,9 +1706,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## GetSlackEmojiAction
 
@@ -1453,9 +1768,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## DeleteSlackEmojiAction
 
@@ -1505,9 +1830,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## UpdateSlackEmojiAction
 
@@ -1558,9 +1893,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ListStatuspageConnections
 
@@ -1613,9 +1958,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## GetStatuspageConnection
 
@@ -1667,9 +2022,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## DeleteStatuspageConnection
 
@@ -1718,9 +2083,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## UpdateStatuspageConnection
 
@@ -1773,9 +2148,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## ListStatuspageConnectionPages
 
@@ -1827,9 +2212,19 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
 ## SearchZendeskTickets
 
@@ -1936,6 +2331,16 @@ func main() {
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| sdkerrors.NotFoundError       | 404                           | application/json              |
+| sdkerrors.UnauthorizedError   | 401, 403, 407                 | application/json              |
+| sdkerrors.TimeoutError        | 408                           | application/json              |
+| sdkerrors.RateLimitedError    | 429                           | application/json              |
+| sdkerrors.BadRequestError     | 400, 413, 414, 415, 422, 431  | application/json              |
+| sdkerrors.TimeoutError        | 504                           | application/json              |
+| sdkerrors.NotFoundError       | 501, 505                      | application/json              |
+| sdkerrors.InternalServerError | 500, 502, 503, 506, 507, 508  | application/json              |
+| sdkerrors.BadRequestError     | 510                           | application/json              |
+| sdkerrors.UnauthorizedError   | 511                           | application/json              |
+| sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |

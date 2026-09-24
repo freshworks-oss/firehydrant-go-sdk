@@ -96,17 +96,17 @@ func (l *ListMilestoneFunnelMetricsRequestBody) GetGroupBy() []ListMilestoneFunn
 type ListMilestoneFunnelMetricsRequest struct {
 	// A JSON string that defines 'logic' and 'user_data'
 	Conditions *string `queryParam:"style=form,explode=true,name=conditions"`
-	// A comma separated list of environment IDs or 'is_empty' to filter for incidents with no impacted environments
+	// A comma separated list of environment IDs or 'is_empty' to filter for incidents with no impacted environments. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	Environments *string `queryParam:"style=form,explode=true,name=environments"`
-	// A comma separated list of service IDs or 'is_empty' to filter for incidents with no impacted services
+	// A comma separated list of service IDs or 'is_empty' to filter for incidents with no impacted services. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	Services *string `queryParam:"style=form,explode=true,name=services"`
-	// A comma separated list of functionality IDs or 'is_empty' to filter for incidents with no impacted functionalities
+	// A comma separated list of functionality IDs or 'is_empty' to filter for incidents with no impacted functionalities. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	Functionalities *string `queryParam:"style=form,explode=true,name=functionalities"`
-	// A comma separated list of infrastructure IDs. Returns incidents that do not have the following infrastructure ids associated with them.
+	// A comma separated list of infrastructure IDs. Returns incidents that do not have the following infrastructure ids associated with them. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	ExcludedInfrastructureIds *string `queryParam:"style=form,explode=true,name=excluded_infrastructure_ids"`
-	// A comma separated list of team IDs
+	// A comma separated list of team IDs. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	Teams *string `queryParam:"style=form,explode=true,name=teams"`
-	// A comma separated list of IDs for assigned teams or 'is_empty' to filter for incidents with no active team assignments
+	// A comma separated list of IDs for assigned teams or 'is_empty' to filter for incidents with no active team assignments. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	AssignedTeams *string `queryParam:"style=form,explode=true,name=assigned_teams"`
 	// Incident status
 	Status *string `queryParam:"style=form,explode=true,name=status"`
@@ -132,17 +132,17 @@ type ListMilestoneFunnelMetricsRequest struct {
 	Name *string `queryParam:"style=form,explode=true,name=name"`
 	// The id of a previously saved search.
 	SavedSearchID *string `queryParam:"style=form,explode=true,name=saved_search_id"`
-	// A text value of priority
+	// A text value of priority. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	Priorities *string `queryParam:"style=form,explode=true,name=priorities"`
 	// Flag for including incidents where priority has not been set
 	PriorityNotSet *bool `queryParam:"style=form,explode=true,name=priority_not_set"`
-	// A text value of severity
+	// A text value of severity. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	Severities *string `queryParam:"style=form,explode=true,name=severities"`
 	// Flag for including incidents where severity has not been set
 	SeverityNotSet *bool `queryParam:"style=form,explode=true,name=severity_not_set"`
-	// A comma separated list of current milestones
+	// A comma separated list of current milestones. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	CurrentMilestones *string `queryParam:"style=form,explode=true,name=current_milestones"`
-	// A comma separated list of tags
+	// A comma separated list of tags. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	Tags *string `queryParam:"style=form,explode=true,name=tags"`
 	// A matching strategy for the tags provided
 	TagMatchStrategy *ListMilestoneFunnelMetricsTagMatchStrategy `queryParam:"style=form,explode=true,name=tag_match_strategy"`
@@ -152,15 +152,15 @@ type ListMilestoneFunnelMetricsRequest struct {
 	UpdatedAfter *time.Time `queryParam:"style=form,explode=true,name=updated_after"`
 	// Filters for incidents that were updated before this date
 	UpdatedBefore *time.Time `queryParam:"style=form,explode=true,name=updated_before"`
-	// A comma separated list of incident type IDs or 'is_empty' to filter for incidents with no incident type
+	// A comma separated list of incident type IDs or 'is_empty' to filter for incidents with no incident type. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	IncidentTypeID *string `queryParam:"style=form,explode=true,name=incident_type_id"`
 	// Custom field ID to filter on
 	CustomFieldsFieldID []string `queryParam:"style=form,explode=false,name=custom_fields[field_id]"`
 	// Custom field value (empty means no value set)
 	CustomFieldsValue []string `queryParam:"style=form,explode=false,name=custom_fields[value]"`
-	// A comma separated list of retrospective template IDs
+	// A comma separated list of retrospective template IDs. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	RetrospectiveTemplates *string `queryParam:"style=form,explode=true,name=retrospective_templates"`
-	// A comma separated list of runbook IDs
+	// A comma separated list of runbook IDs. Accepts a comma-separated string (e.g. `foo=a,b`) or repeated array syntax (e.g. `foo[]=a&foo[]=b`).
 	AttachedRunbooks *string                                `queryParam:"style=form,explode=true,name=attached_runbooks"`
 	RequestBody      *ListMilestoneFunnelMetricsRequestBody `request:"mediaType=multipart/form-data"`
 }

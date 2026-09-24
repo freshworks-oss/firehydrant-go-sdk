@@ -9,11 +9,17 @@ import (
 )
 
 type PreviewOnCallScheduleRotationMember struct {
-	// The ID of a user who should be added to the rotation. You can add a user to the rotation
-	// multiple times to construct more complex rotations, and you can specify a `null` user ID to create
-	// unassigned slots in the rotation.
+	// The ID of a user who should be added to the schedule's initial rotation. You can add a user to the
+	// schedule multiple times to construct more complex rotations, and you can specify a `null` user ID
+	// to either leave a gap in the rotation or create an unassigned shift in the rotation depending on
+	// the value of `create_unassigned_shifts`.
 	//
 	UserID *string `json:"user_id,omitzero"`
+	// When `user_id` is `null`, allows populating the rotation with unassigned shifts for this slot when
+	// set to `true`. When `false`, the default value, the rotation will instead have a gap for this slot.
+	// Note: this value will be ignored when a valid `user_id` is provided.
+	//
+	CreateUnassignedShifts *bool `json:"create_unassigned_shifts,omitzero"`
 }
 
 func (p *PreviewOnCallScheduleRotationMember) GetUserID() *string {
@@ -21,6 +27,13 @@ func (p *PreviewOnCallScheduleRotationMember) GetUserID() *string {
 		return nil
 	}
 	return p.UserID
+}
+
+func (p *PreviewOnCallScheduleRotationMember) GetCreateUnassignedShifts() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.CreateUnassignedShifts
 }
 
 // PreviewOnCallScheduleRotationType - The type of strategy. Must be one of "daily", "weekly", or "custom".
@@ -291,6 +304,12 @@ type PreviewOnCallScheduleRotation struct {
 	// shifts are generated, such as the time zone, members, strategy, or restrictions.
 	//
 	EffectiveAt *string `json:"effective_at,omitzero"`
+	// Whether or not to clear relevant overrides when updating a rotation and regenerating its shifts.
+	// If true, overrides after the `effective_at` time will be cleared, and any override that overlaps
+	// with the `effective_at` time will be truncated to end at that time. If false, overrides will be
+	// retained and applied to any newly generated shifts. Defaults to false.
+	//
+	ClearOverrides *bool `json:"clear_overrides,omitzero"`
 	// An ISO8601 time string specifying the start of the time window to preview. Defaults to now.
 	From *string `json:"from,omitzero"`
 	// An ISO8601 time string specifying the end of the time window to preview. Defaults to two weeks from now.
@@ -404,6 +423,13 @@ func (p *PreviewOnCallScheduleRotation) GetEffectiveAt() *string {
 		return nil
 	}
 	return p.EffectiveAt
+}
+
+func (p *PreviewOnCallScheduleRotation) GetClearOverrides() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.ClearOverrides
 }
 
 func (p *PreviewOnCallScheduleRotation) GetFrom() *string {

@@ -73,6 +73,7 @@ type SignalsAPIRuleEntity struct {
 	Name                         *string                                           `json:"name,omitzero"`
 	Expression                   *string                                           `json:"expression,omitzero"`
 	TeamID                       *string                                           `json:"team_id,omitzero"`
+	HeartbeatID                  *string                                           `json:"heartbeat_id,omitzero"`
 	Target                       *NullableSignalsAPITargetEntity                   `json:"target,omitzero"`
 	CreatedBy                    *NullableAuthorEntity                             `json:"created_by,omitzero"`
 	CreatedAt                    *time.Time                                        `json:"created_at,omitzero"`
@@ -121,6 +122,13 @@ func (s *SignalsAPIRuleEntity) GetTeamID() *string {
 		return nil
 	}
 	return s.TeamID
+}
+
+func (s *SignalsAPIRuleEntity) GetHeartbeatID() *string {
+	if s == nil {
+		return nil
+	}
+	return s.HeartbeatID
 }
 
 func (s *SignalsAPIRuleEntity) GetTarget() *NullableSignalsAPITargetEntity {

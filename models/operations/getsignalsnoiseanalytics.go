@@ -82,6 +82,8 @@ const (
 	GetSignalsNoiseAnalyticsSortByTotalOpenedAlerts   GetSignalsNoiseAnalyticsSortBy = "total_opened_alerts"
 	GetSignalsNoiseAnalyticsSortByTotalAckedAlerts    GetSignalsNoiseAnalyticsSortBy = "total_acked_alerts"
 	GetSignalsNoiseAnalyticsSortByTotalIncidents      GetSignalsNoiseAnalyticsSortBy = "total_incidents"
+	GetSignalsNoiseAnalyticsSortByTotalBillableAlerts GetSignalsNoiseAnalyticsSortBy = "total_billable_alerts"
+	GetSignalsNoiseAnalyticsSortByTotalResolvedAlerts GetSignalsNoiseAnalyticsSortBy = "total_resolved_alerts"
 	GetSignalsNoiseAnalyticsSortByAckedPercentage     GetSignalsNoiseAnalyticsSortBy = "acked_percentage"
 	GetSignalsNoiseAnalyticsSortByIncidentsPercentage GetSignalsNoiseAnalyticsSortBy = "incidents_percentage"
 )
@@ -100,6 +102,10 @@ func (e *GetSignalsNoiseAnalyticsSortBy) UnmarshalJSON(data []byte) error {
 	case "total_acked_alerts":
 		fallthrough
 	case "total_incidents":
+		fallthrough
+	case "total_billable_alerts":
+		fallthrough
+	case "total_resolved_alerts":
 		fallthrough
 	case "acked_percentage":
 		fallthrough

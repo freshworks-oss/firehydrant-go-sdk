@@ -6,7 +6,7 @@ import (
 	"github.com/firehydrant/firehydrant-go-sdk/internal/utils"
 )
 
-type Detail struct {
+type CreateAudienceDetail struct {
 	// The incident detail question (max 255 characters)
 	Question string `json:"question"`
 	// The prompt to display when collecting this detail
@@ -15,28 +15,28 @@ type Detail struct {
 	Slug *string `json:"slug,omitzero"`
 }
 
-func (d *Detail) GetQuestion() string {
-	if d == nil {
+func (c *CreateAudienceDetail) GetQuestion() string {
+	if c == nil {
 		return ""
 	}
-	return d.Question
+	return c.Question
 }
 
-func (d *Detail) GetPrompt() string {
-	if d == nil {
+func (c *CreateAudienceDetail) GetPrompt() string {
+	if c == nil {
 		return ""
 	}
-	return d.Prompt
+	return c.Prompt
 }
 
-func (d *Detail) GetSlug() *string {
-	if d == nil {
+func (c *CreateAudienceDetail) GetSlug() *string {
+	if c == nil {
 		return nil
 	}
-	return d.Slug
+	return c.Slug
 }
 
-type HighValueEvents struct {
+type CreateAudienceHighValueEvents struct {
 	// Include incident status change events in the timeline
 	IncidentStatus bool `json:"incident_status"`
 	// Include bulk updates (including runbook or automation events) in the timeline
@@ -51,49 +51,49 @@ type HighValueEvents struct {
 	ExternalLink bool `json:"external_link"`
 }
 
-func (h *HighValueEvents) GetIncidentStatus() bool {
-	if h == nil {
+func (c *CreateAudienceHighValueEvents) GetIncidentStatus() bool {
+	if c == nil {
 		return false
 	}
-	return h.IncidentStatus
+	return c.IncidentStatus
 }
 
-func (h *HighValueEvents) GetBulkMilestoneUpdate() bool {
-	if h == nil {
+func (c *CreateAudienceHighValueEvents) GetBulkMilestoneUpdate() bool {
+	if c == nil {
 		return false
 	}
-	return h.BulkMilestoneUpdate
+	return c.BulkMilestoneUpdate
 }
 
-func (h *HighValueEvents) GetImpactUpdate() bool {
-	if h == nil {
+func (c *CreateAudienceHighValueEvents) GetImpactUpdate() bool {
+	if c == nil {
 		return false
 	}
-	return h.ImpactUpdate
+	return c.ImpactUpdate
 }
 
-func (h *HighValueEvents) GetHandoff() bool {
-	if h == nil {
+func (c *CreateAudienceHighValueEvents) GetHandoff() bool {
+	if c == nil {
 		return false
 	}
-	return h.Handoff
+	return c.Handoff
 }
 
-func (h *HighValueEvents) GetAddTaskList() bool {
-	if h == nil {
+func (c *CreateAudienceHighValueEvents) GetAddTaskList() bool {
+	if c == nil {
 		return false
 	}
-	return h.AddTaskList
+	return c.AddTaskList
 }
 
-func (h *HighValueEvents) GetExternalLink() bool {
-	if h == nil {
+func (c *CreateAudienceHighValueEvents) GetExternalLink() bool {
+	if c == nil {
 		return false
 	}
-	return h.ExternalLink
+	return c.ExternalLink
 }
 
-type MediumValueEvents struct {
+type CreateAudienceMediumValueEvents struct {
 	// Include any events where the incident's parent changes in the timeline
 	ParentChanged bool `json:"parent_changed"`
 	// Include any events where the incident's children change in the timeline
@@ -106,43 +106,43 @@ type MediumValueEvents struct {
 	ChangeType bool `json:"change_type"`
 }
 
-func (m *MediumValueEvents) GetParentChanged() bool {
-	if m == nil {
+func (c *CreateAudienceMediumValueEvents) GetParentChanged() bool {
+	if c == nil {
 		return false
 	}
-	return m.ParentChanged
+	return c.ParentChanged
 }
 
-func (m *MediumValueEvents) GetChildChanged() bool {
-	if m == nil {
+func (c *CreateAudienceMediumValueEvents) GetChildChanged() bool {
+	if c == nil {
 		return false
 	}
-	return m.ChildChanged
+	return c.ChildChanged
 }
 
-func (m *MediumValueEvents) GetNewRelatedChangeEvent() bool {
-	if m == nil {
+func (c *CreateAudienceMediumValueEvents) GetNewRelatedChangeEvent() bool {
+	if c == nil {
 		return false
 	}
-	return m.NewRelatedChangeEvent
+	return c.NewRelatedChangeEvent
 }
 
-func (m *MediumValueEvents) GetRunbookStepExecutionUpdate() bool {
-	if m == nil {
+func (c *CreateAudienceMediumValueEvents) GetRunbookStepExecutionUpdate() bool {
+	if c == nil {
 		return false
 	}
-	return m.RunbookStepExecutionUpdate
+	return c.RunbookStepExecutionUpdate
 }
 
-func (m *MediumValueEvents) GetChangeType() bool {
-	if m == nil {
+func (c *CreateAudienceMediumValueEvents) GetChangeType() bool {
+	if c == nil {
 		return false
 	}
-	return m.ChangeType
+	return c.ChangeType
 }
 
-// Settings - audience settings for initial audience creation
-type Settings struct {
+// CreateAudienceSettings - audience settings for initial audience creation
+type CreateAudienceSettings struct {
 	// Include the incident's id in summarization
 	ID bool `json:"id"`
 	// Include the incident's name in summarization
@@ -172,128 +172,128 @@ type Settings struct {
 	// Include all alerts related to the incident in summarization
 	Alerts bool `json:"alerts"`
 	// Include all information on responders, their roles, and any assigned teams
-	Responders        bool              `json:"responders"`
-	HighValueEvents   HighValueEvents   `json:"high_value_events"`
-	MediumValueEvents MediumValueEvents `json:"medium_value_events"`
+	Responders        bool                            `json:"responders"`
+	HighValueEvents   CreateAudienceHighValueEvents   `json:"high_value_events"`
+	MediumValueEvents CreateAudienceMediumValueEvents `json:"medium_value_events"`
 }
 
-func (s *Settings) GetID() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetID() bool {
+	if c == nil {
 		return false
 	}
-	return s.ID
+	return c.ID
 }
 
-func (s *Settings) GetName() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetName() bool {
+	if c == nil {
 		return false
 	}
-	return s.Name
+	return c.Name
 }
 
-func (s *Settings) GetStartedAt() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetStartedAt() bool {
+	if c == nil {
 		return false
 	}
-	return s.StartedAt
+	return c.StartedAt
 }
 
-func (s *Settings) GetStatus() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetStatus() bool {
+	if c == nil {
 		return false
 	}
-	return s.Status
+	return c.Status
 }
 
-func (s *Settings) GetSeverity() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetSeverity() bool {
+	if c == nil {
 		return false
 	}
-	return s.Severity
+	return c.Severity
 }
 
-func (s *Settings) GetDescription() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetDescription() bool {
+	if c == nil {
 		return false
 	}
-	return s.Description
+	return c.Description
 }
 
-func (s *Settings) GetCustomerImpactSummary() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetCustomerImpactSummary() bool {
+	if c == nil {
 		return false
 	}
-	return s.CustomerImpactSummary
+	return c.CustomerImpactSummary
 }
 
-func (s *Settings) GetCurrentMilestone() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetCurrentMilestone() bool {
+	if c == nil {
 		return false
 	}
-	return s.CurrentMilestone
+	return c.CurrentMilestone
 }
 
-func (s *Settings) GetTimeline() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetTimeline() bool {
+	if c == nil {
 		return false
 	}
-	return s.Timeline
+	return c.Timeline
 }
 
-func (s *Settings) GetCommunications() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetCommunications() bool {
+	if c == nil {
 		return false
 	}
-	return s.Communications
+	return c.Communications
 }
 
-func (s *Settings) GetWorkItems() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetWorkItems() bool {
+	if c == nil {
 		return false
 	}
-	return s.WorkItems
+	return c.WorkItems
 }
 
-func (s *Settings) GetServices() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetServices() bool {
+	if c == nil {
 		return false
 	}
-	return s.Services
+	return c.Services
 }
 
-func (s *Settings) GetCustomFields() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetCustomFields() bool {
+	if c == nil {
 		return false
 	}
-	return s.CustomFields
+	return c.CustomFields
 }
 
-func (s *Settings) GetAlerts() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetAlerts() bool {
+	if c == nil {
 		return false
 	}
-	return s.Alerts
+	return c.Alerts
 }
 
-func (s *Settings) GetResponders() bool {
-	if s == nil {
+func (c *CreateAudienceSettings) GetResponders() bool {
+	if c == nil {
 		return false
 	}
-	return s.Responders
+	return c.Responders
 }
 
-func (s *Settings) GetHighValueEvents() HighValueEvents {
-	if s == nil {
-		return HighValueEvents{}
+func (c *CreateAudienceSettings) GetHighValueEvents() CreateAudienceHighValueEvents {
+	if c == nil {
+		return CreateAudienceHighValueEvents{}
 	}
-	return s.HighValueEvents
+	return c.HighValueEvents
 }
 
-func (s *Settings) GetMediumValueEvents() MediumValueEvents {
-	if s == nil {
-		return MediumValueEvents{}
+func (c *CreateAudienceSettings) GetMediumValueEvents() CreateAudienceMediumValueEvents {
+	if c == nil {
+		return CreateAudienceMediumValueEvents{}
 	}
-	return s.MediumValueEvents
+	return c.MediumValueEvents
 }
 
 // CreateAudience - Create a new audience
@@ -303,10 +303,10 @@ type CreateAudience struct {
 	// Description of the audience (max 4000 characters)
 	Description string `json:"description"`
 	// Whether this is the default audience
-	Default *bool    `default:"false" json:"default"`
-	Details []Detail `json:"details,omitzero"`
+	Default *bool                  `default:"false" json:"default"`
+	Details []CreateAudienceDetail `json:"details,omitzero"`
 	// audience settings for initial audience creation
-	Settings *Settings `json:"settings,omitzero"`
+	Settings *CreateAudienceSettings `json:"settings,omitzero"`
 }
 
 func (c CreateAudience) MarshalJSON() ([]byte, error) {
@@ -341,14 +341,14 @@ func (c *CreateAudience) GetDefault() *bool {
 	return c.Default
 }
 
-func (c *CreateAudience) GetDetails() []Detail {
+func (c *CreateAudience) GetDetails() []CreateAudienceDetail {
 	if c == nil {
 		return nil
 	}
 	return c.Details
 }
 
-func (c *CreateAudience) GetSettings() *Settings {
+func (c *CreateAudience) GetSettings() *CreateAudienceSettings {
 	if c == nil {
 		return nil
 	}

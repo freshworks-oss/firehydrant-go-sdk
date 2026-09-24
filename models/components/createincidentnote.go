@@ -64,6 +64,8 @@ type CreateIncidentNote struct {
 	OccurredAt  *time.Time                     `json:"occurred_at,omitzero"`
 	Visibility  *CreateIncidentNoteVisibility  `default:"private_to_org" json:"visibility"`
 	StatusPages []CreateIncidentNoteStatusPage `json:"status_pages,omitzero"`
+	// When posting to a public status page, whether to also email its subscribers. Defaults to true.
+	NotifyEmailSubscribers *bool `json:"notify_email_subscribers,omitzero"`
 }
 
 func (c CreateIncidentNote) MarshalJSON() ([]byte, error) {
@@ -103,4 +105,11 @@ func (c *CreateIncidentNote) GetStatusPages() []CreateIncidentNoteStatusPage {
 		return nil
 	}
 	return c.StatusPages
+}
+
+func (c *CreateIncidentNote) GetNotifyEmailSubscribers() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.NotifyEmailSubscribers
 }

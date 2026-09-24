@@ -76,7 +76,7 @@ func (c *CreateIncidentMilestone) GetOccurredAt() time.Time {
 	return c.OccurredAt
 }
 
-type CustomField struct {
+type CreateIncidentCustomField struct {
 	// The ID of the custom field you wish to set.
 	FieldID string `json:"field_id"`
 	// The value you wish to set on the custom field if the type of the field accepts string values
@@ -85,32 +85,32 @@ type CustomField struct {
 	ValueArray []string `json:"value_array,omitzero"`
 }
 
-func (c CustomField) MarshalJSON() ([]byte, error) {
+func (c CreateIncidentCustomField) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CustomField) UnmarshalJSON(data []byte) error {
+func (c *CreateIncidentCustomField) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *CustomField) GetFieldID() string {
+func (c *CreateIncidentCustomField) GetFieldID() string {
 	if c == nil {
 		return ""
 	}
 	return c.FieldID
 }
 
-func (c *CustomField) GetValueString() *string {
+func (c *CreateIncidentCustomField) GetValueString() *string {
 	if c == nil {
 		return nil
 	}
 	return c.ValueString
 }
 
-func (c *CustomField) GetValueArray() []string {
+func (c *CreateIncidentCustomField) GetValueArray() []string {
 	if c == nil {
 		return nil
 	}
@@ -143,8 +143,8 @@ type CreateIncident struct {
 	// IDs of teams you wish to assign to this incident.
 	TeamIds []string `json:"team_ids,omitzero"`
 	// An array of custom fields to set on the incident.
-	CustomFields  []CustomField `json:"custom_fields,omitzero"`
-	ExternalLinks *string       `json:"external_links,omitzero"`
+	CustomFields  []CreateIncidentCustomField `json:"custom_fields,omitzero"`
+	ExternalLinks *string                     `json:"external_links,omitzero"`
 	// The ID of the incident type. This will copy values from the incident type (if any) unless they are being overridden via parameters in this request.
 	IncidentTypeID *string `json:"incident_type_id,omitzero"`
 	// If true, the incident type values will not be copied to the incident. This is useful when creating an incident from an incident type, but you want to set the values manually.
@@ -274,7 +274,7 @@ func (c *CreateIncident) GetTeamIds() []string {
 	return c.TeamIds
 }
 
-func (c *CreateIncident) GetCustomFields() []CustomField {
+func (c *CreateIncident) GetCustomFields() []CreateIncidentCustomField {
 	if c == nil {
 		return nil
 	}
