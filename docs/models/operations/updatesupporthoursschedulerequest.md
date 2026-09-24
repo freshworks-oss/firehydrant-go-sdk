@@ -1,0 +1,9 @@
+# UpdateSupportHoursScheduleRequest
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `TeamID`                                                                                       | `string`                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `UpdateSupportHoursSchedule`                                                                   | [components.UpdateSupportHoursSchedule](../../models/components/updatesupporthoursschedule.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |

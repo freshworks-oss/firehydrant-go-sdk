@@ -64,14 +64,15 @@ type NuncConnectionEntity struct {
 	EnableHistogram       *bool                             `json:"enable_histogram,omitzero"`
 	UIVersion             *int                              `json:"ui_version,omitzero"`
 	// List of links attached to this status page.
-	Links                    []LinksEntity                               `json:"links,omitzero"`
-	IsDNSVerified            *bool                                       `json:"is_dns_verified,omitzero"`
-	PublishState             *PublishState                               `json:"publish_state,omitzero"`
-	AuthenticationMethod     *string                                     `json:"authentication_method,omitzero"`
-	OidcAuthenticationConfig *NullableNuncOidcAuthenticationConfigEntity `json:"oidc_authentication_config,omitzero"`
-	HasCustomConfiguration   *bool                                       `json:"has_custom_configuration,omitzero"`
-	AutoPublish              *bool                                       `json:"auto_publish,omitzero"`
-	LastVerifiedAt           *time.Time                                  `json:"last_verified_at,omitzero"`
+	Links                      []LinksEntity                               `json:"links,omitzero"`
+	IsDNSVerified              *bool                                       `json:"is_dns_verified,omitzero"`
+	PublishState               *PublishState                               `json:"publish_state,omitzero"`
+	AuthenticationMethod       *string                                     `json:"authentication_method,omitzero"`
+	OidcAuthenticationConfig   *NullableNuncOidcAuthenticationConfigEntity `json:"oidc_authentication_config,omitzero"`
+	HasCustomConfiguration     *bool                                       `json:"has_custom_configuration,omitzero"`
+	AutoPublish                *bool                                       `json:"auto_publish,omitzero"`
+	OnlyDisplayActiveIncidents *bool                                       `json:"only_display_active_incidents,omitzero"`
+	LastVerifiedAt             *time.Time                                  `json:"last_verified_at,omitzero"`
 }
 
 func (n NuncConnectionEntity) MarshalJSON() ([]byte, error) {
@@ -314,6 +315,13 @@ func (n *NuncConnectionEntity) GetAutoPublish() *bool {
 		return nil
 	}
 	return n.AutoPublish
+}
+
+func (n *NuncConnectionEntity) GetOnlyDisplayActiveIncidents() *bool {
+	if n == nil {
+		return nil
+	}
+	return n.OnlyDisplayActiveIncidents
 }
 
 func (n *NuncConnectionEntity) GetLastVerifiedAt() *time.Time {

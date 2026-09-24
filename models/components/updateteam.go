@@ -33,7 +33,7 @@ type UpdateTeamMembership struct {
 	ScheduleID *string `json:"schedule_id,omitzero"`
 	// The ID of a Signals on-call schedule to add to the team, allowing you to specify that whoever is on call for this schedule when the team is assigned to an incident gets added to the incident and optionally assigned to the configured incident role.. This parameter is mutually exclusive with user_id and schedule_id.
 	SignalsOnCallScheduleID *string `json:"signals_on_call_schedule_id,omitzero"`
-	// An incident role ID that this user will automatically assigned if this team is assigned to an incident
+	// An incident role ID that this user will automatically be assigned if this team is assigned to an incident. Omit this field to leave the member's current default incident role unchanged; pass null explicitly to clear it.
 	IncidentRoleID *string `json:"incident_role_id,omitzero"`
 }
 

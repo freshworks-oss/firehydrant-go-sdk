@@ -4,10 +4,12 @@ package components
 
 // IntegrationsSlackUsergroupEntity - Integrations_Slack_UsergroupEntity model
 type IntegrationsSlackUsergroupEntity struct {
-	ID         *string `json:"id,omitzero"`
-	Name       *string `json:"name,omitzero"`
-	Handle     *string `json:"handle,omitzero"`
-	IsDisabled *bool   `json:"is_disabled,omitzero"`
+	ID            *string `json:"id,omitzero"`
+	Name          *string `json:"name,omitzero"`
+	Handle        *string `json:"handle,omitzero"`
+	IsDisabled    *bool   `json:"is_disabled,omitzero"`
+	WorkspaceID   *string `json:"workspace_id,omitzero"`
+	WorkspaceName *string `json:"workspace_name,omitzero"`
 }
 
 func (i *IntegrationsSlackUsergroupEntity) GetID() *string {
@@ -36,4 +38,18 @@ func (i *IntegrationsSlackUsergroupEntity) GetIsDisabled() *bool {
 		return nil
 	}
 	return i.IsDisabled
+}
+
+func (i *IntegrationsSlackUsergroupEntity) GetWorkspaceID() *string {
+	if i == nil {
+		return nil
+	}
+	return i.WorkspaceID
+}
+
+func (i *IntegrationsSlackUsergroupEntity) GetWorkspaceName() *string {
+	if i == nil {
+		return nil
+	}
+	return i.WorkspaceName
 }

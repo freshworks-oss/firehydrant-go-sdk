@@ -20,5 +20,7 @@ value := operations.GetSignalsGroupedMetricsSortByTotalOpenedAlerts
 | `GetSignalsGroupedMetricsSortByTotalOpenedAlerts`   | total_opened_alerts                                 |
 | `GetSignalsGroupedMetricsSortByTotalAckedAlerts`    | total_acked_alerts                                  |
 | `GetSignalsGroupedMetricsSortByTotalIncidents`      | total_incidents                                     |
+| `GetSignalsGroupedMetricsSortByTotalBillableAlerts` | total_billable_alerts                               |
+| `GetSignalsGroupedMetricsSortByTotalResolvedAlerts` | total_resolved_alerts                               |
 | `GetSignalsGroupedMetricsSortByAckedPercentage`     | acked_percentage                                    |
 | `GetSignalsGroupedMetricsSortByIncidentsPercentage` | incidents_percentage                                |

@@ -47,18 +47,18 @@ func (e *NotificationGroupMethod) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Priority string
+type SignalsAPINotificationPolicyItemEntityPriority string
 
 const (
-	PriorityHigh   Priority = "HIGH"
-	PriorityMedium Priority = "MEDIUM"
-	PriorityLow    Priority = "LOW"
+	SignalsAPINotificationPolicyItemEntityPriorityHigh   SignalsAPINotificationPolicyItemEntityPriority = "HIGH"
+	SignalsAPINotificationPolicyItemEntityPriorityMedium SignalsAPINotificationPolicyItemEntityPriority = "MEDIUM"
+	SignalsAPINotificationPolicyItemEntityPriorityLow    SignalsAPINotificationPolicyItemEntityPriority = "LOW"
 )
 
-func (e Priority) ToPointer() *Priority {
+func (e SignalsAPINotificationPolicyItemEntityPriority) ToPointer() *SignalsAPINotificationPolicyItemEntityPriority {
 	return &e
 }
-func (e *Priority) UnmarshalJSON(data []byte) error {
+func (e *SignalsAPINotificationPolicyItemEntityPriority) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -69,10 +69,10 @@ func (e *Priority) UnmarshalJSON(data []byte) error {
 	case "MEDIUM":
 		fallthrough
 	case "LOW":
-		*e = Priority(v)
+		*e = SignalsAPINotificationPolicyItemEntityPriority(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Priority: %v", v)
+		return fmt.Errorf("invalid value for SignalsAPINotificationPolicyItemEntityPriority: %v", v)
 	}
 }
 
@@ -81,10 +81,10 @@ type SignalsAPINotificationPolicyItemEntity struct {
 	ID                      *string                  `json:"id,omitzero"`
 	NotificationGroupMethod *NotificationGroupMethod `json:"notification_group_method,omitzero"`
 	// The maximum delay for notifications
-	MaxDelay  *string    `json:"max_delay,omitzero"`
-	Priority  *Priority  `json:"priority,omitzero"`
-	CreatedAt *time.Time `json:"created_at,omitzero"`
-	UpdatedAt *time.Time `json:"updated_at,omitzero"`
+	MaxDelay  *string                                         `json:"max_delay,omitzero"`
+	Priority  *SignalsAPINotificationPolicyItemEntityPriority `json:"priority,omitzero"`
+	CreatedAt *time.Time                                      `json:"created_at,omitzero"`
+	UpdatedAt *time.Time                                      `json:"updated_at,omitzero"`
 }
 
 func (s SignalsAPINotificationPolicyItemEntity) MarshalJSON() ([]byte, error) {
@@ -119,7 +119,7 @@ func (s *SignalsAPINotificationPolicyItemEntity) GetMaxDelay() *string {
 	return s.MaxDelay
 }
 
-func (s *SignalsAPINotificationPolicyItemEntity) GetPriority() *Priority {
+func (s *SignalsAPINotificationPolicyItemEntity) GetPriority() *SignalsAPINotificationPolicyItemEntityPriority {
 	if s == nil {
 		return nil
 	}

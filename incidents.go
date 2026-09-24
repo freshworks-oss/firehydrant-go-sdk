@@ -646,9 +646,10 @@ func (s *Incidents) GetIncidentChannel(ctx context.Context, incidentID string, o
 
 // CloseIncident - Close an incident
 // Closes an incident and optionally close all children
-func (s *Incidents) CloseIncident(ctx context.Context, incidentID string, opts ...operations.Option) (*components.IncidentEntity, error) {
+func (s *Incidents) CloseIncident(ctx context.Context, incidentID string, requestBody operations.CloseIncidentRequestBody, opts ...operations.Option) (*components.IncidentEntity, error) {
 	request := operations.CloseIncidentRequest{
-		IncidentID: incidentID,
+		IncidentID:  incidentID,
+		RequestBody: requestBody,
 	}
 
 	o := operations.Options{}
@@ -683,6 +684,10 @@ func (s *Incidents) CloseIncident(ctx context.Context, incidentID string, opts .
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "json", `request:"mediaType=application/json"`)
+	if err != nil {
+		return nil, err
+	}
 
 	timeout := o.Timeout
 	if timeout == nil {
@@ -695,12 +700,15 @@ func (s *Incidents) CloseIncident(ctx context.Context, incidentID string, opts .
 		defer cancel()
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, nil)
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+	if reqContentType != "" {
+		req.Header.Set("Content-Type", reqContentType)
+	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
@@ -849,7 +857,7 @@ func (s *Incidents) CloseIncident(ctx context.Context, incidentID string, opts .
 
 // ResolveIncident - Resolve an incident
 // Resolves a currently active incident
-func (s *Incidents) ResolveIncident(ctx context.Context, incidentID string, requestBody *operations.ResolveIncidentRequestBody, opts ...operations.Option) (*components.IncidentEntity, error) {
+func (s *Incidents) ResolveIncident(ctx context.Context, incidentID string, requestBody operations.ResolveIncidentRequestBody, opts ...operations.Option) (*components.IncidentEntity, error) {
 	request := operations.ResolveIncidentRequest{
 		IncidentID:  incidentID,
 		RequestBody: requestBody,
@@ -887,7 +895,7 @@ func (s *Incidents) ResolveIncident(ctx context.Context, incidentID string, requ
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -2637,7 +2645,7 @@ func (s *Incidents) CreateIncidentChangeEvent(ctx context.Context, incidentID st
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "409", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -2872,7 +2880,7 @@ func (s *Incidents) UpdateIncidentChangeEvent(ctx context.Context, relatedChange
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "409", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -7380,7 +7388,7 @@ func (s *Incidents) CreateIncidentImpact(ctx context.Context, incidentID string,
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -7606,7 +7614,7 @@ func (s *Incidents) DeleteIncidentImpact(ctx context.Context, incidentID string,
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return err
-		} else if utils.MatchStatusCodes([]string{"400", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return err
@@ -10445,7 +10453,7 @@ func (s *Incidents) CreateScheduledMaintenance(ctx context.Context, request comp
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

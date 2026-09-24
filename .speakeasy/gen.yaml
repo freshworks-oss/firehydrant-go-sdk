@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 go:
-  version: 1.8.6
+  version: 1.8.7
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   baseErrorName: FireHydrantError
@@ -40,6 +40,7 @@ go:
   flattenGlobalSecurity: false
   forwardCompatibleEnumsByDefault: false
   forwardCompatibleUnionsByDefault: "false"
+  idiomaticMethodCollisionNames: false
   imports:
     option: openapi
     paths:
@@ -56,6 +57,7 @@ go:
   modulePath: ""
   multipartArrayFormat: legacy
   nullableOptionalWrapper: false
+  optionalMethodArguments: pointers
   outputModelSuffix: output
   packageName: github.com/firehydrant/firehydrant-go-sdk
   respectRequiredFields: false
@@ -63,4 +65,5 @@ go:
   responseFormat: flat
   sdkPackageName: ""
   templateVersion: v2
+  unionGenerics: false
   unionStrategy: left-to-right

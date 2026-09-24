@@ -11,3 +11,5 @@ Integrations_Slack_UsergroupEntity model
 | `Name`             | `*string`          | :heavy_minus_sign: | N/A                |
 | `Handle`           | `*string`          | :heavy_minus_sign: | N/A                |
 | `IsDisabled`       | `*bool`            | :heavy_minus_sign: | N/A                |
+| `WorkspaceID`      | `*string`          | :heavy_minus_sign: | N/A                |
+| `WorkspaceName`    | `*string`          | :heavy_minus_sign: | N/A                |

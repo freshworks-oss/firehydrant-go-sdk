@@ -1,0 +1,10 @@
+# UpdateIncidentCustomField
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `FieldID`                                                                                    | `string`                                                                                     | :heavy_check_mark:                                                                           | The ID of the custom field you wish to set.                                                  |
+| `ValueString`                                                                                | `*string`                                                                                    | :heavy_minus_sign:                                                                           | The value you wish to set on the custom field if the type of the field accepts string values |
+| `ValueArray`                                                                                 | []`string`                                                                                   | :heavy_minus_sign:                                                                           | The value you wish to set on the custom field if the type of the field accepts array values  |

@@ -52,6 +52,8 @@ const (
 	GetSignalsMttxAnalyticsSortByTotalOpenedAlerts   GetSignalsMttxAnalyticsSortBy = "total_opened_alerts"
 	GetSignalsMttxAnalyticsSortByTotalAckedAlerts    GetSignalsMttxAnalyticsSortBy = "total_acked_alerts"
 	GetSignalsMttxAnalyticsSortByTotalIncidents      GetSignalsMttxAnalyticsSortBy = "total_incidents"
+	GetSignalsMttxAnalyticsSortByTotalBillableAlerts GetSignalsMttxAnalyticsSortBy = "total_billable_alerts"
+	GetSignalsMttxAnalyticsSortByTotalResolvedAlerts GetSignalsMttxAnalyticsSortBy = "total_resolved_alerts"
 	GetSignalsMttxAnalyticsSortByAckedPercentage     GetSignalsMttxAnalyticsSortBy = "acked_percentage"
 	GetSignalsMttxAnalyticsSortByIncidentsPercentage GetSignalsMttxAnalyticsSortBy = "incidents_percentage"
 )
@@ -70,6 +72,10 @@ func (e *GetSignalsMttxAnalyticsSortBy) UnmarshalJSON(data []byte) error {
 	case "total_acked_alerts":
 		fallthrough
 	case "total_incidents":
+		fallthrough
+	case "total_billable_alerts":
+		fallthrough
+	case "total_resolved_alerts":
 		fallthrough
 	case "acked_percentage":
 		fallthrough
