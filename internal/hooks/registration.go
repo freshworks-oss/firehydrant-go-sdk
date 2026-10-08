@@ -10,9 +10,12 @@ package hooks
 
 func initHooks(h *Hooks) {
 	// exampleHook := &ExampleHook{}
+	contentTypeGuardHook := &ContentTypeGuardHook{}
 
 	// h.registerSDKInitHook(exampleHook)
 	// h.registerBeforeRequestHook(exampleHook)
 	// h.registerAfterErrorHook(exampleHook)
+	h.registerAfterErrorHook(contentTypeGuardHook)
 	// h.registerAfterSuccessHook(exampleHook)
+	h.registerAfterSuccessHook(contentTypeGuardHook)
 }
