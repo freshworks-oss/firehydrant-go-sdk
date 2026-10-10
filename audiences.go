@@ -2226,9 +2226,13 @@ func (s *Audiences) ListAudienceSummaries(ctx context.Context, incidentID string
 			}
 
 			var out components.AudiencesEntitiesAudienceSummariesEntity
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+			var envelope struct {
+				Data components.AudiencesEntitiesAudienceSummariesEntity `json:"data"`
+			}
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &envelope, ""); err != nil {
 				return nil, err
 			}
+			out = envelope.Data
 
 			return &out, nil
 		default:
