@@ -12,15 +12,15 @@ type NullableIncidentTypeEntityTemplateEntity struct {
 	Description           *string `json:"description,omitzero"`
 	CustomerImpactSummary *string `json:"customer_impact_summary,omitzero"`
 	// Arbitrary key:value pairs of labels for your incidents.
-	Labels          map[string]any                           `json:"labels,omitzero"`
-	Severity        *string                                  `json:"severity,omitzero"`
-	Priority        *string                                  `json:"priority,omitzero"`
-	TagList         []string                                 `json:"tag_list,omitzero"`
-	RunbookIds      []string                                 `json:"runbook_ids,omitzero"`
-	TeamIds         []string                                 `json:"team_ids,omitzero"`
-	PrivateIncident *bool                                    `json:"private_incident,omitzero"`
-	CustomFields    *string                                  `json:"custom_fields,omitzero"`
-	Impacts         []IncidentTypeEntityTemplateImpactEntity `json:"impacts,omitzero"`
+	Labels          map[string]any                                              `json:"labels,omitzero"`
+	Severity        *string                                                     `json:"severity,omitzero"`
+	Priority        *string                                                     `json:"priority,omitzero"`
+	TagList         []string                                                    `json:"tag_list,omitzero"`
+	RunbookIds      []string                                                    `json:"runbook_ids,omitzero"`
+	TeamIds         []string                                                    `json:"team_ids,omitzero"`
+	PrivateIncident *bool                                                       `json:"private_incident,omitzero"`
+	CustomFields    []IncidentTypeEntityTemplateEntityTemplateCustomFieldEntity `json:"custom_fields,omitzero"`
+	Impacts         []IncidentTypeEntityTemplateImpactEntity                    `json:"impacts,omitzero"`
 }
 
 func (n NullableIncidentTypeEntityTemplateEntity) MarshalJSON() ([]byte, error) {
@@ -111,7 +111,7 @@ func (n *NullableIncidentTypeEntityTemplateEntity) GetPrivateIncident() *bool {
 	return n.PrivateIncident
 }
 
-func (n *NullableIncidentTypeEntityTemplateEntity) GetCustomFields() *string {
+func (n *NullableIncidentTypeEntityTemplateEntity) GetCustomFields() []IncidentTypeEntityTemplateEntityTemplateCustomFieldEntity {
 	if n == nil {
 		return nil
 	}

@@ -9,6 +9,8 @@ type ListEnvironmentsRequest struct {
 	Query *string `queryParam:"style=form,explode=true,name=query"`
 	// A query to search environments by their name
 	Name *string `queryParam:"style=form,explode=true,name=name"`
+	// Boolean to determine whether to return a slimified version of the environments object
+	Lite *bool `queryParam:"style=form,explode=true,name=lite"`
 }
 
 func (l *ListEnvironmentsRequest) GetPage() *int {
@@ -37,4 +39,11 @@ func (l *ListEnvironmentsRequest) GetName() *string {
 		return nil
 	}
 	return l.Name
+}
+
+func (l *ListEnvironmentsRequest) GetLite() *bool {
+	if l == nil {
+		return nil
+	}
+	return l.Lite
 }
