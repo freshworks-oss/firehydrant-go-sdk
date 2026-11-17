@@ -34,14 +34,7 @@ func newCatalogEntries(rootSDK *FireHydrant, sdkConfig config.SDKConfiguration, 
 
 // ListEnvironments - List environments
 // List all of the environments that have been added to the organiation
-func (s *CatalogEntries) ListEnvironments(ctx context.Context, page *int, perPage *int, query *string, name *string, opts ...operations.Option) (*components.EnvironmentEntryEntityPaginated, error) {
-	request := operations.ListEnvironmentsRequest{
-		Page:    page,
-		PerPage: perPage,
-		Query:   query,
-		Name:    name,
-	}
-
+func (s *CatalogEntries) ListEnvironments(ctx context.Context, request operations.ListEnvironmentsRequest, opts ...operations.Option) (*components.EnvironmentEntryEntityPaginated, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1858,7 +1851,7 @@ func (s *CatalogEntries) CreateService(ctx context.Context, request components.C
 
 			var out sdkerrors.ErrorEntity
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out

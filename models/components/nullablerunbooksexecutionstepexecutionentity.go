@@ -61,6 +61,8 @@ type NullableRunbooksExecutionStepExecutionEntity struct {
 	ScheduledFor    *time.Time                                         `json:"scheduled_for,omitzero"`
 	Error           *string                                            `json:"error,omitzero"`
 	WebhookDelivery *NullableRunbooksWebhookDeliveryEntity             `json:"webhook_delivery,omitzero"`
+	// The step's conditions are no longer being evaluated and it can no longer start
+	Expired *bool `json:"expired,omitzero"`
 }
 
 func (n NullableRunbooksExecutionStepExecutionEntity) MarshalJSON() ([]byte, error) {
@@ -121,4 +123,11 @@ func (n *NullableRunbooksExecutionStepExecutionEntity) GetWebhookDelivery() *Nul
 		return nil
 	}
 	return n.WebhookDelivery
+}
+
+func (n *NullableRunbooksExecutionStepExecutionEntity) GetExpired() *bool {
+	if n == nil {
+		return nil
+	}
+	return n.Expired
 }
