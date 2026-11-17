@@ -169,6 +169,8 @@ type GetSignalsNoiseAnalyticsRequest struct {
 	StartDate *time.Time `queryParam:"style=form,explode=true,name=start_date"`
 	// The end date to return metrics from
 	EndDate *time.Time `queryParam:"style=form,explode=true,name=end_date"`
+	// The IANA timezone in which the start and end dates are read as whole days. Defaults to UTC
+	Timezone *string `queryParam:"style=form,explode=true,name=timezone"`
 }
 
 func (g GetSignalsNoiseAnalyticsRequest) MarshalJSON() ([]byte, error) {
@@ -264,4 +266,11 @@ func (g *GetSignalsNoiseAnalyticsRequest) GetEndDate() *time.Time {
 		return nil
 	}
 	return g.EndDate
+}
+
+func (g *GetSignalsNoiseAnalyticsRequest) GetTimezone() *string {
+	if g == nil {
+		return nil
+	}
+	return g.Timezone
 }

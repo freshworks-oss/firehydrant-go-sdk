@@ -413,7 +413,7 @@ func (s *Changes) CreateChange(ctx context.Context, request components.CreateCha
 
 			var out sdkerrors.ErrorEntity
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1248,7 +1248,7 @@ func (s *Changes) CreateChangeIdentity(ctx context.Context, changeID string, cre
 
 			var out sdkerrors.ErrorEntity
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out
@@ -1454,7 +1454,7 @@ func (s *Changes) DeleteChangeIdentity(ctx context.Context, identityID string, c
 
 			var out sdkerrors.ErrorEntity
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return err
+				return sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return &out
@@ -1686,7 +1686,7 @@ func (s *Changes) UpdateChangeIdentity(ctx context.Context, identityID string, c
 
 			var out sdkerrors.ErrorEntity
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, sdkerrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			return nil, &out

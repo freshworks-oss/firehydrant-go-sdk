@@ -4,9 +4,9 @@ package operations
 
 type ListTeamOnCallSchedulesRequest struct {
 	TeamID string `pathParam:"style=simple,explode=false,name=team_id"`
-	// An optional ISO8601 timestamp for filtering the shifts listed in each on-call schedule to only include shifts that overlap with the provided time window. If provided, only shifts that end at or after this time will be included.
+	// An optional ISO8601 timestamp for filtering the shifts listed in each on-call schedule to only include shifts that overlap with the provided time window. If provided, only shifts that end at or after this time will be included. When shift_time_window_end is omitted, the window ends six months after this time, or six months from now if that would be in the past.
 	ShiftTimeWindowStart *string `queryParam:"style=form,explode=true,name=shift_time_window_start"`
-	// An optional ISO8601 timestamp for filtering the shifts listed in each on-call schedule to only include shifts that overlap with the provided time window.. If provided, only shifts that start at or before this time will be included.
+	// An optional ISO8601 timestamp for filtering the shifts listed in each on-call schedule to only include shifts that overlap with the provided time window.. If provided, only shifts that start at or before this time will be included. When shift_time_window_start is omitted, the window starts six months before this time, or at the current time if that would be in the past and this time is in the future.
 	ShiftTimeWindowEnd *string `queryParam:"style=form,explode=true,name=shift_time_window_end"`
 	// A query string for searching through the list of on-call schedules.
 	Query   *string `queryParam:"style=form,explode=true,name=query"`

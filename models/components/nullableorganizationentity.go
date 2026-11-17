@@ -3,9 +3,8 @@
 package components
 
 type NullableOrganizationEntity struct {
-	Name                    *string `json:"name,omitzero"`
-	ID                      *string `json:"id,omitzero"`
-	ProvisionedInFreshworks *string `json:"provisioned_in_freshworks,omitzero"`
+	Name *string `json:"name,omitzero"`
+	ID   *string `json:"id,omitzero"`
 }
 
 func (n *NullableOrganizationEntity) GetName() *string {
@@ -20,11 +19,4 @@ func (n *NullableOrganizationEntity) GetID() *string {
 		return nil
 	}
 	return n.ID
-}
-
-func (n *NullableOrganizationEntity) GetProvisionedInFreshworks() *string {
-	if n == nil {
-		return nil
-	}
-	return n.ProvisionedInFreshworks
 }
