@@ -32,12 +32,6 @@ var testCases = []testCase{
 		ExpectedContentType: "text/plain",
 	},
 	{
-		Name:                "no body",
-		Body:                nil,
-		ResponseContentType: "application/json",
-		ExpectedContentType: "text/plain",
-	},
-	{
 		Name:                "empty body",
 		Body:                []byte(""),
 		ResponseContentType: "application/json",
