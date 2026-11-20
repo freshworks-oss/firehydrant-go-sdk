@@ -8,4 +8,4 @@ Audiences_Entities_AudienceSummariesEntity model
 | Field                                  | Type                                   | Required                               | Description                            |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
 | `IncidentID`                           | `*string`                              | :heavy_minus_sign:                     | N/A                                    |
-| `Audiences`                            | `*string`                              | :heavy_minus_sign:                     | JSON-encoded map of audience summaries |
+| `Audiences`                            | `map[string]any`                       | :heavy_minus_sign:                     | Map of audience names to summary objects |
