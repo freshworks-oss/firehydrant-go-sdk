@@ -19,6 +19,15 @@ const (
 func (e Integration) ToPointer() *Integration {
 	return &e
 }
+
+// IntegrationValues returns every known Integration value in schema order.
+func IntegrationValues() []Integration {
+	return []Integration{
+		IntegrationPagerDuty,
+		IntegrationOpsgenie,
+		IntegrationVictorops,
+	}
+}
 func (e *Integration) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

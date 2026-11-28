@@ -339,3 +339,13 @@ Based on:
 - [go v1.9.0] .
 ### Releases
 - [Go v1.9.0] https://github.com/freshworks-oss/firehydrant-go-sdk/releases/tag/v1.9.0 - .
+
+## 2026-11-28 00:29:52
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.813.0 (2.969.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v1.10.0] .
+### Releases
+- [Go v1.10.0] https://github.com/freshworks-oss/firehydrant-go-sdk/releases/tag/v1.10.0 - .

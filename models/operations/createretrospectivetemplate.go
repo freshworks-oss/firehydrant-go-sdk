@@ -21,6 +21,17 @@ const (
 func (e SectionsSlug) ToPointer() *SectionsSlug {
 	return &e
 }
+
+// SectionsSlugValues returns every known SectionsSlug value in schema order.
+func SectionsSlugValues() []SectionsSlug {
+	return []SectionsSlug{
+		SectionsSlugTimeline,
+		SectionsSlugKeyData,
+		SectionsSlugDetails,
+		SectionsSlugResources,
+		SectionsSlugActions,
+	}
+}
 func (e *SectionsSlug) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -58,6 +69,20 @@ const (
 
 func (e CreateRetrospectiveTemplateFieldsType) ToPointer() *CreateRetrospectiveTemplateFieldsType {
 	return &e
+}
+
+// CreateRetrospectiveTemplateFieldsTypeValues returns every known CreateRetrospectiveTemplateFieldsType value in schema order.
+func CreateRetrospectiveTemplateFieldsTypeValues() []CreateRetrospectiveTemplateFieldsType {
+	return []CreateRetrospectiveTemplateFieldsType{
+		CreateRetrospectiveTemplateFieldsTypeText,
+		CreateRetrospectiveTemplateFieldsTypeSingleSelect,
+		CreateRetrospectiveTemplateFieldsTypeMultiSelect,
+		CreateRetrospectiveTemplateFieldsTypeNumeric,
+		CreateRetrospectiveTemplateFieldsTypeDatetime,
+		CreateRetrospectiveTemplateFieldsTypeDynamicInputGroup,
+		CreateRetrospectiveTemplateFieldsTypeMarkdown,
+		CreateRetrospectiveTemplateFieldsTypeMarkdownText,
+	}
 }
 func (e *CreateRetrospectiveTemplateFieldsType) UnmarshalJSON(data []byte) error {
 	var v string

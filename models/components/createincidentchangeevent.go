@@ -19,6 +19,16 @@ const (
 func (e CreateIncidentChangeEventType) ToPointer() *CreateIncidentChangeEventType {
 	return &e
 }
+
+// CreateIncidentChangeEventTypeValues returns every known CreateIncidentChangeEventType value in schema order.
+func CreateIncidentChangeEventTypeValues() []CreateIncidentChangeEventType {
+	return []CreateIncidentChangeEventType{
+		CreateIncidentChangeEventTypeCaused,
+		CreateIncidentChangeEventTypeFixed,
+		CreateIncidentChangeEventTypeSuspect,
+		CreateIncidentChangeEventTypeDismissed,
+	}
+}
 func (e *CreateIncidentChangeEventType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

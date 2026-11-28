@@ -19,6 +19,15 @@ const (
 func (e NotificationPriority) ToPointer() *NotificationPriority {
 	return &e
 }
+
+// NotificationPriorityValues returns every known NotificationPriority value in schema order.
+func NotificationPriorityValues() []NotificationPriority {
+	return []NotificationPriority{
+		NotificationPriorityHigh,
+		NotificationPriorityMedium,
+		NotificationPriorityLow,
+	}
+}
 func (e *NotificationPriority) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

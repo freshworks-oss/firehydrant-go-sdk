@@ -21,6 +21,16 @@ const (
 func (e NullableTicketingTicketEntityState) ToPointer() *NullableTicketingTicketEntityState {
 	return &e
 }
+
+// NullableTicketingTicketEntityStateValues returns every known NullableTicketingTicketEntityState value in schema order.
+func NullableTicketingTicketEntityStateValues() []NullableTicketingTicketEntityState {
+	return []NullableTicketingTicketEntityState{
+		NullableTicketingTicketEntityStateOpen,
+		NullableTicketingTicketEntityStateInProgress,
+		NullableTicketingTicketEntityStateCancelled,
+		NullableTicketingTicketEntityStateDone,
+	}
+}
 func (e *NullableTicketingTicketEntityState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -51,6 +61,15 @@ const (
 
 func (e NullableTicketingTicketEntityType) ToPointer() *NullableTicketingTicketEntityType {
 	return &e
+}
+
+// NullableTicketingTicketEntityTypeValues returns every known NullableTicketingTicketEntityType value in schema order.
+func NullableTicketingTicketEntityTypeValues() []NullableTicketingTicketEntityType {
+	return []NullableTicketingTicketEntityType{
+		NullableTicketingTicketEntityTypeIncident,
+		NullableTicketingTicketEntityTypeTask,
+		NullableTicketingTicketEntityTypeFollowUp,
+	}
 }
 func (e *NullableTicketingTicketEntityType) UnmarshalJSON(data []byte) error {
 	var v string

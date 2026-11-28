@@ -25,6 +25,20 @@ const (
 func (e CreateSignalsEmailTargetType) ToPointer() *CreateSignalsEmailTargetType {
 	return &e
 }
+
+// CreateSignalsEmailTargetTypeValues returns every known CreateSignalsEmailTargetType value in schema order.
+func CreateSignalsEmailTargetTypeValues() []CreateSignalsEmailTargetType {
+	return []CreateSignalsEmailTargetType{
+		CreateSignalsEmailTargetTypeTeam,
+		CreateSignalsEmailTargetTypeEntireTeam,
+		CreateSignalsEmailTargetTypeEscalationPolicy,
+		CreateSignalsEmailTargetTypeOnCallSchedule,
+		CreateSignalsEmailTargetTypeUser,
+		CreateSignalsEmailTargetTypeSlackChannel,
+		CreateSignalsEmailTargetTypeMicrosoftTeamsChannel,
+		CreateSignalsEmailTargetTypeWebhook,
+	}
+}
 func (e *CreateSignalsEmailTargetType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -88,6 +102,14 @@ const (
 
 func (e CreateSignalsEmailTargetRuleMatchingStrategy) ToPointer() *CreateSignalsEmailTargetRuleMatchingStrategy {
 	return &e
+}
+
+// CreateSignalsEmailTargetRuleMatchingStrategyValues returns every known CreateSignalsEmailTargetRuleMatchingStrategy value in schema order.
+func CreateSignalsEmailTargetRuleMatchingStrategyValues() []CreateSignalsEmailTargetRuleMatchingStrategy {
+	return []CreateSignalsEmailTargetRuleMatchingStrategy{
+		CreateSignalsEmailTargetRuleMatchingStrategyAll,
+		CreateSignalsEmailTargetRuleMatchingStrategyAny,
+	}
 }
 func (e *CreateSignalsEmailTargetRuleMatchingStrategy) UnmarshalJSON(data []byte) error {
 	var v string

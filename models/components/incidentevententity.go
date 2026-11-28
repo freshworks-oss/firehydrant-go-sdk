@@ -24,6 +24,15 @@ const (
 func (e IncidentEventEntityVisibility) ToPointer() *IncidentEventEntityVisibility {
 	return &e
 }
+
+// IncidentEventEntityVisibilityValues returns every known IncidentEventEntityVisibility value in schema order.
+func IncidentEventEntityVisibilityValues() []IncidentEventEntityVisibility {
+	return []IncidentEventEntityVisibility{
+		IncidentEventEntityVisibilityPrivateToOrg,
+		IncidentEventEntityVisibilityOpenToPublic,
+		IncidentEventEntityVisibilityInternalStatusPage,
+	}
+}
 func (e *IncidentEventEntityVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

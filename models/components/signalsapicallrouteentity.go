@@ -18,6 +18,14 @@ const (
 func (e SignalsAPICallRouteEntityRoutingMode) ToPointer() *SignalsAPICallRouteEntityRoutingMode {
 	return &e
 }
+
+// SignalsAPICallRouteEntityRoutingModeValues returns every known SignalsAPICallRouteEntityRoutingMode value in schema order.
+func SignalsAPICallRouteEntityRoutingModeValues() []SignalsAPICallRouteEntityRoutingMode {
+	return []SignalsAPICallRouteEntityRoutingMode{
+		SignalsAPICallRouteEntityRoutingModeRoutingModeTakeMessage,
+		SignalsAPICallRouteEntityRoutingModeRoutingModeDirectConnect,
+	}
+}
 func (e *SignalsAPICallRouteEntityRoutingMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -43,6 +51,14 @@ const (
 
 func (e SignalsAPICallRouteEntityConnectMode) ToPointer() *SignalsAPICallRouteEntityConnectMode {
 	return &e
+}
+
+// SignalsAPICallRouteEntityConnectModeValues returns every known SignalsAPICallRouteEntityConnectMode value in schema order.
+func SignalsAPICallRouteEntityConnectModeValues() []SignalsAPICallRouteEntityConnectMode {
+	return []SignalsAPICallRouteEntityConnectMode{
+		SignalsAPICallRouteEntityConnectModeConnectModeConference,
+		SignalsAPICallRouteEntityConnectModeConnectModeDirectDial,
+	}
 }
 func (e *SignalsAPICallRouteEntityConnectMode) UnmarshalJSON(data []byte) error {
 	var v string

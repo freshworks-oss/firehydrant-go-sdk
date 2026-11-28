@@ -17,6 +17,13 @@ const (
 func (e Publish) ToPointer() *Publish {
 	return &e
 }
+
+// PublishValues returns every known Publish value in schema order.
+func PublishValues() []Publish {
+	return []Publish{
+		PublishTrue,
+	}
+}
 func (e *Publish) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -19,6 +19,16 @@ const (
 func (e IncidentTypeEntityTemplateImpactEntityType) ToPointer() *IncidentTypeEntityTemplateImpactEntityType {
 	return &e
 }
+
+// IncidentTypeEntityTemplateImpactEntityTypeValues returns every known IncidentTypeEntityTemplateImpactEntityType value in schema order.
+func IncidentTypeEntityTemplateImpactEntityTypeValues() []IncidentTypeEntityTemplateImpactEntityType {
+	return []IncidentTypeEntityTemplateImpactEntityType{
+		IncidentTypeEntityTemplateImpactEntityTypeCustomer,
+		IncidentTypeEntityTemplateImpactEntityTypeEnvironment,
+		IncidentTypeEntityTemplateImpactEntityTypeFunctionality,
+		IncidentTypeEntityTemplateImpactEntityTypeService,
+	}
+}
 func (e *IncidentTypeEntityTemplateImpactEntityType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

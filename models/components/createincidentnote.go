@@ -20,6 +20,15 @@ const (
 func (e CreateIncidentNoteVisibility) ToPointer() *CreateIncidentNoteVisibility {
 	return &e
 }
+
+// CreateIncidentNoteVisibilityValues returns every known CreateIncidentNoteVisibility value in schema order.
+func CreateIncidentNoteVisibilityValues() []CreateIncidentNoteVisibility {
+	return []CreateIncidentNoteVisibility{
+		CreateIncidentNoteVisibilityPrivateToOrg,
+		CreateIncidentNoteVisibilityOpenToPublic,
+		CreateIncidentNoteVisibilityInternalStatusPage,
+	}
+}
 func (e *CreateIncidentNoteVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -23,6 +23,19 @@ const (
 func (e UpdateSeverityColor) ToPointer() *UpdateSeverityColor {
 	return &e
 }
+
+// UpdateSeverityColorValues returns every known UpdateSeverityColor value in schema order.
+func UpdateSeverityColorValues() []UpdateSeverityColor {
+	return []UpdateSeverityColor{
+		UpdateSeverityColorRed,
+		UpdateSeverityColorOrange,
+		UpdateSeverityColorYellow,
+		UpdateSeverityColorBlue,
+		UpdateSeverityColorTeal,
+		UpdateSeverityColorGrey,
+		UpdateSeverityColorGreen,
+	}
+}
 func (e *UpdateSeverityColor) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

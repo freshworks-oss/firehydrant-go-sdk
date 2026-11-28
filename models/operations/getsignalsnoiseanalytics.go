@@ -21,6 +21,15 @@ const (
 func (e GetSignalsNoiseAnalyticsBucket) ToPointer() *GetSignalsNoiseAnalyticsBucket {
 	return &e
 }
+
+// GetSignalsNoiseAnalyticsBucketValues returns every known GetSignalsNoiseAnalyticsBucket value in schema order.
+func GetSignalsNoiseAnalyticsBucketValues() []GetSignalsNoiseAnalyticsBucket {
+	return []GetSignalsNoiseAnalyticsBucket{
+		GetSignalsNoiseAnalyticsBucketMonth,
+		GetSignalsNoiseAnalyticsBucketWeek,
+		GetSignalsNoiseAnalyticsBucketDay,
+	}
+}
 func (e *GetSignalsNoiseAnalyticsBucket) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -52,6 +61,17 @@ const (
 
 func (e GetSignalsNoiseAnalyticsGroupBy) ToPointer() *GetSignalsNoiseAnalyticsGroupBy {
 	return &e
+}
+
+// GetSignalsNoiseAnalyticsGroupByValues returns every known GetSignalsNoiseAnalyticsGroupBy value in schema order.
+func GetSignalsNoiseAnalyticsGroupByValues() []GetSignalsNoiseAnalyticsGroupBy {
+	return []GetSignalsNoiseAnalyticsGroupBy{
+		GetSignalsNoiseAnalyticsGroupBySignalRules,
+		GetSignalsNoiseAnalyticsGroupByTeams,
+		GetSignalsNoiseAnalyticsGroupByServices,
+		GetSignalsNoiseAnalyticsGroupByEnvironments,
+		GetSignalsNoiseAnalyticsGroupByTags,
+	}
 }
 func (e *GetSignalsNoiseAnalyticsGroupBy) UnmarshalJSON(data []byte) error {
 	var v string
@@ -91,6 +111,19 @@ const (
 func (e GetSignalsNoiseAnalyticsSortBy) ToPointer() *GetSignalsNoiseAnalyticsSortBy {
 	return &e
 }
+
+// GetSignalsNoiseAnalyticsSortByValues returns every known GetSignalsNoiseAnalyticsSortBy value in schema order.
+func GetSignalsNoiseAnalyticsSortByValues() []GetSignalsNoiseAnalyticsSortBy {
+	return []GetSignalsNoiseAnalyticsSortBy{
+		GetSignalsNoiseAnalyticsSortByTotalOpenedAlerts,
+		GetSignalsNoiseAnalyticsSortByTotalAckedAlerts,
+		GetSignalsNoiseAnalyticsSortByTotalIncidents,
+		GetSignalsNoiseAnalyticsSortByTotalBillableAlerts,
+		GetSignalsNoiseAnalyticsSortByTotalResolvedAlerts,
+		GetSignalsNoiseAnalyticsSortByAckedPercentage,
+		GetSignalsNoiseAnalyticsSortByIncidentsPercentage,
+	}
+}
 func (e *GetSignalsNoiseAnalyticsSortBy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -127,6 +160,14 @@ const (
 
 func (e GetSignalsNoiseAnalyticsSortDirection) ToPointer() *GetSignalsNoiseAnalyticsSortDirection {
 	return &e
+}
+
+// GetSignalsNoiseAnalyticsSortDirectionValues returns every known GetSignalsNoiseAnalyticsSortDirection value in schema order.
+func GetSignalsNoiseAnalyticsSortDirectionValues() []GetSignalsNoiseAnalyticsSortDirection {
+	return []GetSignalsNoiseAnalyticsSortDirection{
+		GetSignalsNoiseAnalyticsSortDirectionAsc,
+		GetSignalsNoiseAnalyticsSortDirectionDesc,
+	}
 }
 func (e *GetSignalsNoiseAnalyticsSortDirection) UnmarshalJSON(data []byte) error {
 	var v string

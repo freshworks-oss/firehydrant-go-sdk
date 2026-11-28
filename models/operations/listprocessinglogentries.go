@@ -22,6 +22,18 @@ const (
 func (e OfLevel) ToPointer() *OfLevel {
 	return &e
 }
+
+// OfLevelValues returns every known OfLevel value in schema order.
+func OfLevelValues() []OfLevel {
+	return []OfLevel{
+		OfLevelUnknown,
+		OfLevelDebug,
+		OfLevelInfo,
+		OfLevelWarn,
+		OfLevelError,
+		OfLevelFatal,
+	}
+}
 func (e *OfLevel) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -60,6 +72,18 @@ const (
 
 func (e ExactLevel) ToPointer() *ExactLevel {
 	return &e
+}
+
+// ExactLevelValues returns every known ExactLevel value in schema order.
+func ExactLevelValues() []ExactLevel {
+	return []ExactLevel{
+		ExactLevelUnknown,
+		ExactLevelDebug,
+		ExactLevelInfo,
+		ExactLevelWarn,
+		ExactLevelError,
+		ExactLevelFatal,
+	}
 }
 func (e *ExactLevel) UnmarshalJSON(data []byte) error {
 	var v string

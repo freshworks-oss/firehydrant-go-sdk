@@ -88,6 +88,14 @@ const (
 func (e CreateSignalsHeartbeatEndpointConfigurationKind) ToPointer() *CreateSignalsHeartbeatEndpointConfigurationKind {
 	return &e
 }
+
+// CreateSignalsHeartbeatEndpointConfigurationKindValues returns every known CreateSignalsHeartbeatEndpointConfigurationKind value in schema order.
+func CreateSignalsHeartbeatEndpointConfigurationKindValues() []CreateSignalsHeartbeatEndpointConfigurationKind {
+	return []CreateSignalsHeartbeatEndpointConfigurationKind{
+		CreateSignalsHeartbeatEndpointConfigurationKindHTTP,
+		CreateSignalsHeartbeatEndpointConfigurationKindEmail,
+	}
+}
 func (e *CreateSignalsHeartbeatEndpointConfigurationKind) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -22,6 +22,17 @@ const (
 func (e IntegrationsAwsCloudtrailBatchEntityStatus) ToPointer() *IntegrationsAwsCloudtrailBatchEntityStatus {
 	return &e
 }
+
+// IntegrationsAwsCloudtrailBatchEntityStatusValues returns every known IntegrationsAwsCloudtrailBatchEntityStatus value in schema order.
+func IntegrationsAwsCloudtrailBatchEntityStatusValues() []IntegrationsAwsCloudtrailBatchEntityStatus {
+	return []IntegrationsAwsCloudtrailBatchEntityStatus{
+		IntegrationsAwsCloudtrailBatchEntityStatusInProgress,
+		IntegrationsAwsCloudtrailBatchEntityStatusFailed,
+		IntegrationsAwsCloudtrailBatchEntityStatusSuccessful,
+		IntegrationsAwsCloudtrailBatchEntityStatusPending,
+		IntegrationsAwsCloudtrailBatchEntityStatusRetried,
+	}
+}
 func (e *IntegrationsAwsCloudtrailBatchEntityStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

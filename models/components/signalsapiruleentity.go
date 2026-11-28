@@ -21,6 +21,16 @@ const (
 func (e SignalsAPIRuleEntityNotificationPriorityOverride) ToPointer() *SignalsAPIRuleEntityNotificationPriorityOverride {
 	return &e
 }
+
+// SignalsAPIRuleEntityNotificationPriorityOverrideValues returns every known SignalsAPIRuleEntityNotificationPriorityOverride value in schema order.
+func SignalsAPIRuleEntityNotificationPriorityOverrideValues() []SignalsAPIRuleEntityNotificationPriorityOverride {
+	return []SignalsAPIRuleEntityNotificationPriorityOverride{
+		SignalsAPIRuleEntityNotificationPriorityOverrideHigh,
+		SignalsAPIRuleEntityNotificationPriorityOverrideMedium,
+		SignalsAPIRuleEntityNotificationPriorityOverrideLow,
+		SignalsAPIRuleEntityNotificationPriorityOverrideUnknown,
+	}
+}
 func (e *SignalsAPIRuleEntityNotificationPriorityOverride) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -50,6 +60,14 @@ const (
 
 func (e SignalsAPIRuleEntityCreateIncidentConditionWhen) ToPointer() *SignalsAPIRuleEntityCreateIncidentConditionWhen {
 	return &e
+}
+
+// SignalsAPIRuleEntityCreateIncidentConditionWhenValues returns every known SignalsAPIRuleEntityCreateIncidentConditionWhen value in schema order.
+func SignalsAPIRuleEntityCreateIncidentConditionWhenValues() []SignalsAPIRuleEntityCreateIncidentConditionWhen {
+	return []SignalsAPIRuleEntityCreateIncidentConditionWhen{
+		SignalsAPIRuleEntityCreateIncidentConditionWhenWhenUnspecified,
+		SignalsAPIRuleEntityCreateIncidentConditionWhenWhenAlways,
+	}
 }
 func (e *SignalsAPIRuleEntityCreateIncidentConditionWhen) UnmarshalJSON(data []byte) error {
 	var v string

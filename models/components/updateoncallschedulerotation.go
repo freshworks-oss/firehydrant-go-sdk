@@ -48,6 +48,15 @@ const (
 func (e UpdateOnCallScheduleRotationType) ToPointer() *UpdateOnCallScheduleRotationType {
 	return &e
 }
+
+// UpdateOnCallScheduleRotationTypeValues returns every known UpdateOnCallScheduleRotationType value in schema order.
+func UpdateOnCallScheduleRotationTypeValues() []UpdateOnCallScheduleRotationType {
+	return []UpdateOnCallScheduleRotationType{
+		UpdateOnCallScheduleRotationTypeDaily,
+		UpdateOnCallScheduleRotationTypeWeekly,
+		UpdateOnCallScheduleRotationTypeCustom,
+	}
+}
 func (e *UpdateOnCallScheduleRotationType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -81,6 +90,19 @@ const (
 
 func (e UpdateOnCallScheduleRotationHandoffDay) ToPointer() *UpdateOnCallScheduleRotationHandoffDay {
 	return &e
+}
+
+// UpdateOnCallScheduleRotationHandoffDayValues returns every known UpdateOnCallScheduleRotationHandoffDay value in schema order.
+func UpdateOnCallScheduleRotationHandoffDayValues() []UpdateOnCallScheduleRotationHandoffDay {
+	return []UpdateOnCallScheduleRotationHandoffDay{
+		UpdateOnCallScheduleRotationHandoffDayMonday,
+		UpdateOnCallScheduleRotationHandoffDayTuesday,
+		UpdateOnCallScheduleRotationHandoffDayWednesday,
+		UpdateOnCallScheduleRotationHandoffDayThursday,
+		UpdateOnCallScheduleRotationHandoffDayFriday,
+		UpdateOnCallScheduleRotationHandoffDaySaturday,
+		UpdateOnCallScheduleRotationHandoffDaySunday,
+	}
 }
 func (e *UpdateOnCallScheduleRotationHandoffDay) UnmarshalJSON(data []byte) error {
 	var v string
@@ -164,6 +186,19 @@ const (
 func (e UpdateOnCallScheduleRotationStartDay) ToPointer() *UpdateOnCallScheduleRotationStartDay {
 	return &e
 }
+
+// UpdateOnCallScheduleRotationStartDayValues returns every known UpdateOnCallScheduleRotationStartDay value in schema order.
+func UpdateOnCallScheduleRotationStartDayValues() []UpdateOnCallScheduleRotationStartDay {
+	return []UpdateOnCallScheduleRotationStartDay{
+		UpdateOnCallScheduleRotationStartDayMonday,
+		UpdateOnCallScheduleRotationStartDayTuesday,
+		UpdateOnCallScheduleRotationStartDayWednesday,
+		UpdateOnCallScheduleRotationStartDayThursday,
+		UpdateOnCallScheduleRotationStartDayFriday,
+		UpdateOnCallScheduleRotationStartDaySaturday,
+		UpdateOnCallScheduleRotationStartDaySunday,
+	}
+}
 func (e *UpdateOnCallScheduleRotationStartDay) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -205,6 +240,19 @@ const (
 
 func (e UpdateOnCallScheduleRotationEndDay) ToPointer() *UpdateOnCallScheduleRotationEndDay {
 	return &e
+}
+
+// UpdateOnCallScheduleRotationEndDayValues returns every known UpdateOnCallScheduleRotationEndDay value in schema order.
+func UpdateOnCallScheduleRotationEndDayValues() []UpdateOnCallScheduleRotationEndDay {
+	return []UpdateOnCallScheduleRotationEndDay{
+		UpdateOnCallScheduleRotationEndDayMonday,
+		UpdateOnCallScheduleRotationEndDayTuesday,
+		UpdateOnCallScheduleRotationEndDayWednesday,
+		UpdateOnCallScheduleRotationEndDayThursday,
+		UpdateOnCallScheduleRotationEndDayFriday,
+		UpdateOnCallScheduleRotationEndDaySaturday,
+		UpdateOnCallScheduleRotationEndDaySunday,
+	}
 }
 func (e *UpdateOnCallScheduleRotationEndDay) UnmarshalJSON(data []byte) error {
 	var v string

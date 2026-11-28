@@ -21,6 +21,15 @@ const (
 func (e ListTicketFunnelMetricsTagMatchStrategy) ToPointer() *ListTicketFunnelMetricsTagMatchStrategy {
 	return &e
 }
+
+// ListTicketFunnelMetricsTagMatchStrategyValues returns every known ListTicketFunnelMetricsTagMatchStrategy value in schema order.
+func ListTicketFunnelMetricsTagMatchStrategyValues() []ListTicketFunnelMetricsTagMatchStrategy {
+	return []ListTicketFunnelMetricsTagMatchStrategy{
+		ListTicketFunnelMetricsTagMatchStrategyAny,
+		ListTicketFunnelMetricsTagMatchStrategyMatchAll,
+		ListTicketFunnelMetricsTagMatchStrategyExclude,
+	}
+}
 func (e *ListTicketFunnelMetricsTagMatchStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -50,6 +59,16 @@ const (
 
 func (e ListTicketFunnelMetricsGroupBy) ToPointer() *ListTicketFunnelMetricsGroupBy {
 	return &e
+}
+
+// ListTicketFunnelMetricsGroupByValues returns every known ListTicketFunnelMetricsGroupBy value in schema order.
+func ListTicketFunnelMetricsGroupByValues() []ListTicketFunnelMetricsGroupBy {
+	return []ListTicketFunnelMetricsGroupBy{
+		ListTicketFunnelMetricsGroupByStartedDay,
+		ListTicketFunnelMetricsGroupByStartedWeek,
+		ListTicketFunnelMetricsGroupByStartedMonth,
+		ListTicketFunnelMetricsGroupByAllTime,
+	}
 }
 func (e *ListTicketFunnelMetricsGroupBy) UnmarshalJSON(data []byte) error {
 	var v string

@@ -19,6 +19,15 @@ const (
 func (e CreateLifecycleMilestoneAutoAssignTimestampOnCreate) ToPointer() *CreateLifecycleMilestoneAutoAssignTimestampOnCreate {
 	return &e
 }
+
+// CreateLifecycleMilestoneAutoAssignTimestampOnCreateValues returns every known CreateLifecycleMilestoneAutoAssignTimestampOnCreate value in schema order.
+func CreateLifecycleMilestoneAutoAssignTimestampOnCreateValues() []CreateLifecycleMilestoneAutoAssignTimestampOnCreate {
+	return []CreateLifecycleMilestoneAutoAssignTimestampOnCreate{
+		CreateLifecycleMilestoneAutoAssignTimestampOnCreateAlwaysSetOnCreate,
+		CreateLifecycleMilestoneAutoAssignTimestampOnCreateOnlySetOnManualCreate,
+		CreateLifecycleMilestoneAutoAssignTimestampOnCreateNeverSetOnCreate,
+	}
+}
 func (e *CreateLifecycleMilestoneAutoAssignTimestampOnCreate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

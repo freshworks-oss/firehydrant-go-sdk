@@ -19,6 +19,15 @@ const (
 func (e ListTicketsTagMatchStrategy) ToPointer() *ListTicketsTagMatchStrategy {
 	return &e
 }
+
+// ListTicketsTagMatchStrategyValues returns every known ListTicketsTagMatchStrategy value in schema order.
+func ListTicketsTagMatchStrategyValues() []ListTicketsTagMatchStrategy {
+	return []ListTicketsTagMatchStrategy{
+		ListTicketsTagMatchStrategyAny,
+		ListTicketsTagMatchStrategyMatchAll,
+		ListTicketsTagMatchStrategyExclude,
+	}
+}
 func (e *ListTicketsTagMatchStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -49,6 +58,16 @@ const (
 
 func (e State) ToPointer() *State {
 	return &e
+}
+
+// StateValues returns every known State value in schema order.
+func StateValues() []State {
+	return []State{
+		StateOpen,
+		StateInProgress,
+		StateCancelled,
+		StateDone,
+	}
 }
 func (e *State) UnmarshalJSON(data []byte) error {
 	var v string

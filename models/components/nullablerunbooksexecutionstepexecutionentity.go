@@ -24,6 +24,19 @@ const (
 func (e NullableRunbooksExecutionStepExecutionEntityState) ToPointer() *NullableRunbooksExecutionStepExecutionEntityState {
 	return &e
 }
+
+// NullableRunbooksExecutionStepExecutionEntityStateValues returns every known NullableRunbooksExecutionStepExecutionEntityState value in schema order.
+func NullableRunbooksExecutionStepExecutionEntityStateValues() []NullableRunbooksExecutionStepExecutionEntityState {
+	return []NullableRunbooksExecutionStepExecutionEntityState{
+		NullableRunbooksExecutionStepExecutionEntityStateInitial,
+		NullableRunbooksExecutionStepExecutionEntityStatePending,
+		NullableRunbooksExecutionStepExecutionEntityStateScheduled,
+		NullableRunbooksExecutionStepExecutionEntityStateStarted,
+		NullableRunbooksExecutionStepExecutionEntityStateDismissed,
+		NullableRunbooksExecutionStepExecutionEntityStateCompleted,
+		NullableRunbooksExecutionStepExecutionEntityStateErrored,
+	}
+}
 func (e *NullableRunbooksExecutionStepExecutionEntityState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

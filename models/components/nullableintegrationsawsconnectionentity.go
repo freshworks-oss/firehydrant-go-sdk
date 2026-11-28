@@ -21,6 +21,17 @@ const (
 func (e NullableIntegrationsAwsConnectionEntityConnectionStatus) ToPointer() *NullableIntegrationsAwsConnectionEntityConnectionStatus {
 	return &e
 }
+
+// NullableIntegrationsAwsConnectionEntityConnectionStatusValues returns every known NullableIntegrationsAwsConnectionEntityConnectionStatus value in schema order.
+func NullableIntegrationsAwsConnectionEntityConnectionStatusValues() []NullableIntegrationsAwsConnectionEntityConnectionStatus {
+	return []NullableIntegrationsAwsConnectionEntityConnectionStatus{
+		NullableIntegrationsAwsConnectionEntityConnectionStatusPendingSetup,
+		NullableIntegrationsAwsConnectionEntityConnectionStatusRoleAssumed,
+		NullableIntegrationsAwsConnectionEntityConnectionStatusCantAssumeRole,
+		NullableIntegrationsAwsConnectionEntityConnectionStatusInvalidPermissions,
+		NullableIntegrationsAwsConnectionEntityConnectionStatusValidated,
+	}
+}
 func (e *NullableIntegrationsAwsConnectionEntityConnectionStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

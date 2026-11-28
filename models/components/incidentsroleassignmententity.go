@@ -19,6 +19,14 @@ const (
 func (e IncidentsRoleAssignmentEntityStatus) ToPointer() *IncidentsRoleAssignmentEntityStatus {
 	return &e
 }
+
+// IncidentsRoleAssignmentEntityStatusValues returns every known IncidentsRoleAssignmentEntityStatus value in schema order.
+func IncidentsRoleAssignmentEntityStatusValues() []IncidentsRoleAssignmentEntityStatus {
+	return []IncidentsRoleAssignmentEntityStatus{
+		IncidentsRoleAssignmentEntityStatusActive,
+		IncidentsRoleAssignmentEntityStatusInactive,
+	}
+}
 func (e *IncidentsRoleAssignmentEntityStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

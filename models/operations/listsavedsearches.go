@@ -26,6 +26,23 @@ const (
 func (e ListSavedSearchesResourceType) ToPointer() *ListSavedSearchesResourceType {
 	return &e
 }
+
+// ListSavedSearchesResourceTypeValues returns every known ListSavedSearchesResourceType value in schema order.
+func ListSavedSearchesResourceTypeValues() []ListSavedSearchesResourceType {
+	return []ListSavedSearchesResourceType{
+		ListSavedSearchesResourceTypeChangeEvents,
+		ListSavedSearchesResourceTypeIncidents,
+		ListSavedSearchesResourceTypeServices,
+		ListSavedSearchesResourceTypeScheduledMaintenances,
+		ListSavedSearchesResourceTypeTicketTasks,
+		ListSavedSearchesResourceTypeTicketFollowUps,
+		ListSavedSearchesResourceTypeAnalytics,
+		ListSavedSearchesResourceTypeImpactAnalytics,
+		ListSavedSearchesResourceTypeAlerts,
+		ListSavedSearchesResourceTypeAlertAnalytics,
+		ListSavedSearchesResourceTypeIncidentEvents,
+	}
+}
 func (e *ListSavedSearchesResourceType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

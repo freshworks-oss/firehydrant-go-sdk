@@ -19,6 +19,15 @@ const (
 func (e Direction) ToPointer() *Direction {
 	return &e
 }
+
+// DirectionValues returns every known Direction value in schema order.
+func DirectionValues() []Direction {
+	return []Direction{
+		DirectionUp,
+		DirectionDown,
+		DirectionDig,
+	}
+}
 func (e *Direction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

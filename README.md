@@ -283,7 +283,7 @@ func main() {
 * [DeleteSeverity](docs/sdks/incidentsettings/README.md#deleteseverity) - Delete a severity
 * [UpdateSeverity](docs/sdks/incidentsettings/README.md#updateseverity) - Update a severity
 * [GetSeverityMatrix](docs/sdks/incidentsettings/README.md#getseveritymatrix) - Get severity matrix
-* [UpdateSeverityMatrix](docs/sdks/incidentsettings/README.md#updateseveritymatrix) - Update severity matrix
+* [~~UpdateSeverityMatrix~~](docs/sdks/incidentsettings/README.md#updateseveritymatrix) - Update severity matrix :warning: **Deprecated**
 * [ListSeverityMatrixConditions](docs/sdks/incidentsettings/README.md#listseveritymatrixconditions) - List severity matrix conditions
 * [CreateSeverityMatrixCondition](docs/sdks/incidentsettings/README.md#createseveritymatrixcondition) - Create a severity matrix condition
 * [GetSeverityMatrixCondition](docs/sdks/incidentsettings/README.md#getseveritymatrixcondition) - Get a severity matrix condition
@@ -293,6 +293,7 @@ func main() {
 * [CreateSeverityMatrixImpact](docs/sdks/incidentsettings/README.md#createseveritymatriximpact) - Create a severity matrix impact
 * [DeleteSeverityMatrixImpact](docs/sdks/incidentsettings/README.md#deleteseveritymatriximpact) - Delete a severity matrix impact
 * [UpdateSeverityMatrixImpact](docs/sdks/incidentsettings/README.md#updateseveritymatriximpact) - Update a severity matrix impact
+* [UpdateSeverityMatrixItems](docs/sdks/incidentsettings/README.md#updateseveritymatrixitems) - Update severity matrix items
 * [DeleteCustomFieldDefinition](docs/sdks/incidentsettings/README.md#deletecustomfielddefinition) - Delete a custom field definition
 * [UpdateCustomFieldDefinition](docs/sdks/incidentsettings/README.md#updatecustomfielddefinition) - Update a custom field definition
 * [ListCustomFieldDefinitions](docs/sdks/incidentsettings/README.md#listcustomfielddefinitions) - List custom field definitions

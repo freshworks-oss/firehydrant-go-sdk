@@ -18,6 +18,14 @@ const (
 func (e TicketType) ToPointer() *TicketType {
 	return &e
 }
+
+// TicketTypeValues returns every known TicketType value in schema order.
+func TicketTypeValues() []TicketType {
+	return []TicketType{
+		TicketTypeIncident,
+		TicketTypeFollowUp,
+	}
+}
 func (e *TicketType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

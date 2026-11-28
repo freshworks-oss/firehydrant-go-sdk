@@ -22,6 +22,18 @@ const (
 func (e UpdateTeamSignalRuleTargetType) ToPointer() *UpdateTeamSignalRuleTargetType {
 	return &e
 }
+
+// UpdateTeamSignalRuleTargetTypeValues returns every known UpdateTeamSignalRuleTargetType value in schema order.
+func UpdateTeamSignalRuleTargetTypeValues() []UpdateTeamSignalRuleTargetType {
+	return []UpdateTeamSignalRuleTargetType{
+		UpdateTeamSignalRuleTargetTypeEscalationPolicy,
+		UpdateTeamSignalRuleTargetTypeOnCallSchedule,
+		UpdateTeamSignalRuleTargetTypeUser,
+		UpdateTeamSignalRuleTargetTypeWebhook,
+		UpdateTeamSignalRuleTargetTypeSlackChannel,
+		UpdateTeamSignalRuleTargetTypeMicrosoftTeamsChannel,
+	}
+}
 func (e *UpdateTeamSignalRuleTargetType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -59,6 +71,16 @@ const (
 func (e UpdateTeamSignalRuleNotificationPriorityOverride) ToPointer() *UpdateTeamSignalRuleNotificationPriorityOverride {
 	return &e
 }
+
+// UpdateTeamSignalRuleNotificationPriorityOverrideValues returns every known UpdateTeamSignalRuleNotificationPriorityOverride value in schema order.
+func UpdateTeamSignalRuleNotificationPriorityOverrideValues() []UpdateTeamSignalRuleNotificationPriorityOverride {
+	return []UpdateTeamSignalRuleNotificationPriorityOverride{
+		UpdateTeamSignalRuleNotificationPriorityOverrideHigh,
+		UpdateTeamSignalRuleNotificationPriorityOverrideMedium,
+		UpdateTeamSignalRuleNotificationPriorityOverrideLow,
+		UpdateTeamSignalRuleNotificationPriorityOverrideUnknown,
+	}
+}
 func (e *UpdateTeamSignalRuleNotificationPriorityOverride) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -89,6 +111,14 @@ const (
 
 func (e UpdateTeamSignalRuleCreateIncidentConditionWhen) ToPointer() *UpdateTeamSignalRuleCreateIncidentConditionWhen {
 	return &e
+}
+
+// UpdateTeamSignalRuleCreateIncidentConditionWhenValues returns every known UpdateTeamSignalRuleCreateIncidentConditionWhen value in schema order.
+func UpdateTeamSignalRuleCreateIncidentConditionWhenValues() []UpdateTeamSignalRuleCreateIncidentConditionWhen {
+	return []UpdateTeamSignalRuleCreateIncidentConditionWhen{
+		UpdateTeamSignalRuleCreateIncidentConditionWhenWhenUnspecified,
+		UpdateTeamSignalRuleCreateIncidentConditionWhenWhenAlways,
+	}
 }
 func (e *UpdateTeamSignalRuleCreateIncidentConditionWhen) UnmarshalJSON(data []byte) error {
 	var v string

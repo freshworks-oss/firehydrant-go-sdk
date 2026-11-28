@@ -18,6 +18,14 @@ const (
 func (e StrategyEnum) ToPointer() *StrategyEnum {
 	return &e
 }
+
+// StrategyEnumValues returns every known StrategyEnum value in schema order.
+func StrategyEnumValues() []StrategyEnum {
+	return []StrategyEnum{
+		StrategyEnumBasic,
+		StrategyEnumLogic,
+	}
+}
 func (e *StrategyEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

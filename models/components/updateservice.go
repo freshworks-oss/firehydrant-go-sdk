@@ -183,6 +183,18 @@ const (
 func (e UpdateServiceServiceTier) ToPointer() *UpdateServiceServiceTier {
 	return &e
 }
+
+// UpdateServiceServiceTierValues returns every known UpdateServiceServiceTier value in schema order.
+func UpdateServiceServiceTierValues() []UpdateServiceServiceTier {
+	return []UpdateServiceServiceTier{
+		UpdateServiceServiceTierZero,
+		UpdateServiceServiceTierOne,
+		UpdateServiceServiceTierTwo,
+		UpdateServiceServiceTierThree,
+		UpdateServiceServiceTierFour,
+		UpdateServiceServiceTierFive,
+	}
+}
 func (e *UpdateServiceServiceTier) UnmarshalJSON(data []byte) error {
 	var v int
 	if err := json.Unmarshal(data, &v); err != nil {

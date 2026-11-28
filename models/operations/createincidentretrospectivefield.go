@@ -24,6 +24,20 @@ const (
 func (e CreateIncidentRetrospectiveFieldType) ToPointer() *CreateIncidentRetrospectiveFieldType {
 	return &e
 }
+
+// CreateIncidentRetrospectiveFieldTypeValues returns every known CreateIncidentRetrospectiveFieldType value in schema order.
+func CreateIncidentRetrospectiveFieldTypeValues() []CreateIncidentRetrospectiveFieldType {
+	return []CreateIncidentRetrospectiveFieldType{
+		CreateIncidentRetrospectiveFieldTypeText,
+		CreateIncidentRetrospectiveFieldTypeSingleSelect,
+		CreateIncidentRetrospectiveFieldTypeMultiSelect,
+		CreateIncidentRetrospectiveFieldTypeNumeric,
+		CreateIncidentRetrospectiveFieldTypeDatetime,
+		CreateIncidentRetrospectiveFieldTypeDynamicInputGroup,
+		CreateIncidentRetrospectiveFieldTypeMarkdown,
+		CreateIncidentRetrospectiveFieldTypeMarkdownText,
+	}
+}
 func (e *CreateIncidentRetrospectiveFieldType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

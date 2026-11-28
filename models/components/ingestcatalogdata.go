@@ -19,6 +19,15 @@ const (
 func (e Encoding) ToPointer() *Encoding {
 	return &e
 }
+
+// EncodingValues returns every known Encoding value in schema order.
+func EncodingValues() []Encoding {
+	return []Encoding{
+		EncodingTextYaml,
+		EncodingApplicationXYaml,
+		EncodingApplicationJSON,
+	}
+}
 func (e *Encoding) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

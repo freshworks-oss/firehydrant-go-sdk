@@ -1,6 +1,6 @@
 # UpdateSeverityMatrix
 
-Update available severities and impacts in your organization's severity matrix.
+Deprecated, use PATCH /v1/severity_matrix/items. Replaces the severity matrix with the items in the request; items that are not in the request are removed.
 
 
 ## Fields

@@ -48,6 +48,15 @@ const (
 func (e CreateTeamOnCallScheduleRotationType) ToPointer() *CreateTeamOnCallScheduleRotationType {
 	return &e
 }
+
+// CreateTeamOnCallScheduleRotationTypeValues returns every known CreateTeamOnCallScheduleRotationType value in schema order.
+func CreateTeamOnCallScheduleRotationTypeValues() []CreateTeamOnCallScheduleRotationType {
+	return []CreateTeamOnCallScheduleRotationType{
+		CreateTeamOnCallScheduleRotationTypeDaily,
+		CreateTeamOnCallScheduleRotationTypeWeekly,
+		CreateTeamOnCallScheduleRotationTypeCustom,
+	}
+}
 func (e *CreateTeamOnCallScheduleRotationType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -81,6 +90,19 @@ const (
 
 func (e CreateTeamOnCallScheduleRotationHandoffDay) ToPointer() *CreateTeamOnCallScheduleRotationHandoffDay {
 	return &e
+}
+
+// CreateTeamOnCallScheduleRotationHandoffDayValues returns every known CreateTeamOnCallScheduleRotationHandoffDay value in schema order.
+func CreateTeamOnCallScheduleRotationHandoffDayValues() []CreateTeamOnCallScheduleRotationHandoffDay {
+	return []CreateTeamOnCallScheduleRotationHandoffDay{
+		CreateTeamOnCallScheduleRotationHandoffDayMonday,
+		CreateTeamOnCallScheduleRotationHandoffDayTuesday,
+		CreateTeamOnCallScheduleRotationHandoffDayWednesday,
+		CreateTeamOnCallScheduleRotationHandoffDayThursday,
+		CreateTeamOnCallScheduleRotationHandoffDayFriday,
+		CreateTeamOnCallScheduleRotationHandoffDaySaturday,
+		CreateTeamOnCallScheduleRotationHandoffDaySunday,
+	}
 }
 func (e *CreateTeamOnCallScheduleRotationHandoffDay) UnmarshalJSON(data []byte) error {
 	var v string
@@ -164,6 +186,19 @@ const (
 func (e CreateTeamOnCallScheduleRotationStartDay) ToPointer() *CreateTeamOnCallScheduleRotationStartDay {
 	return &e
 }
+
+// CreateTeamOnCallScheduleRotationStartDayValues returns every known CreateTeamOnCallScheduleRotationStartDay value in schema order.
+func CreateTeamOnCallScheduleRotationStartDayValues() []CreateTeamOnCallScheduleRotationStartDay {
+	return []CreateTeamOnCallScheduleRotationStartDay{
+		CreateTeamOnCallScheduleRotationStartDayMonday,
+		CreateTeamOnCallScheduleRotationStartDayTuesday,
+		CreateTeamOnCallScheduleRotationStartDayWednesday,
+		CreateTeamOnCallScheduleRotationStartDayThursday,
+		CreateTeamOnCallScheduleRotationStartDayFriday,
+		CreateTeamOnCallScheduleRotationStartDaySaturday,
+		CreateTeamOnCallScheduleRotationStartDaySunday,
+	}
+}
 func (e *CreateTeamOnCallScheduleRotationStartDay) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -205,6 +240,19 @@ const (
 
 func (e CreateTeamOnCallScheduleRotationEndDay) ToPointer() *CreateTeamOnCallScheduleRotationEndDay {
 	return &e
+}
+
+// CreateTeamOnCallScheduleRotationEndDayValues returns every known CreateTeamOnCallScheduleRotationEndDay value in schema order.
+func CreateTeamOnCallScheduleRotationEndDayValues() []CreateTeamOnCallScheduleRotationEndDay {
+	return []CreateTeamOnCallScheduleRotationEndDay{
+		CreateTeamOnCallScheduleRotationEndDayMonday,
+		CreateTeamOnCallScheduleRotationEndDayTuesday,
+		CreateTeamOnCallScheduleRotationEndDayWednesday,
+		CreateTeamOnCallScheduleRotationEndDayThursday,
+		CreateTeamOnCallScheduleRotationEndDayFriday,
+		CreateTeamOnCallScheduleRotationEndDaySaturday,
+		CreateTeamOnCallScheduleRotationEndDaySunday,
+	}
 }
 func (e *CreateTeamOnCallScheduleRotationEndDay) UnmarshalJSON(data []byte) error {
 	var v string
@@ -433,6 +481,15 @@ const (
 func (e CreateTeamOnCallScheduleType) ToPointer() *CreateTeamOnCallScheduleType {
 	return &e
 }
+
+// CreateTeamOnCallScheduleTypeValues returns every known CreateTeamOnCallScheduleType value in schema order.
+func CreateTeamOnCallScheduleTypeValues() []CreateTeamOnCallScheduleType {
+	return []CreateTeamOnCallScheduleType{
+		CreateTeamOnCallScheduleTypeDaily,
+		CreateTeamOnCallScheduleTypeWeekly,
+		CreateTeamOnCallScheduleTypeCustom,
+	}
+}
 func (e *CreateTeamOnCallScheduleType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -466,6 +523,19 @@ const (
 
 func (e CreateTeamOnCallScheduleHandoffDay) ToPointer() *CreateTeamOnCallScheduleHandoffDay {
 	return &e
+}
+
+// CreateTeamOnCallScheduleHandoffDayValues returns every known CreateTeamOnCallScheduleHandoffDay value in schema order.
+func CreateTeamOnCallScheduleHandoffDayValues() []CreateTeamOnCallScheduleHandoffDay {
+	return []CreateTeamOnCallScheduleHandoffDay{
+		CreateTeamOnCallScheduleHandoffDayMonday,
+		CreateTeamOnCallScheduleHandoffDayTuesday,
+		CreateTeamOnCallScheduleHandoffDayWednesday,
+		CreateTeamOnCallScheduleHandoffDayThursday,
+		CreateTeamOnCallScheduleHandoffDayFriday,
+		CreateTeamOnCallScheduleHandoffDaySaturday,
+		CreateTeamOnCallScheduleHandoffDaySunday,
+	}
 }
 func (e *CreateTeamOnCallScheduleHandoffDay) UnmarshalJSON(data []byte) error {
 	var v string
@@ -549,6 +619,19 @@ const (
 func (e CreateTeamOnCallScheduleStartDay) ToPointer() *CreateTeamOnCallScheduleStartDay {
 	return &e
 }
+
+// CreateTeamOnCallScheduleStartDayValues returns every known CreateTeamOnCallScheduleStartDay value in schema order.
+func CreateTeamOnCallScheduleStartDayValues() []CreateTeamOnCallScheduleStartDay {
+	return []CreateTeamOnCallScheduleStartDay{
+		CreateTeamOnCallScheduleStartDayMonday,
+		CreateTeamOnCallScheduleStartDayTuesday,
+		CreateTeamOnCallScheduleStartDayWednesday,
+		CreateTeamOnCallScheduleStartDayThursday,
+		CreateTeamOnCallScheduleStartDayFriday,
+		CreateTeamOnCallScheduleStartDaySaturday,
+		CreateTeamOnCallScheduleStartDaySunday,
+	}
+}
 func (e *CreateTeamOnCallScheduleStartDay) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -590,6 +673,19 @@ const (
 
 func (e CreateTeamOnCallScheduleEndDay) ToPointer() *CreateTeamOnCallScheduleEndDay {
 	return &e
+}
+
+// CreateTeamOnCallScheduleEndDayValues returns every known CreateTeamOnCallScheduleEndDay value in schema order.
+func CreateTeamOnCallScheduleEndDayValues() []CreateTeamOnCallScheduleEndDay {
+	return []CreateTeamOnCallScheduleEndDay{
+		CreateTeamOnCallScheduleEndDayMonday,
+		CreateTeamOnCallScheduleEndDayTuesday,
+		CreateTeamOnCallScheduleEndDayWednesday,
+		CreateTeamOnCallScheduleEndDayThursday,
+		CreateTeamOnCallScheduleEndDayFriday,
+		CreateTeamOnCallScheduleEndDaySaturday,
+		CreateTeamOnCallScheduleEndDaySunday,
+	}
 }
 func (e *CreateTeamOnCallScheduleEndDay) UnmarshalJSON(data []byte) error {
 	var v string

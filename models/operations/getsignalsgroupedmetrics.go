@@ -23,6 +23,17 @@ const (
 func (e GetSignalsGroupedMetricsGroupBy) ToPointer() *GetSignalsGroupedMetricsGroupBy {
 	return &e
 }
+
+// GetSignalsGroupedMetricsGroupByValues returns every known GetSignalsGroupedMetricsGroupBy value in schema order.
+func GetSignalsGroupedMetricsGroupByValues() []GetSignalsGroupedMetricsGroupBy {
+	return []GetSignalsGroupedMetricsGroupBy{
+		GetSignalsGroupedMetricsGroupBySignalRules,
+		GetSignalsGroupedMetricsGroupByTeams,
+		GetSignalsGroupedMetricsGroupByServices,
+		GetSignalsGroupedMetricsGroupByEnvironments,
+		GetSignalsGroupedMetricsGroupByTags,
+	}
+}
 func (e *GetSignalsGroupedMetricsGroupBy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -61,6 +72,19 @@ const (
 func (e GetSignalsGroupedMetricsSortBy) ToPointer() *GetSignalsGroupedMetricsSortBy {
 	return &e
 }
+
+// GetSignalsGroupedMetricsSortByValues returns every known GetSignalsGroupedMetricsSortBy value in schema order.
+func GetSignalsGroupedMetricsSortByValues() []GetSignalsGroupedMetricsSortBy {
+	return []GetSignalsGroupedMetricsSortBy{
+		GetSignalsGroupedMetricsSortByTotalOpenedAlerts,
+		GetSignalsGroupedMetricsSortByTotalAckedAlerts,
+		GetSignalsGroupedMetricsSortByTotalIncidents,
+		GetSignalsGroupedMetricsSortByTotalBillableAlerts,
+		GetSignalsGroupedMetricsSortByTotalResolvedAlerts,
+		GetSignalsGroupedMetricsSortByAckedPercentage,
+		GetSignalsGroupedMetricsSortByIncidentsPercentage,
+	}
+}
 func (e *GetSignalsGroupedMetricsSortBy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -97,6 +121,14 @@ const (
 
 func (e GetSignalsGroupedMetricsSortDirection) ToPointer() *GetSignalsGroupedMetricsSortDirection {
 	return &e
+}
+
+// GetSignalsGroupedMetricsSortDirectionValues returns every known GetSignalsGroupedMetricsSortDirection value in schema order.
+func GetSignalsGroupedMetricsSortDirectionValues() []GetSignalsGroupedMetricsSortDirection {
+	return []GetSignalsGroupedMetricsSortDirection{
+		GetSignalsGroupedMetricsSortDirectionAsc,
+		GetSignalsGroupedMetricsSortDirectionDesc,
+	}
 }
 func (e *GetSignalsGroupedMetricsSortDirection) UnmarshalJSON(data []byte) error {
 	var v string

@@ -23,6 +23,18 @@ const (
 func (e UpdateTeamEscalationPolicyType) ToPointer() *UpdateTeamEscalationPolicyType {
 	return &e
 }
+
+// UpdateTeamEscalationPolicyTypeValues returns every known UpdateTeamEscalationPolicyType value in schema order.
+func UpdateTeamEscalationPolicyTypeValues() []UpdateTeamEscalationPolicyType {
+	return []UpdateTeamEscalationPolicyType{
+		UpdateTeamEscalationPolicyTypeOnCallSchedule,
+		UpdateTeamEscalationPolicyTypeUser,
+		UpdateTeamEscalationPolicyTypeSlackChannel,
+		UpdateTeamEscalationPolicyTypeMicrosoftTeamsChannel,
+		UpdateTeamEscalationPolicyTypeEntireTeam,
+		UpdateTeamEscalationPolicyTypeWebhook,
+	}
+}
 func (e *UpdateTeamEscalationPolicyType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -79,6 +91,15 @@ const (
 
 func (e UpdateTeamEscalationPolicyDistributionType) ToPointer() *UpdateTeamEscalationPolicyDistributionType {
 	return &e
+}
+
+// UpdateTeamEscalationPolicyDistributionTypeValues returns every known UpdateTeamEscalationPolicyDistributionType value in schema order.
+func UpdateTeamEscalationPolicyDistributionTypeValues() []UpdateTeamEscalationPolicyDistributionType {
+	return []UpdateTeamEscalationPolicyDistributionType{
+		UpdateTeamEscalationPolicyDistributionTypeUnspecified,
+		UpdateTeamEscalationPolicyDistributionTypeRoundRobinByAlert,
+		UpdateTeamEscalationPolicyDistributionTypeRoundRobinByEscalationPolicy,
+	}
 }
 func (e *UpdateTeamEscalationPolicyDistributionType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -159,6 +180,14 @@ const (
 func (e UpdateTeamEscalationPolicyTargetType) ToPointer() *UpdateTeamEscalationPolicyTargetType {
 	return &e
 }
+
+// UpdateTeamEscalationPolicyTargetTypeValues returns every known UpdateTeamEscalationPolicyTargetType value in schema order.
+func UpdateTeamEscalationPolicyTargetTypeValues() []UpdateTeamEscalationPolicyTargetType {
+	return []UpdateTeamEscalationPolicyTargetType{
+		UpdateTeamEscalationPolicyTargetTypeEscalationPolicy,
+		UpdateTeamEscalationPolicyTargetTypeTeam,
+	}
+}
 func (e *UpdateTeamEscalationPolicyTargetType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -206,6 +235,14 @@ const (
 
 func (e UpdateTeamEscalationPolicyHighTargetType) ToPointer() *UpdateTeamEscalationPolicyHighTargetType {
 	return &e
+}
+
+// UpdateTeamEscalationPolicyHighTargetTypeValues returns every known UpdateTeamEscalationPolicyHighTargetType value in schema order.
+func UpdateTeamEscalationPolicyHighTargetTypeValues() []UpdateTeamEscalationPolicyHighTargetType {
+	return []UpdateTeamEscalationPolicyHighTargetType{
+		UpdateTeamEscalationPolicyHighTargetTypeEscalationPolicy,
+		UpdateTeamEscalationPolicyHighTargetTypeTeam,
+	}
 }
 func (e *UpdateTeamEscalationPolicyHighTargetType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -286,6 +323,14 @@ const (
 func (e UpdateTeamEscalationPolicyMediumTargetType) ToPointer() *UpdateTeamEscalationPolicyMediumTargetType {
 	return &e
 }
+
+// UpdateTeamEscalationPolicyMediumTargetTypeValues returns every known UpdateTeamEscalationPolicyMediumTargetType value in schema order.
+func UpdateTeamEscalationPolicyMediumTargetTypeValues() []UpdateTeamEscalationPolicyMediumTargetType {
+	return []UpdateTeamEscalationPolicyMediumTargetType{
+		UpdateTeamEscalationPolicyMediumTargetTypeEscalationPolicy,
+		UpdateTeamEscalationPolicyMediumTargetTypeTeam,
+	}
+}
 func (e *UpdateTeamEscalationPolicyMediumTargetType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -364,6 +409,14 @@ const (
 
 func (e UpdateTeamEscalationPolicyLowTargetType) ToPointer() *UpdateTeamEscalationPolicyLowTargetType {
 	return &e
+}
+
+// UpdateTeamEscalationPolicyLowTargetTypeValues returns every known UpdateTeamEscalationPolicyLowTargetType value in schema order.
+func UpdateTeamEscalationPolicyLowTargetTypeValues() []UpdateTeamEscalationPolicyLowTargetType {
+	return []UpdateTeamEscalationPolicyLowTargetType{
+		UpdateTeamEscalationPolicyLowTargetTypeEscalationPolicy,
+		UpdateTeamEscalationPolicyLowTargetTypeTeam,
+	}
 }
 func (e *UpdateTeamEscalationPolicyLowTargetType) UnmarshalJSON(data []byte) error {
 	var v string

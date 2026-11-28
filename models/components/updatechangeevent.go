@@ -18,6 +18,13 @@ const (
 func (e UpdateChangeEventType) ToPointer() *UpdateChangeEventType {
 	return &e
 }
+
+// UpdateChangeEventTypeValues returns every known UpdateChangeEventType value in schema order.
+func UpdateChangeEventTypeValues() []UpdateChangeEventType {
+	return []UpdateChangeEventType{
+		UpdateChangeEventTypeLink,
+	}
+}
 func (e *UpdateChangeEventType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

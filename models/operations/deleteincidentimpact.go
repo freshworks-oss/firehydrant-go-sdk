@@ -19,6 +19,16 @@ const (
 func (e DeleteIncidentImpactType) ToPointer() *DeleteIncidentImpactType {
 	return &e
 }
+
+// DeleteIncidentImpactTypeValues returns every known DeleteIncidentImpactType value in schema order.
+func DeleteIncidentImpactTypeValues() []DeleteIncidentImpactType {
+	return []DeleteIncidentImpactType{
+		DeleteIncidentImpactTypeEnvironments,
+		DeleteIncidentImpactTypeFunctionalities,
+		DeleteIncidentImpactTypeServices,
+		DeleteIncidentImpactTypeCustomers,
+	}
+}
 func (e *DeleteIncidentImpactType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

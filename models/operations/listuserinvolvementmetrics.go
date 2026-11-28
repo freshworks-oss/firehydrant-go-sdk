@@ -20,6 +20,15 @@ const (
 func (e ListUserInvolvementMetricsSortField) ToPointer() *ListUserInvolvementMetricsSortField {
 	return &e
 }
+
+// ListUserInvolvementMetricsSortFieldValues returns every known ListUserInvolvementMetricsSortField value in schema order.
+func ListUserInvolvementMetricsSortFieldValues() []ListUserInvolvementMetricsSortField {
+	return []ListUserInvolvementMetricsSortField{
+		ListUserInvolvementMetricsSortFieldUserCount,
+		ListUserInvolvementMetricsSortFieldIncidentCount,
+		ListUserInvolvementMetricsSortFieldTimeSpent,
+	}
+}
 func (e *ListUserInvolvementMetricsSortField) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -47,6 +56,14 @@ const (
 
 func (e ListUserInvolvementMetricsSortDirection) ToPointer() *ListUserInvolvementMetricsSortDirection {
 	return &e
+}
+
+// ListUserInvolvementMetricsSortDirectionValues returns every known ListUserInvolvementMetricsSortDirection value in schema order.
+func ListUserInvolvementMetricsSortDirectionValues() []ListUserInvolvementMetricsSortDirection {
+	return []ListUserInvolvementMetricsSortDirection{
+		ListUserInvolvementMetricsSortDirectionAsc,
+		ListUserInvolvementMetricsSortDirectionDesc,
+	}
 }
 func (e *ListUserInvolvementMetricsSortDirection) UnmarshalJSON(data []byte) error {
 	var v string

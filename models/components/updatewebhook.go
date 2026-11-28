@@ -17,6 +17,14 @@ const (
 func (e UpdateWebhookState) ToPointer() *UpdateWebhookState {
 	return &e
 }
+
+// UpdateWebhookStateValues returns every known UpdateWebhookState value in schema order.
+func UpdateWebhookStateValues() []UpdateWebhookState {
+	return []UpdateWebhookState{
+		UpdateWebhookStateActive,
+		UpdateWebhookStateInactive,
+	}
+}
 func (e *UpdateWebhookState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

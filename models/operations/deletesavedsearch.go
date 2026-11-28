@@ -26,6 +26,23 @@ const (
 func (e DeleteSavedSearchResourceType) ToPointer() *DeleteSavedSearchResourceType {
 	return &e
 }
+
+// DeleteSavedSearchResourceTypeValues returns every known DeleteSavedSearchResourceType value in schema order.
+func DeleteSavedSearchResourceTypeValues() []DeleteSavedSearchResourceType {
+	return []DeleteSavedSearchResourceType{
+		DeleteSavedSearchResourceTypeChangeEvents,
+		DeleteSavedSearchResourceTypeIncidents,
+		DeleteSavedSearchResourceTypeServices,
+		DeleteSavedSearchResourceTypeScheduledMaintenances,
+		DeleteSavedSearchResourceTypeTicketTasks,
+		DeleteSavedSearchResourceTypeTicketFollowUps,
+		DeleteSavedSearchResourceTypeAnalytics,
+		DeleteSavedSearchResourceTypeImpactAnalytics,
+		DeleteSavedSearchResourceTypeAlerts,
+		DeleteSavedSearchResourceTypeAlertAnalytics,
+		DeleteSavedSearchResourceTypeIncidentEvents,
+	}
+}
 func (e *DeleteSavedSearchResourceType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

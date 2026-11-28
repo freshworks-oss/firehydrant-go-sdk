@@ -20,6 +20,15 @@ const (
 func (e UpdateSignalsAlertGroupingConfigurationFieldName) ToPointer() *UpdateSignalsAlertGroupingConfigurationFieldName {
 	return &e
 }
+
+// UpdateSignalsAlertGroupingConfigurationFieldNameValues returns every known UpdateSignalsAlertGroupingConfigurationFieldName value in schema order.
+func UpdateSignalsAlertGroupingConfigurationFieldNameValues() []UpdateSignalsAlertGroupingConfigurationFieldName {
+	return []UpdateSignalsAlertGroupingConfigurationFieldName{
+		UpdateSignalsAlertGroupingConfigurationFieldNameSummary,
+		UpdateSignalsAlertGroupingConfigurationFieldNameBody,
+		UpdateSignalsAlertGroupingConfigurationFieldNameTags,
+	}
+}
 func (e *UpdateSignalsAlertGroupingConfigurationFieldName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -48,6 +57,14 @@ const (
 
 func (e UpdateSignalsAlertGroupingConfigurationMatchType) ToPointer() *UpdateSignalsAlertGroupingConfigurationMatchType {
 	return &e
+}
+
+// UpdateSignalsAlertGroupingConfigurationMatchTypeValues returns every known UpdateSignalsAlertGroupingConfigurationMatchType value in schema order.
+func UpdateSignalsAlertGroupingConfigurationMatchTypeValues() []UpdateSignalsAlertGroupingConfigurationMatchType {
+	return []UpdateSignalsAlertGroupingConfigurationMatchType{
+		UpdateSignalsAlertGroupingConfigurationMatchTypeAnd,
+		UpdateSignalsAlertGroupingConfigurationMatchTypeOr,
+	}
 }
 func (e *UpdateSignalsAlertGroupingConfigurationMatchType) UnmarshalJSON(data []byte) error {
 	var v string

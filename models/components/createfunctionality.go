@@ -47,6 +47,18 @@ const (
 func (e CreateFunctionalityServiceTier) ToPointer() *CreateFunctionalityServiceTier {
 	return &e
 }
+
+// CreateFunctionalityServiceTierValues returns every known CreateFunctionalityServiceTier value in schema order.
+func CreateFunctionalityServiceTierValues() []CreateFunctionalityServiceTier {
+	return []CreateFunctionalityServiceTier{
+		CreateFunctionalityServiceTierZero,
+		CreateFunctionalityServiceTierOne,
+		CreateFunctionalityServiceTierTwo,
+		CreateFunctionalityServiceTierThree,
+		CreateFunctionalityServiceTierFour,
+		CreateFunctionalityServiceTierFive,
+	}
+}
 func (e *CreateFunctionalityServiceTier) UnmarshalJSON(data []byte) error {
 	var v int
 	if err := json.Unmarshal(data, &v); err != nil {

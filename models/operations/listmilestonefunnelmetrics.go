@@ -21,6 +21,15 @@ const (
 func (e ListMilestoneFunnelMetricsTagMatchStrategy) ToPointer() *ListMilestoneFunnelMetricsTagMatchStrategy {
 	return &e
 }
+
+// ListMilestoneFunnelMetricsTagMatchStrategyValues returns every known ListMilestoneFunnelMetricsTagMatchStrategy value in schema order.
+func ListMilestoneFunnelMetricsTagMatchStrategyValues() []ListMilestoneFunnelMetricsTagMatchStrategy {
+	return []ListMilestoneFunnelMetricsTagMatchStrategy{
+		ListMilestoneFunnelMetricsTagMatchStrategyAny,
+		ListMilestoneFunnelMetricsTagMatchStrategyMatchAll,
+		ListMilestoneFunnelMetricsTagMatchStrategyExclude,
+	}
+}
 func (e *ListMilestoneFunnelMetricsTagMatchStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -50,6 +59,16 @@ const (
 
 func (e ListMilestoneFunnelMetricsGroupBy) ToPointer() *ListMilestoneFunnelMetricsGroupBy {
 	return &e
+}
+
+// ListMilestoneFunnelMetricsGroupByValues returns every known ListMilestoneFunnelMetricsGroupBy value in schema order.
+func ListMilestoneFunnelMetricsGroupByValues() []ListMilestoneFunnelMetricsGroupBy {
+	return []ListMilestoneFunnelMetricsGroupBy{
+		ListMilestoneFunnelMetricsGroupByStartedDay,
+		ListMilestoneFunnelMetricsGroupByStartedWeek,
+		ListMilestoneFunnelMetricsGroupByStartedMonth,
+		ListMilestoneFunnelMetricsGroupByAllTime,
+	}
 }
 func (e *ListMilestoneFunnelMetricsGroupBy) UnmarshalJSON(data []byte) error {
 	var v string

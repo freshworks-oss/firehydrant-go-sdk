@@ -21,6 +21,15 @@ const (
 func (e ListIncidentsTagMatchStrategy) ToPointer() *ListIncidentsTagMatchStrategy {
 	return &e
 }
+
+// ListIncidentsTagMatchStrategyValues returns every known ListIncidentsTagMatchStrategy value in schema order.
+func ListIncidentsTagMatchStrategyValues() []ListIncidentsTagMatchStrategy {
+	return []ListIncidentsTagMatchStrategy{
+		ListIncidentsTagMatchStrategyAny,
+		ListIncidentsTagMatchStrategyMatchAll,
+		ListIncidentsTagMatchStrategyExclude,
+	}
+}
 func (e *ListIncidentsTagMatchStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

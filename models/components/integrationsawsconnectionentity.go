@@ -21,6 +21,17 @@ const (
 func (e IntegrationsAwsConnectionEntityConnectionStatus) ToPointer() *IntegrationsAwsConnectionEntityConnectionStatus {
 	return &e
 }
+
+// IntegrationsAwsConnectionEntityConnectionStatusValues returns every known IntegrationsAwsConnectionEntityConnectionStatus value in schema order.
+func IntegrationsAwsConnectionEntityConnectionStatusValues() []IntegrationsAwsConnectionEntityConnectionStatus {
+	return []IntegrationsAwsConnectionEntityConnectionStatus{
+		IntegrationsAwsConnectionEntityConnectionStatusPendingSetup,
+		IntegrationsAwsConnectionEntityConnectionStatusRoleAssumed,
+		IntegrationsAwsConnectionEntityConnectionStatusCantAssumeRole,
+		IntegrationsAwsConnectionEntityConnectionStatusInvalidPermissions,
+		IntegrationsAwsConnectionEntityConnectionStatusValidated,
+	}
+}
 func (e *IntegrationsAwsConnectionEntityConnectionStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

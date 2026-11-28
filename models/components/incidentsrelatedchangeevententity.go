@@ -21,6 +21,16 @@ const (
 func (e IncidentsRelatedChangeEventEntityType) ToPointer() *IncidentsRelatedChangeEventEntityType {
 	return &e
 }
+
+// IncidentsRelatedChangeEventEntityTypeValues returns every known IncidentsRelatedChangeEventEntityType value in schema order.
+func IncidentsRelatedChangeEventEntityTypeValues() []IncidentsRelatedChangeEventEntityType {
+	return []IncidentsRelatedChangeEventEntityType{
+		IncidentsRelatedChangeEventEntityTypeCaused,
+		IncidentsRelatedChangeEventEntityTypeFixed,
+		IncidentsRelatedChangeEventEntityTypeSuspect,
+		IncidentsRelatedChangeEventEntityTypeDismissed,
+	}
+}
 func (e *IncidentsRelatedChangeEventEntityType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

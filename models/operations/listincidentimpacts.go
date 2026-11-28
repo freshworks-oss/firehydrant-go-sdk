@@ -19,6 +19,16 @@ const (
 func (e ListIncidentImpactsType) ToPointer() *ListIncidentImpactsType {
 	return &e
 }
+
+// ListIncidentImpactsTypeValues returns every known ListIncidentImpactsType value in schema order.
+func ListIncidentImpactsTypeValues() []ListIncidentImpactsType {
+	return []ListIncidentImpactsType{
+		ListIncidentImpactsTypeEnvironments,
+		ListIncidentImpactsTypeFunctionalities,
+		ListIncidentImpactsTypeServices,
+		ListIncidentImpactsTypeCustomers,
+	}
+}
 func (e *ListIncidentImpactsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
