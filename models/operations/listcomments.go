@@ -20,6 +20,14 @@ const (
 func (e ListCommentsSort) ToPointer() *ListCommentsSort {
 	return &e
 }
+
+// ListCommentsSortValues returns every known ListCommentsSort value in schema order.
+func ListCommentsSortValues() []ListCommentsSort {
+	return []ListCommentsSort{
+		ListCommentsSortAsc,
+		ListCommentsSortDesc,
+	}
+}
 func (e *ListCommentsSort) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

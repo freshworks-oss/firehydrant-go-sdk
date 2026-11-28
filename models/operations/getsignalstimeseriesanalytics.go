@@ -21,6 +21,15 @@ const (
 func (e GetSignalsTimeseriesAnalyticsBucket) ToPointer() *GetSignalsTimeseriesAnalyticsBucket {
 	return &e
 }
+
+// GetSignalsTimeseriesAnalyticsBucketValues returns every known GetSignalsTimeseriesAnalyticsBucket value in schema order.
+func GetSignalsTimeseriesAnalyticsBucketValues() []GetSignalsTimeseriesAnalyticsBucket {
+	return []GetSignalsTimeseriesAnalyticsBucket{
+		GetSignalsTimeseriesAnalyticsBucketMonth,
+		GetSignalsTimeseriesAnalyticsBucketWeek,
+		GetSignalsTimeseriesAnalyticsBucketDay,
+	}
+}
 func (e *GetSignalsTimeseriesAnalyticsBucket) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -52,6 +61,17 @@ const (
 
 func (e GetSignalsTimeseriesAnalyticsGroupBy) ToPointer() *GetSignalsTimeseriesAnalyticsGroupBy {
 	return &e
+}
+
+// GetSignalsTimeseriesAnalyticsGroupByValues returns every known GetSignalsTimeseriesAnalyticsGroupBy value in schema order.
+func GetSignalsTimeseriesAnalyticsGroupByValues() []GetSignalsTimeseriesAnalyticsGroupBy {
+	return []GetSignalsTimeseriesAnalyticsGroupBy{
+		GetSignalsTimeseriesAnalyticsGroupBySignalRules,
+		GetSignalsTimeseriesAnalyticsGroupByTeams,
+		GetSignalsTimeseriesAnalyticsGroupByServices,
+		GetSignalsTimeseriesAnalyticsGroupByEnvironments,
+		GetSignalsTimeseriesAnalyticsGroupByTags,
+	}
 }
 func (e *GetSignalsTimeseriesAnalyticsGroupBy) UnmarshalJSON(data []byte) error {
 	var v string
@@ -91,6 +111,19 @@ const (
 func (e GetSignalsTimeseriesAnalyticsSortBy) ToPointer() *GetSignalsTimeseriesAnalyticsSortBy {
 	return &e
 }
+
+// GetSignalsTimeseriesAnalyticsSortByValues returns every known GetSignalsTimeseriesAnalyticsSortBy value in schema order.
+func GetSignalsTimeseriesAnalyticsSortByValues() []GetSignalsTimeseriesAnalyticsSortBy {
+	return []GetSignalsTimeseriesAnalyticsSortBy{
+		GetSignalsTimeseriesAnalyticsSortByTotalOpenedAlerts,
+		GetSignalsTimeseriesAnalyticsSortByTotalAckedAlerts,
+		GetSignalsTimeseriesAnalyticsSortByTotalIncidents,
+		GetSignalsTimeseriesAnalyticsSortByTotalBillableAlerts,
+		GetSignalsTimeseriesAnalyticsSortByTotalResolvedAlerts,
+		GetSignalsTimeseriesAnalyticsSortByAckedPercentage,
+		GetSignalsTimeseriesAnalyticsSortByIncidentsPercentage,
+	}
+}
 func (e *GetSignalsTimeseriesAnalyticsSortBy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -127,6 +160,14 @@ const (
 
 func (e GetSignalsTimeseriesAnalyticsSortDirection) ToPointer() *GetSignalsTimeseriesAnalyticsSortDirection {
 	return &e
+}
+
+// GetSignalsTimeseriesAnalyticsSortDirectionValues returns every known GetSignalsTimeseriesAnalyticsSortDirection value in schema order.
+func GetSignalsTimeseriesAnalyticsSortDirectionValues() []GetSignalsTimeseriesAnalyticsSortDirection {
+	return []GetSignalsTimeseriesAnalyticsSortDirection{
+		GetSignalsTimeseriesAnalyticsSortDirectionAsc,
+		GetSignalsTimeseriesAnalyticsSortDirectionDesc,
+	}
 }
 func (e *GetSignalsTimeseriesAnalyticsSortDirection) UnmarshalJSON(data []byte) error {
 	var v string

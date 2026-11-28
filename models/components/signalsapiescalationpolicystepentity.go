@@ -20,6 +20,15 @@ const (
 func (e SignalsAPIEscalationPolicyStepEntityDistributionType) ToPointer() *SignalsAPIEscalationPolicyStepEntityDistributionType {
 	return &e
 }
+
+// SignalsAPIEscalationPolicyStepEntityDistributionTypeValues returns every known SignalsAPIEscalationPolicyStepEntityDistributionType value in schema order.
+func SignalsAPIEscalationPolicyStepEntityDistributionTypeValues() []SignalsAPIEscalationPolicyStepEntityDistributionType {
+	return []SignalsAPIEscalationPolicyStepEntityDistributionType{
+		SignalsAPIEscalationPolicyStepEntityDistributionTypeUnspecified,
+		SignalsAPIEscalationPolicyStepEntityDistributionTypeRoundRobinByAlert,
+		SignalsAPIEscalationPolicyStepEntityDistributionTypeRoundRobinByEscalationPolicy,
+	}
+}
 func (e *SignalsAPIEscalationPolicyStepEntityDistributionType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

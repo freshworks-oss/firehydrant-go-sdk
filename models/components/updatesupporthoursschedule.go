@@ -19,6 +19,15 @@ const (
 func (e SignalsMaximumNotificationPriority) ToPointer() *SignalsMaximumNotificationPriority {
 	return &e
 }
+
+// SignalsMaximumNotificationPriorityValues returns every known SignalsMaximumNotificationPriority value in schema order.
+func SignalsMaximumNotificationPriorityValues() []SignalsMaximumNotificationPriority {
+	return []SignalsMaximumNotificationPriority{
+		SignalsMaximumNotificationPriorityHigh,
+		SignalsMaximumNotificationPriorityMedium,
+		SignalsMaximumNotificationPriorityLow,
+	}
+}
 func (e *SignalsMaximumNotificationPriority) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -47,6 +56,15 @@ const (
 
 func (e BypassPriorityThreshold) ToPointer() *BypassPriorityThreshold {
 	return &e
+}
+
+// BypassPriorityThresholdValues returns every known BypassPriorityThreshold value in schema order.
+func BypassPriorityThresholdValues() []BypassPriorityThreshold {
+	return []BypassPriorityThreshold{
+		BypassPriorityThresholdHigh,
+		BypassPriorityThresholdMedium,
+		BypassPriorityThresholdLow,
+	}
 }
 func (e *BypassPriorityThreshold) UnmarshalJSON(data []byte) error {
 	var v string
@@ -80,6 +98,19 @@ const (
 
 func (e DayOfWeek) ToPointer() *DayOfWeek {
 	return &e
+}
+
+// DayOfWeekValues returns every known DayOfWeek value in schema order.
+func DayOfWeekValues() []DayOfWeek {
+	return []DayOfWeek{
+		DayOfWeekMonday,
+		DayOfWeekTuesday,
+		DayOfWeekWednesday,
+		DayOfWeekThursday,
+		DayOfWeekFriday,
+		DayOfWeekSaturday,
+		DayOfWeekSunday,
+	}
 }
 func (e *DayOfWeek) UnmarshalJSON(data []byte) error {
 	var v string
@@ -117,6 +148,15 @@ const (
 
 func (e ShiftSignalsMaximumNotificationPriority) ToPointer() *ShiftSignalsMaximumNotificationPriority {
 	return &e
+}
+
+// ShiftSignalsMaximumNotificationPriorityValues returns every known ShiftSignalsMaximumNotificationPriority value in schema order.
+func ShiftSignalsMaximumNotificationPriorityValues() []ShiftSignalsMaximumNotificationPriority {
+	return []ShiftSignalsMaximumNotificationPriority{
+		ShiftSignalsMaximumNotificationPriorityHigh,
+		ShiftSignalsMaximumNotificationPriorityMedium,
+		ShiftSignalsMaximumNotificationPriorityLow,
+	}
 }
 func (e *ShiftSignalsMaximumNotificationPriority) UnmarshalJSON(data []byte) error {
 	var v string

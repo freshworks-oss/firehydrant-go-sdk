@@ -63,6 +63,16 @@ const (
 func (e UpdateStatuspageConnectionStatus) ToPointer() *UpdateStatuspageConnectionStatus {
 	return &e
 }
+
+// UpdateStatuspageConnectionStatusValues returns every known UpdateStatuspageConnectionStatus value in schema order.
+func UpdateStatuspageConnectionStatusValues() []UpdateStatuspageConnectionStatus {
+	return []UpdateStatuspageConnectionStatus{
+		UpdateStatuspageConnectionStatusInvestigating,
+		UpdateStatuspageConnectionStatusIdentified,
+		UpdateStatuspageConnectionStatusMonitoring,
+		UpdateStatuspageConnectionStatusResolved,
+	}
+}
 func (e *UpdateStatuspageConnectionStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

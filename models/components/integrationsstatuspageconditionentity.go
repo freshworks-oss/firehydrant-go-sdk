@@ -19,6 +19,16 @@ const (
 func (e StatuspageioCondition) ToPointer() *StatuspageioCondition {
 	return &e
 }
+
+// StatuspageioConditionValues returns every known StatuspageioCondition value in schema order.
+func StatuspageioConditionValues() []StatuspageioCondition {
+	return []StatuspageioCondition{
+		StatuspageioConditionOperational,
+		StatuspageioConditionMajorOutage,
+		StatuspageioConditionMinorOutage,
+		StatuspageioConditionDegradedPerformance,
+	}
+}
 func (e *StatuspageioCondition) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

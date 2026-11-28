@@ -21,6 +21,16 @@ const (
 func (e TicketingTicketEntityState) ToPointer() *TicketingTicketEntityState {
 	return &e
 }
+
+// TicketingTicketEntityStateValues returns every known TicketingTicketEntityState value in schema order.
+func TicketingTicketEntityStateValues() []TicketingTicketEntityState {
+	return []TicketingTicketEntityState{
+		TicketingTicketEntityStateOpen,
+		TicketingTicketEntityStateInProgress,
+		TicketingTicketEntityStateCancelled,
+		TicketingTicketEntityStateDone,
+	}
+}
 func (e *TicketingTicketEntityState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -51,6 +61,15 @@ const (
 
 func (e TicketingTicketEntityType) ToPointer() *TicketingTicketEntityType {
 	return &e
+}
+
+// TicketingTicketEntityTypeValues returns every known TicketingTicketEntityType value in schema order.
+func TicketingTicketEntityTypeValues() []TicketingTicketEntityType {
+	return []TicketingTicketEntityType{
+		TicketingTicketEntityTypeIncident,
+		TicketingTicketEntityTypeTask,
+		TicketingTicketEntityTypeFollowUp,
+	}
 }
 func (e *TicketingTicketEntityType) UnmarshalJSON(data []byte) error {
 	var v string

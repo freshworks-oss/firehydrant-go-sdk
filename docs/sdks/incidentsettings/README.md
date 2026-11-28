@@ -38,7 +38,7 @@ Operations related to Incident Settings
 * [DeleteSeverity](#deleteseverity) - Delete a severity
 * [UpdateSeverity](#updateseverity) - Update a severity
 * [GetSeverityMatrix](#getseveritymatrix) - Get severity matrix
-* [UpdateSeverityMatrix](#updateseveritymatrix) - Update severity matrix
+* [~~UpdateSeverityMatrix~~](#updateseveritymatrix) - Update severity matrix :warning: **Deprecated**
 * [ListSeverityMatrixConditions](#listseveritymatrixconditions) - List severity matrix conditions
 * [CreateSeverityMatrixCondition](#createseveritymatrixcondition) - Create a severity matrix condition
 * [GetSeverityMatrixCondition](#getseveritymatrixcondition) - Get a severity matrix condition
@@ -48,6 +48,7 @@ Operations related to Incident Settings
 * [CreateSeverityMatrixImpact](#createseveritymatriximpact) - Create a severity matrix impact
 * [DeleteSeverityMatrixImpact](#deleteseveritymatriximpact) - Delete a severity matrix impact
 * [UpdateSeverityMatrixImpact](#updateseveritymatriximpact) - Update a severity matrix impact
+* [UpdateSeverityMatrixItems](#updateseveritymatrixitems) - Update severity matrix items
 * [DeleteCustomFieldDefinition](#deletecustomfielddefinition) - Delete a custom field definition
 * [UpdateCustomFieldDefinition](#updatecustomfielddefinition) - Update a custom field definition
 * [ListCustomFieldDefinitions](#listcustomfielddefinitions) - List custom field definitions
@@ -1789,9 +1790,11 @@ func main() {
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
-## UpdateSeverityMatrix
+## ~~UpdateSeverityMatrix~~
 
-Update available severities and impacts in your organization's severity matrix.
+Deprecated, use PATCH /v1/severity_matrix/items. Replaces the severity matrix with the items in the request; items that are not in the request are removed.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -2327,6 +2330,75 @@ func main() {
 ### Response
 
 **[*components.SeverityMatrixImpactEntity](../../models/components/severitymatriximpactentity.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## UpdateSeverityMatrixItems
+
+Create, update or remove individual items in your organization's severity matrix. Items that are not in the request are left unchanged. Send a null severity to remove an item.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update_severity_matrix_items" method="patch" path="/v1/severity_matrix/items" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/firehydrant/firehydrant-go-sdk/models/components"
+	firehydrantgosdk "github.com/firehydrant/firehydrant-go-sdk"
+	"github.com/firehydrant/firehydrant-go-sdk/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := firehydrantgosdk.New(
+        firehydrantgosdk.WithSecurity(components.Security{
+            APIKey: "<YOUR_API_KEY_HERE>",
+        }),
+    )
+
+    res, err := s.IncidentSettings.UpdateSeverityMatrixItems(ctx, operations.UpdateSeverityMatrixItemsRequest{
+        DataSeverity: []string{
+            "<value 1>",
+            "<value 2>",
+            "<value 3>",
+        },
+        DataImpactID: []string{
+            "<value 1>",
+            "<value 2>",
+        },
+        DataConditionID: []string{
+            "<value 1>",
+            "<value 2>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
+| `request`                                                                                                  | [operations.UpdateSeverityMatrixItemsRequest](../../models/operations/updateseveritymatrixitemsrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
+
+### Response
+
+**[*components.SeverityMatrixSeverityMatrixEntity](../../models/components/severitymatrixseveritymatrixentity.md), error**
 
 ### Errors
 

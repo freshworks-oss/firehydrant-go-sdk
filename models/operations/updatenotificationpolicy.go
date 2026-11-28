@@ -23,6 +23,18 @@ const (
 func (e UpdateNotificationPolicyNotificationGroupMethod) ToPointer() *UpdateNotificationPolicyNotificationGroupMethod {
 	return &e
 }
+
+// UpdateNotificationPolicyNotificationGroupMethodValues returns every known UpdateNotificationPolicyNotificationGroupMethod value in schema order.
+func UpdateNotificationPolicyNotificationGroupMethodValues() []UpdateNotificationPolicyNotificationGroupMethod {
+	return []UpdateNotificationPolicyNotificationGroupMethod{
+		UpdateNotificationPolicyNotificationGroupMethodAny,
+		UpdateNotificationPolicyNotificationGroupMethodPush,
+		UpdateNotificationPolicyNotificationGroupMethodEmail,
+		UpdateNotificationPolicyNotificationGroupMethodVoice,
+		UpdateNotificationPolicyNotificationGroupMethodMobileText,
+		UpdateNotificationPolicyNotificationGroupMethodChat,
+	}
+}
 func (e *UpdateNotificationPolicyNotificationGroupMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -58,6 +70,15 @@ const (
 
 func (e UpdateNotificationPolicyPriority) ToPointer() *UpdateNotificationPolicyPriority {
 	return &e
+}
+
+// UpdateNotificationPolicyPriorityValues returns every known UpdateNotificationPolicyPriority value in schema order.
+func UpdateNotificationPolicyPriorityValues() []UpdateNotificationPolicyPriority {
+	return []UpdateNotificationPolicyPriority{
+		UpdateNotificationPolicyPriorityHigh,
+		UpdateNotificationPolicyPriorityMedium,
+		UpdateNotificationPolicyPriorityLow,
+	}
 }
 func (e *UpdateNotificationPolicyPriority) UnmarshalJSON(data []byte) error {
 	var v string

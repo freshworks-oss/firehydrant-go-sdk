@@ -23,6 +23,17 @@ const (
 func (e GetSignalsMttxAnalyticsGroupBy) ToPointer() *GetSignalsMttxAnalyticsGroupBy {
 	return &e
 }
+
+// GetSignalsMttxAnalyticsGroupByValues returns every known GetSignalsMttxAnalyticsGroupBy value in schema order.
+func GetSignalsMttxAnalyticsGroupByValues() []GetSignalsMttxAnalyticsGroupBy {
+	return []GetSignalsMttxAnalyticsGroupBy{
+		GetSignalsMttxAnalyticsGroupBySignalRules,
+		GetSignalsMttxAnalyticsGroupByTeams,
+		GetSignalsMttxAnalyticsGroupByServices,
+		GetSignalsMttxAnalyticsGroupByEnvironments,
+		GetSignalsMttxAnalyticsGroupByTags,
+	}
+}
 func (e *GetSignalsMttxAnalyticsGroupBy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -61,6 +72,19 @@ const (
 func (e GetSignalsMttxAnalyticsSortBy) ToPointer() *GetSignalsMttxAnalyticsSortBy {
 	return &e
 }
+
+// GetSignalsMttxAnalyticsSortByValues returns every known GetSignalsMttxAnalyticsSortBy value in schema order.
+func GetSignalsMttxAnalyticsSortByValues() []GetSignalsMttxAnalyticsSortBy {
+	return []GetSignalsMttxAnalyticsSortBy{
+		GetSignalsMttxAnalyticsSortByTotalOpenedAlerts,
+		GetSignalsMttxAnalyticsSortByTotalAckedAlerts,
+		GetSignalsMttxAnalyticsSortByTotalIncidents,
+		GetSignalsMttxAnalyticsSortByTotalBillableAlerts,
+		GetSignalsMttxAnalyticsSortByTotalResolvedAlerts,
+		GetSignalsMttxAnalyticsSortByAckedPercentage,
+		GetSignalsMttxAnalyticsSortByIncidentsPercentage,
+	}
+}
 func (e *GetSignalsMttxAnalyticsSortBy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -97,6 +121,14 @@ const (
 
 func (e GetSignalsMttxAnalyticsSortDirection) ToPointer() *GetSignalsMttxAnalyticsSortDirection {
 	return &e
+}
+
+// GetSignalsMttxAnalyticsSortDirectionValues returns every known GetSignalsMttxAnalyticsSortDirection value in schema order.
+func GetSignalsMttxAnalyticsSortDirectionValues() []GetSignalsMttxAnalyticsSortDirection {
+	return []GetSignalsMttxAnalyticsSortDirection{
+		GetSignalsMttxAnalyticsSortDirectionAsc,
+		GetSignalsMttxAnalyticsSortDirectionDesc,
+	}
 }
 func (e *GetSignalsMttxAnalyticsSortDirection) UnmarshalJSON(data []byte) error {
 	var v string

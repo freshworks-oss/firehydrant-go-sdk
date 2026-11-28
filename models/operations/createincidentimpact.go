@@ -20,6 +20,16 @@ const (
 func (e CreateIncidentImpactType) ToPointer() *CreateIncidentImpactType {
 	return &e
 }
+
+// CreateIncidentImpactTypeValues returns every known CreateIncidentImpactType value in schema order.
+func CreateIncidentImpactTypeValues() []CreateIncidentImpactType {
+	return []CreateIncidentImpactType{
+		CreateIncidentImpactTypeEnvironments,
+		CreateIncidentImpactTypeFunctionalities,
+		CreateIncidentImpactTypeServices,
+		CreateIncidentImpactTypeCustomers,
+	}
+}
 func (e *CreateIncidentImpactType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

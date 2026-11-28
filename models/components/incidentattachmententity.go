@@ -18,6 +18,14 @@ const (
 func (e IncidentAttachmentEntityStatus) ToPointer() *IncidentAttachmentEntityStatus {
 	return &e
 }
+
+// IncidentAttachmentEntityStatusValues returns every known IncidentAttachmentEntityStatus value in schema order.
+func IncidentAttachmentEntityStatusValues() []IncidentAttachmentEntityStatus {
+	return []IncidentAttachmentEntityStatus{
+		IncidentAttachmentEntityStatusPendingUpload,
+		IncidentAttachmentEntityStatusUploaded,
+	}
+}
 func (e *IncidentAttachmentEntityStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

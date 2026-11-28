@@ -18,6 +18,15 @@ const (
 func (e NullableTicketingProjectFieldMapExternalValueEntityType) ToPointer() *NullableTicketingProjectFieldMapExternalValueEntityType {
 	return &e
 }
+
+// NullableTicketingProjectFieldMapExternalValueEntityTypeValues returns every known NullableTicketingProjectFieldMapExternalValueEntityType value in schema order.
+func NullableTicketingProjectFieldMapExternalValueEntityTypeValues() []NullableTicketingProjectFieldMapExternalValueEntityType {
+	return []NullableTicketingProjectFieldMapExternalValueEntityType{
+		NullableTicketingProjectFieldMapExternalValueEntityTypeLiteral,
+		NullableTicketingProjectFieldMapExternalValueEntityTypeFhAttribute,
+		NullableTicketingProjectFieldMapExternalValueEntityTypeFhType,
+	}
+}
 func (e *NullableTicketingProjectFieldMapExternalValueEntityType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

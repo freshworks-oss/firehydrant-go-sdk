@@ -19,6 +19,14 @@ const (
 func (e ListTranscriptEntriesSort) ToPointer() *ListTranscriptEntriesSort {
 	return &e
 }
+
+// ListTranscriptEntriesSortValues returns every known ListTranscriptEntriesSort value in schema order.
+func ListTranscriptEntriesSortValues() []ListTranscriptEntriesSort {
+	return []ListTranscriptEntriesSort{
+		ListTranscriptEntriesSortAsc,
+		ListTranscriptEntriesSortDesc,
+	}
+}
 func (e *ListTranscriptEntriesSort) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

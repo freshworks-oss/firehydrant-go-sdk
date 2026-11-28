@@ -23,6 +23,19 @@ const (
 func (e CreateSeverityColor) ToPointer() *CreateSeverityColor {
 	return &e
 }
+
+// CreateSeverityColorValues returns every known CreateSeverityColor value in schema order.
+func CreateSeverityColorValues() []CreateSeverityColor {
+	return []CreateSeverityColor{
+		CreateSeverityColorRed,
+		CreateSeverityColorOrange,
+		CreateSeverityColorYellow,
+		CreateSeverityColorBlue,
+		CreateSeverityColorTeal,
+		CreateSeverityColorGrey,
+		CreateSeverityColorGreen,
+	}
+}
 func (e *CreateSeverityColor) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

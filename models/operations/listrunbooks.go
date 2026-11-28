@@ -18,6 +18,14 @@ const (
 func (e ListRunbooksSort) ToPointer() *ListRunbooksSort {
 	return &e
 }
+
+// ListRunbooksSortValues returns every known ListRunbooksSort value in schema order.
+func ListRunbooksSortValues() []ListRunbooksSort {
+	return []ListRunbooksSort{
+		ListRunbooksSortAsc,
+		ListRunbooksSortDesc,
+	}
+}
 func (e *ListRunbooksSort) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -47,6 +55,17 @@ const (
 
 func (e OrderBy) ToPointer() *OrderBy {
 	return &e
+}
+
+// OrderByValues returns every known OrderBy value in schema order.
+func OrderByValues() []OrderBy {
+	return []OrderBy{
+		OrderByUpdatedAt,
+		OrderByName,
+		OrderByCreatedAt,
+		OrderByLastExecutedAt,
+		OrderByOwner,
+	}
 }
 func (e *OrderBy) UnmarshalJSON(data []byte) error {
 	var v string
@@ -80,6 +99,14 @@ const (
 
 func (e OrderDirection) ToPointer() *OrderDirection {
 	return &e
+}
+
+// OrderDirectionValues returns every known OrderDirection value in schema order.
+func OrderDirectionValues() []OrderDirection {
+	return []OrderDirection{
+		OrderDirectionAsc,
+		OrderDirectionDesc,
+	}
 }
 func (e *OrderDirection) UnmarshalJSON(data []byte) error {
 	var v string

@@ -21,6 +21,15 @@ const (
 func (e ListAlertsTagMatchStrategy) ToPointer() *ListAlertsTagMatchStrategy {
 	return &e
 }
+
+// ListAlertsTagMatchStrategyValues returns every known ListAlertsTagMatchStrategy value in schema order.
+func ListAlertsTagMatchStrategyValues() []ListAlertsTagMatchStrategy {
+	return []ListAlertsTagMatchStrategy{
+		ListAlertsTagMatchStrategyAny,
+		ListAlertsTagMatchStrategyMatchAll,
+		ListAlertsTagMatchStrategyExclude,
+	}
+}
 func (e *ListAlertsTagMatchStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

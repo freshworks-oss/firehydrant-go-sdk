@@ -21,6 +21,16 @@ const (
 func (e IntegrationsConnectionStatusEntityStatus) ToPointer() *IntegrationsConnectionStatusEntityStatus {
 	return &e
 }
+
+// IntegrationsConnectionStatusEntityStatusValues returns every known IntegrationsConnectionStatusEntityStatus value in schema order.
+func IntegrationsConnectionStatusEntityStatusValues() []IntegrationsConnectionStatusEntityStatus {
+	return []IntegrationsConnectionStatusEntityStatus{
+		IntegrationsConnectionStatusEntityStatusOk,
+		IntegrationsConnectionStatusEntityStatusInfo,
+		IntegrationsConnectionStatusEntityStatusWarning,
+		IntegrationsConnectionStatusEntityStatusError,
+	}
+}
 func (e *IntegrationsConnectionStatusEntityStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -88,6 +88,14 @@ const (
 func (e UpdateSignalsHeartbeatEndpointConfigurationKind) ToPointer() *UpdateSignalsHeartbeatEndpointConfigurationKind {
 	return &e
 }
+
+// UpdateSignalsHeartbeatEndpointConfigurationKindValues returns every known UpdateSignalsHeartbeatEndpointConfigurationKind value in schema order.
+func UpdateSignalsHeartbeatEndpointConfigurationKindValues() []UpdateSignalsHeartbeatEndpointConfigurationKind {
+	return []UpdateSignalsHeartbeatEndpointConfigurationKind{
+		UpdateSignalsHeartbeatEndpointConfigurationKindHTTP,
+		UpdateSignalsHeartbeatEndpointConfigurationKindEmail,
+	}
+}
 func (e *UpdateSignalsHeartbeatEndpointConfigurationKind) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

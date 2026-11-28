@@ -18,6 +18,14 @@ const (
 func (e IntegrationSlug) ToPointer() *IntegrationSlug {
 	return &e
 }
+
+// IntegrationSlugValues returns every known IntegrationSlug value in schema order.
+func IntegrationSlugValues() []IntegrationSlug {
+	return []IntegrationSlug{
+		IntegrationSlugConfluenceCloud,
+		IntegrationSlugGoogleDocs,
+	}
+}
 func (e *IntegrationSlug) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

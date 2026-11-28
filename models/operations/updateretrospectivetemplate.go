@@ -24,6 +24,20 @@ const (
 func (e UpdateRetrospectiveTemplateFieldsType) ToPointer() *UpdateRetrospectiveTemplateFieldsType {
 	return &e
 }
+
+// UpdateRetrospectiveTemplateFieldsTypeValues returns every known UpdateRetrospectiveTemplateFieldsType value in schema order.
+func UpdateRetrospectiveTemplateFieldsTypeValues() []UpdateRetrospectiveTemplateFieldsType {
+	return []UpdateRetrospectiveTemplateFieldsType{
+		UpdateRetrospectiveTemplateFieldsTypeText,
+		UpdateRetrospectiveTemplateFieldsTypeSingleSelect,
+		UpdateRetrospectiveTemplateFieldsTypeMultiSelect,
+		UpdateRetrospectiveTemplateFieldsTypeNumeric,
+		UpdateRetrospectiveTemplateFieldsTypeDatetime,
+		UpdateRetrospectiveTemplateFieldsTypeDynamicInputGroup,
+		UpdateRetrospectiveTemplateFieldsTypeMarkdown,
+		UpdateRetrospectiveTemplateFieldsTypeMarkdownText,
+	}
+}
 func (e *UpdateRetrospectiveTemplateFieldsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -64,6 +78,17 @@ const (
 
 func (e ReportElementsType) ToPointer() *ReportElementsType {
 	return &e
+}
+
+// ReportElementsTypeValues returns every known ReportElementsType value in schema order.
+func ReportElementsTypeValues() []ReportElementsType {
+	return []ReportElementsType{
+		ReportElementsTypeIncidentData,
+		ReportElementsTypeRetrospectiveField,
+		ReportElementsTypeCustomField,
+		ReportElementsTypeProsemirrorContent,
+		ReportElementsTypeDivider,
+	}
 }
 func (e *ReportElementsType) UnmarshalJSON(data []byte) error {
 	var v string

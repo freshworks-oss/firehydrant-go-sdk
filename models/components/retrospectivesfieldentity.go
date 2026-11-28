@@ -24,6 +24,20 @@ const (
 func (e RetrospectivesFieldEntityType) ToPointer() *RetrospectivesFieldEntityType {
 	return &e
 }
+
+// RetrospectivesFieldEntityTypeValues returns every known RetrospectivesFieldEntityType value in schema order.
+func RetrospectivesFieldEntityTypeValues() []RetrospectivesFieldEntityType {
+	return []RetrospectivesFieldEntityType{
+		RetrospectivesFieldEntityTypeText,
+		RetrospectivesFieldEntityTypeSingleSelect,
+		RetrospectivesFieldEntityTypeMultiSelect,
+		RetrospectivesFieldEntityTypeNumeric,
+		RetrospectivesFieldEntityTypeDatetime,
+		RetrospectivesFieldEntityTypeDynamicInputGroup,
+		RetrospectivesFieldEntityTypeMarkdown,
+		RetrospectivesFieldEntityTypeMarkdownText,
+	}
+}
 func (e *RetrospectivesFieldEntityType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

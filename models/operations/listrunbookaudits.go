@@ -19,6 +19,14 @@ const (
 func (e AuditableType) ToPointer() *AuditableType {
 	return &e
 }
+
+// AuditableTypeValues returns every known AuditableType value in schema order.
+func AuditableTypeValues() []AuditableType {
+	return []AuditableType{
+		AuditableTypeRunbooksStep,
+		AuditableTypeRunbooksRunbook,
+	}
+}
 func (e *AuditableType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

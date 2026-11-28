@@ -19,6 +19,14 @@ const (
 func (e CreateTeamCallRouteRoutingMode) ToPointer() *CreateTeamCallRouteRoutingMode {
 	return &e
 }
+
+// CreateTeamCallRouteRoutingModeValues returns every known CreateTeamCallRouteRoutingMode value in schema order.
+func CreateTeamCallRouteRoutingModeValues() []CreateTeamCallRouteRoutingMode {
+	return []CreateTeamCallRouteRoutingMode{
+		CreateTeamCallRouteRoutingModeRoutingModeTakeMessage,
+		CreateTeamCallRouteRoutingModeRoutingModeDirectConnect,
+	}
+}
 func (e *CreateTeamCallRouteRoutingMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -46,6 +54,14 @@ const (
 func (e CreateTeamCallRouteConnectMode) ToPointer() *CreateTeamCallRouteConnectMode {
 	return &e
 }
+
+// CreateTeamCallRouteConnectModeValues returns every known CreateTeamCallRouteConnectMode value in schema order.
+func CreateTeamCallRouteConnectModeValues() []CreateTeamCallRouteConnectMode {
+	return []CreateTeamCallRouteConnectMode{
+		CreateTeamCallRouteConnectModeConnectModeConference,
+		CreateTeamCallRouteConnectModeConnectModeDirectDial,
+	}
+}
 func (e *CreateTeamCallRouteConnectMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -72,6 +88,14 @@ const (
 
 func (e CreateTeamCallRouteTargetType) ToPointer() *CreateTeamCallRouteTargetType {
 	return &e
+}
+
+// CreateTeamCallRouteTargetTypeValues returns every known CreateTeamCallRouteTargetType value in schema order.
+func CreateTeamCallRouteTargetTypeValues() []CreateTeamCallRouteTargetType {
+	return []CreateTeamCallRouteTargetType{
+		CreateTeamCallRouteTargetTypeUser,
+		CreateTeamCallRouteTargetTypeOnCallSchedule,
+	}
 }
 func (e *CreateTeamCallRouteTargetType) UnmarshalJSON(data []byte) error {
 	var v string

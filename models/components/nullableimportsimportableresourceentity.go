@@ -21,6 +21,16 @@ const (
 func (e NullableImportsImportableResourceEntityState) ToPointer() *NullableImportsImportableResourceEntityState {
 	return &e
 }
+
+// NullableImportsImportableResourceEntityStateValues returns every known NullableImportsImportableResourceEntityState value in schema order.
+func NullableImportsImportableResourceEntityStateValues() []NullableImportsImportableResourceEntityState {
+	return []NullableImportsImportableResourceEntityState{
+		NullableImportsImportableResourceEntityStateSelected,
+		NullableImportsImportableResourceEntityStateSkipped,
+		NullableImportsImportableResourceEntityStateImported,
+		NullableImportsImportableResourceEntityStateErrored,
+	}
+}
 func (e *NullableImportsImportableResourceEntityState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

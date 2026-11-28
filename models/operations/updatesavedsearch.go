@@ -27,6 +27,23 @@ const (
 func (e UpdateSavedSearchResourceType) ToPointer() *UpdateSavedSearchResourceType {
 	return &e
 }
+
+// UpdateSavedSearchResourceTypeValues returns every known UpdateSavedSearchResourceType value in schema order.
+func UpdateSavedSearchResourceTypeValues() []UpdateSavedSearchResourceType {
+	return []UpdateSavedSearchResourceType{
+		UpdateSavedSearchResourceTypeChangeEvents,
+		UpdateSavedSearchResourceTypeIncidents,
+		UpdateSavedSearchResourceTypeServices,
+		UpdateSavedSearchResourceTypeScheduledMaintenances,
+		UpdateSavedSearchResourceTypeTicketTasks,
+		UpdateSavedSearchResourceTypeTicketFollowUps,
+		UpdateSavedSearchResourceTypeAnalytics,
+		UpdateSavedSearchResourceTypeImpactAnalytics,
+		UpdateSavedSearchResourceTypeAlerts,
+		UpdateSavedSearchResourceTypeAlertAnalytics,
+		UpdateSavedSearchResourceTypeIncidentEvents,
+	}
+}
 func (e *UpdateSavedSearchResourceType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

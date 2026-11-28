@@ -19,6 +19,14 @@ const (
 func (e PublishState) ToPointer() *PublishState {
 	return &e
 }
+
+// PublishStateValues returns every known PublishState value in schema order.
+func PublishStateValues() []PublishState {
+	return []PublishState{
+		PublishStatePublished,
+		PublishStateUnpublished,
+	}
+}
 func (e *PublishState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

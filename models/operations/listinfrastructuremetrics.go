@@ -21,6 +21,16 @@ const (
 func (e ListInfrastructureMetricsInfraType) ToPointer() *ListInfrastructureMetricsInfraType {
 	return &e
 }
+
+// ListInfrastructureMetricsInfraTypeValues returns every known ListInfrastructureMetricsInfraType value in schema order.
+func ListInfrastructureMetricsInfraTypeValues() []ListInfrastructureMetricsInfraType {
+	return []ListInfrastructureMetricsInfraType{
+		ListInfrastructureMetricsInfraTypeEnvironments,
+		ListInfrastructureMetricsInfraTypeFunctionalities,
+		ListInfrastructureMetricsInfraTypeServices,
+		ListInfrastructureMetricsInfraTypeCustomers,
+	}
+}
 func (e *ListInfrastructureMetricsInfraType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

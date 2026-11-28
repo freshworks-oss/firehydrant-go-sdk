@@ -20,6 +20,16 @@ const (
 func (e Tier) ToPointer() *Tier {
 	return &e
 }
+
+// TierValues returns every known Tier value in schema order.
+func TierValues() []Tier {
+	return []Tier{
+		TierFree,
+		TierEssentials,
+		TierEnterprise,
+		TierSignalsOnly,
+	}
+}
 func (e *Tier) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

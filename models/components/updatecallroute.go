@@ -19,6 +19,14 @@ const (
 func (e UpdateCallRouteRoutingMode) ToPointer() *UpdateCallRouteRoutingMode {
 	return &e
 }
+
+// UpdateCallRouteRoutingModeValues returns every known UpdateCallRouteRoutingMode value in schema order.
+func UpdateCallRouteRoutingModeValues() []UpdateCallRouteRoutingMode {
+	return []UpdateCallRouteRoutingMode{
+		UpdateCallRouteRoutingModeRoutingModeTakeMessage,
+		UpdateCallRouteRoutingModeRoutingModeDirectConnect,
+	}
+}
 func (e *UpdateCallRouteRoutingMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -46,6 +54,14 @@ const (
 func (e UpdateCallRouteConnectMode) ToPointer() *UpdateCallRouteConnectMode {
 	return &e
 }
+
+// UpdateCallRouteConnectModeValues returns every known UpdateCallRouteConnectMode value in schema order.
+func UpdateCallRouteConnectModeValues() []UpdateCallRouteConnectMode {
+	return []UpdateCallRouteConnectMode{
+		UpdateCallRouteConnectModeConnectModeConference,
+		UpdateCallRouteConnectModeConnectModeDirectDial,
+	}
+}
 func (e *UpdateCallRouteConnectMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -72,6 +88,14 @@ const (
 
 func (e UpdateCallRouteTargetType) ToPointer() *UpdateCallRouteTargetType {
 	return &e
+}
+
+// UpdateCallRouteTargetTypeValues returns every known UpdateCallRouteTargetType value in schema order.
+func UpdateCallRouteTargetTypeValues() []UpdateCallRouteTargetType {
+	return []UpdateCallRouteTargetType{
+		UpdateCallRouteTargetTypeUser,
+		UpdateCallRouteTargetTypeOnCallSchedule,
+	}
 }
 func (e *UpdateCallRouteTargetType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -142,6 +166,18 @@ const (
 
 func (e UpdateCallRouteType) ToPointer() *UpdateCallRouteType {
 	return &e
+}
+
+// UpdateCallRouteTypeValues returns every known UpdateCallRouteType value in schema order.
+func UpdateCallRouteTypeValues() []UpdateCallRouteType {
+	return []UpdateCallRouteType{
+		UpdateCallRouteTypeEscalationPolicy,
+		UpdateCallRouteTypeOnCallSchedule,
+		UpdateCallRouteTypeUser,
+		UpdateCallRouteTypeWebhook,
+		UpdateCallRouteTypeSlackChannel,
+		UpdateCallRouteTypeMicrosoftTeamsChannel,
+	}
 }
 func (e *UpdateCallRouteType) UnmarshalJSON(data []byte) error {
 	var v string

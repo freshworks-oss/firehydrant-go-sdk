@@ -21,6 +21,16 @@ const (
 func (e CreateRunbookType) ToPointer() *CreateRunbookType {
 	return &e
 }
+
+// CreateRunbookTypeValues returns every known CreateRunbookType value in schema order.
+func CreateRunbookTypeValues() []CreateRunbookType {
+	return []CreateRunbookType{
+		CreateRunbookTypeIncident,
+		CreateRunbookTypeGeneral,
+		CreateRunbookTypeInfrastructure,
+		CreateRunbookTypeIncidentRole,
+	}
+}
 func (e *CreateRunbookType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -18,6 +18,14 @@ const (
 func (e ListEntitlementsType) ToPointer() *ListEntitlementsType {
 	return &e
 }
+
+// ListEntitlementsTypeValues returns every known ListEntitlementsType value in schema order.
+func ListEntitlementsTypeValues() []ListEntitlementsType {
+	return []ListEntitlementsType{
+		ListEntitlementsTypeQuota,
+		ListEntitlementsTypeAccess,
+	}
+}
 func (e *ListEntitlementsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

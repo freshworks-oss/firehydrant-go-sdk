@@ -27,6 +27,18 @@ const (
 func (e Level) ToPointer() *Level {
 	return &e
 }
+
+// LevelValues returns every known Level value in schema order.
+func LevelValues() []Level {
+	return []Level{
+		LevelUnknown,
+		LevelDebug,
+		LevelInfo,
+		LevelWarn,
+		LevelError,
+		LevelFatal,
+	}
+}
 func (e *Level) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -60,6 +72,14 @@ const (
 
 func (e MessageType) ToPointer() *MessageType {
 	return &e
+}
+
+// MessageTypeValues returns every known MessageType value in schema order.
+func MessageTypeValues() []MessageType {
+	return []MessageType{
+		MessageTypeI18nKey,
+		MessageTypeCustom,
+	}
 }
 func (e *MessageType) UnmarshalJSON(data []byte) error {
 	var v string

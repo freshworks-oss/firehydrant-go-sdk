@@ -21,6 +21,16 @@ const (
 func (e BucketSize) ToPointer() *BucketSize {
 	return &e
 }
+
+// BucketSizeValues returns every known BucketSize value in schema order.
+func BucketSizeValues() []BucketSize {
+	return []BucketSize{
+		BucketSizeWeek,
+		BucketSizeDay,
+		BucketSizeMonth,
+		BucketSizeAllTime,
+	}
+}
 func (e *BucketSize) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -56,6 +66,20 @@ const (
 
 func (e By) ToPointer() *By {
 	return &e
+}
+
+// ByValues returns every known By value in schema order.
+func ByValues() []By {
+	return []By{
+		ByTotal,
+		BySeverity,
+		ByPriority,
+		ByFunctionality,
+		ByService,
+		ByEnvironment,
+		ByUser,
+		ByUserInvolvement,
+	}
 }
 func (e *By) UnmarshalJSON(data []byte) error {
 	var v string
@@ -99,6 +123,18 @@ const (
 func (e ListIncidentMetricsSortField) ToPointer() *ListIncidentMetricsSortField {
 	return &e
 }
+
+// ListIncidentMetricsSortFieldValues returns every known ListIncidentMetricsSortField value in schema order.
+func ListIncidentMetricsSortFieldValues() []ListIncidentMetricsSortField {
+	return []ListIncidentMetricsSortField{
+		ListIncidentMetricsSortFieldMttd,
+		ListIncidentMetricsSortFieldMtta,
+		ListIncidentMetricsSortFieldMttm,
+		ListIncidentMetricsSortFieldMttr,
+		ListIncidentMetricsSortFieldCount,
+		ListIncidentMetricsSortFieldTotalTime,
+	}
+}
 func (e *ListIncidentMetricsSortField) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -132,6 +168,14 @@ const (
 
 func (e ListIncidentMetricsSortDirection) ToPointer() *ListIncidentMetricsSortDirection {
 	return &e
+}
+
+// ListIncidentMetricsSortDirectionValues returns every known ListIncidentMetricsSortDirection value in schema order.
+func ListIncidentMetricsSortDirectionValues() []ListIncidentMetricsSortDirection {
+	return []ListIncidentMetricsSortDirection{
+		ListIncidentMetricsSortDirectionAsc,
+		ListIncidentMetricsSortDirectionDesc,
+	}
 }
 func (e *ListIncidentMetricsSortDirection) UnmarshalJSON(data []byte) error {
 	var v string

@@ -39,6 +39,14 @@ const (
 func (e VoteDirection) ToPointer() *VoteDirection {
 	return &e
 }
+
+// VoteDirectionValues returns every known VoteDirection value in schema order.
+func VoteDirectionValues() []VoteDirection {
+	return []VoteDirection{
+		VoteDirectionUp,
+		VoteDirectionDown,
+	}
+}
 func (e *VoteDirection) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

@@ -53,6 +53,50 @@ const (
 func (e NullableActorEntityType) ToPointer() *NullableActorEntityType {
 	return &e
 }
+
+// NullableActorEntityTypeValues returns every known NullableActorEntityType value in schema order.
+func NullableActorEntityTypeValues() []NullableActorEntityType {
+	return []NullableActorEntityType{
+		NullableActorEntityTypeFirehydrantUser,
+		NullableActorEntityTypeFirehydrantBot,
+		NullableActorEntityTypeAlertmanager,
+		NullableActorEntityTypeAsana,
+		NullableActorEntityTypeAws,
+		NullableActorEntityTypeBugsnag,
+		NullableActorEntityTypeCheckly,
+		NullableActorEntityTypeCustomAlerts,
+		NullableActorEntityTypeDatadog,
+		NullableActorEntityTypeShortcut,
+		NullableActorEntityTypeNewRelic,
+		NullableActorEntityTypeNunc,
+		NullableActorEntityTypeGithub,
+		NullableActorEntityTypeGiphy,
+		NullableActorEntityTypeGoogleMeet,
+		NullableActorEntityTypeGoogleCalendar,
+		NullableActorEntityTypeMicrosoftTeams,
+		NullableActorEntityTypeMicrosoftTeamsV2,
+		NullableActorEntityTypeWebex,
+		NullableActorEntityTypeJiraCloud,
+		NullableActorEntityTypeJiraOnprem,
+		NullableActorEntityTypeOpsgenie,
+		NullableActorEntityTypePagerDuty,
+		NullableActorEntityTypeHoneycomb,
+		NullableActorEntityTypePatchy,
+		NullableActorEntityTypeServiceNow,
+		NullableActorEntityTypeSignals,
+		NullableActorEntityTypeSlack,
+		NullableActorEntityTypeStatuspage,
+		NullableActorEntityTypeVictorops,
+		NullableActorEntityTypeZendesk,
+		NullableActorEntityTypeZoom,
+		NullableActorEntityTypeConfluenceCloud,
+		NullableActorEntityTypeGoogleDocs,
+		NullableActorEntityTypeZoomV2,
+		NullableActorEntityTypeLinear,
+		NullableActorEntityTypeCortex,
+		NullableActorEntityTypeFreshservice,
+	}
+}
 func (e *NullableActorEntityType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

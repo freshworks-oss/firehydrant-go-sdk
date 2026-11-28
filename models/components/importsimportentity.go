@@ -22,6 +22,17 @@ const (
 func (e ImportsImportEntityState) ToPointer() *ImportsImportEntityState {
 	return &e
 }
+
+// ImportsImportEntityStateValues returns every known ImportsImportEntityState value in schema order.
+func ImportsImportEntityStateValues() []ImportsImportEntityState {
+	return []ImportsImportEntityState{
+		ImportsImportEntityStatePreprocessing,
+		ImportsImportEntityStateReadyForImport,
+		ImportsImportEntityStateImporting,
+		ImportsImportEntityStateCompleted,
+		ImportsImportEntityStateFailed,
+	}
+}
 func (e *ImportsImportEntityState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

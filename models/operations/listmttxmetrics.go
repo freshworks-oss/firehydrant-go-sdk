@@ -22,6 +22,15 @@ const (
 func (e ListMttxMetricsTagMatchStrategy) ToPointer() *ListMttxMetricsTagMatchStrategy {
 	return &e
 }
+
+// ListMttxMetricsTagMatchStrategyValues returns every known ListMttxMetricsTagMatchStrategy value in schema order.
+func ListMttxMetricsTagMatchStrategyValues() []ListMttxMetricsTagMatchStrategy {
+	return []ListMttxMetricsTagMatchStrategy{
+		ListMttxMetricsTagMatchStrategyAny,
+		ListMttxMetricsTagMatchStrategyMatchAll,
+		ListMttxMetricsTagMatchStrategyExclude,
+	}
+}
 func (e *ListMttxMetricsTagMatchStrategy) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -63,6 +72,28 @@ const (
 
 func (e ListMttxMetricsSortBy) ToPointer() *ListMttxMetricsSortBy {
 	return &e
+}
+
+// ListMttxMetricsSortByValues returns every known ListMttxMetricsSortBy value in schema order.
+func ListMttxMetricsSortByValues() []ListMttxMetricsSortBy {
+	return []ListMttxMetricsSortBy{
+		ListMttxMetricsSortByCountAsc,
+		ListMttxMetricsSortByMttrAsc,
+		ListMttxMetricsSortByMttaAsc,
+		ListMttxMetricsSortByMttdAsc,
+		ListMttxMetricsSortByMttmAsc,
+		ListMttxMetricsSortByHealthinessAsc,
+		ListMttxMetricsSortByDurationAsc,
+		ListMttxMetricsSortByInteractionsAsc,
+		ListMttxMetricsSortByCountDesc,
+		ListMttxMetricsSortByMttrDesc,
+		ListMttxMetricsSortByMttaDesc,
+		ListMttxMetricsSortByMttdDesc,
+		ListMttxMetricsSortByMttmDesc,
+		ListMttxMetricsSortByHealthinessDesc,
+		ListMttxMetricsSortByDurationDesc,
+		ListMttxMetricsSortByInteractionsDesc,
+	}
 }
 func (e *ListMttxMetricsSortBy) UnmarshalJSON(data []byte) error {
 	var v string
@@ -126,6 +157,23 @@ const (
 
 func (e ListMttxMetricsGroupBy) ToPointer() *ListMttxMetricsGroupBy {
 	return &e
+}
+
+// ListMttxMetricsGroupByValues returns every known ListMttxMetricsGroupBy value in schema order.
+func ListMttxMetricsGroupByValues() []ListMttxMetricsGroupBy {
+	return []ListMttxMetricsGroupBy{
+		ListMttxMetricsGroupByServices,
+		ListMttxMetricsGroupByEnvironments,
+		ListMttxMetricsGroupByFunctionalities,
+		ListMttxMetricsGroupByTeams,
+		ListMttxMetricsGroupBySeverities,
+		ListMttxMetricsGroupByUsers,
+		ListMttxMetricsGroupByIncidentTypes,
+		ListMttxMetricsGroupByStartedDay,
+		ListMttxMetricsGroupByStartedWeek,
+		ListMttxMetricsGroupByStartedMonth,
+		ListMttxMetricsGroupByCustomFields,
+	}
 }
 func (e *ListMttxMetricsGroupBy) UnmarshalJSON(data []byte) error {
 	var v string

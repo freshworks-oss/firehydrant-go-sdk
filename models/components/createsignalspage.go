@@ -20,6 +20,16 @@ const (
 func (e CreateSignalsPageTargetType) ToPointer() *CreateSignalsPageTargetType {
 	return &e
 }
+
+// CreateSignalsPageTargetTypeValues returns every known CreateSignalsPageTargetType value in schema order.
+func CreateSignalsPageTargetTypeValues() []CreateSignalsPageTargetType {
+	return []CreateSignalsPageTargetType{
+		CreateSignalsPageTargetTypeEscalationPolicy,
+		CreateSignalsPageTargetTypeOnCallSchedule,
+		CreateSignalsPageTargetTypeTeam,
+		CreateSignalsPageTargetTypeUser,
+	}
+}
 func (e *CreateSignalsPageTargetType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -51,6 +61,15 @@ const (
 
 func (e CreateSignalsPagePriority) ToPointer() *CreateSignalsPagePriority {
 	return &e
+}
+
+// CreateSignalsPagePriorityValues returns every known CreateSignalsPagePriority value in schema order.
+func CreateSignalsPagePriorityValues() []CreateSignalsPagePriority {
+	return []CreateSignalsPagePriority{
+		CreateSignalsPagePriorityHigh,
+		CreateSignalsPagePriorityMedium,
+		CreateSignalsPagePriorityLow,
+	}
 }
 func (e *CreateSignalsPagePriority) UnmarshalJSON(data []byte) error {
 	var v string
